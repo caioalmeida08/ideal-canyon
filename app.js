@@ -3,14 +3,16 @@ const app = express();
 const sassMiddleware = require('node-sass-middleware');
 const homeRouter = require('./routes/homeRouter.js');
 
-app.use(express.static('public'));
 
 app.use(sassMiddleware({
     src: __dirname,
     dest: __dirname + '/public/',
+    force: true,
     debug: true,
-    outputStyle: 'compressed'
+    outputStyle: 'compressed',
 }));
+
+app.use(express.static('public'));
 
 app.use('/', homeRouter);
 
