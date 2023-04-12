@@ -1,24 +1,28 @@
 {
-  "name": "ideal-canyon",
-  "version": "1.0.0",
-  "description": "A project by myself, guided by a good-brief random brief, meant for practice of webdesign and coding for front and back-end",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/caioalmeida08/ideal-canyon.git"
-  },
-  "author": "caioalmeida08",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/caioalmeida08/ideal-canyon/issues"
-  },
-  "homepage": "https://github.com/caioalmeida08/ideal-canyon#readme",
-  "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22"
-  }
+    "name": "ideal-canyon",
+    "version": "1.0.0",
+    "description": "A project by myself, guided by a good-brief random brief, meant for practice of webdesign and coding for front and back-end",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/caioalmeida08/ideal-canyon.git"
+    },
+    "author": "caioalmeida08",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/caioalmeida08/ideal-canyon/issues"
+    },
+    "homepage": "https://github.com/caioalmeida08/ideal-canyon#readme",
+    "dependencies": {
+        "ejs": "^3.1.9",
+        "express": "^4.18.2",
+        "nodemon": "^2.0.22",
+        "sass": "^1.62.0"
+    },
+    "devDependencies": {
+        "node-sass-middleware": "^1.0.1"
+    }
 }

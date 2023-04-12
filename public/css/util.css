@@ -28,3 +28,10 @@ body {
     font-weight: 400;
     font-size: var(--font-s);
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-s);
+    margin-inline: var(--spacing-s);
+}
