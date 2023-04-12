@@ -1,0 +1,15 @@
+<nav class="navbar">
+  <div class="navbar--logo">
+    <img src="img/logo.svg" alt="Logo da Ideal Canyon">
+    <p aria-hidden="true">Ideal canyon</p>
+  </div>
+  <ul class="navbar--navigation">
+    <!-- Renders the navItems given by the controller -->
+    <% navItems.forEach(function(item) { %>
+    <li><a href="#"><%= item %></a></li>
+    <% }); %>
+
+    <!-- Renders the login/signout item -->
+    <li><a href="#">Fazer login<a></li>
+  </ul>
+</nav>

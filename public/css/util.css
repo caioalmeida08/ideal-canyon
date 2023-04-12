@@ -1,0 +1,30 @@
+:root {
+    /* 1rem is set to 10px */
+
+    /* font-sizes */
+    --font-s: 1.8rem;
+    --font-m: 2.4rem;
+    --font-l: 3.6rem;
+    --font-xl: 4.8rem;
+
+    /* colors */
+    --col-light: #fff;
+    --col-dark: #000;
+    --col-main: #f08a00;
+
+    /* spacings */
+    --spacing-xxs: 0.8rem;
+    --spacing-xs: 1.6rem;
+    --spacing-s: 2.4rem;
+    --spacing-m: 3.2rem;
+    --spacing-l: 4.8rem;
+    --spacing-xl: 6.4rem;
+    --spacing-xxl: 9.6rem;
+    --spacing-xxxl: 12.8rem;
+}
+
+body {
+    font-family: "Futura PT", sans-serif;
+    font-weight: 400;
+    font-size: var(--font-s);
+}
