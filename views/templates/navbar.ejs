@@ -1,17 +1,15 @@
-<head>
-  <link rel="stylesheet" href="/css/navbar.css">
-</head>
-
-<nav class="navbar grid">
+<nav class="navbar">
   <div class="navbar--logo">
     <img src="img/logo.svg" alt="Logo da Ideal Canyon">
     <p aria-hidden="true">Ideal canyon</p>
   </div>
+
   <ul class="navbar--navigation">
     <!-- Renders the navItems given by the controller -->
     <% navItems.forEach(function(item) { %>
-    <li><a href="#"><%= item %></a></li>
+    <li><a href="<%=item.url%>"><%= item.title %></a></li>
     <% }); %>
+    <li><a href="/login"><img src="/img/icons/icon_login.png" alt="Fazer login ou logout">Fazer login</a></li>
   </ul>
 
   <div class="navbar--hamburger" alt="Toggle aside menu"></div>

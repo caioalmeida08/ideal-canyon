@@ -6,7 +6,6 @@ const homeRouter = require('./routes/homeRouter.js');
 const os = require('os');
 const ifaces = os.networkInterfaces();
 
-// Procura o primeiro endereço IPv4 não interno
 let ipAddress = null;
 Object.keys(ifaces).forEach((ifname) => {
     ifaces[ifname].forEach((iface) => {
