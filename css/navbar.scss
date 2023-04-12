@@ -1,0 +1,25 @@
+.navbar {
+    background-color: aqua;
+}
+
+.navbar--logo {
+    background-color: aliceblue;
+    grid-column: 1 / span 2;
+
+    > :first-child {
+        background-color: violet;
+    }
+    > :last-child {
+        font-weight: bold;
+        font-size: var(--font-m);
+        background-color: red;
+    }
+}
+
+.navbar--hamburger {
+    grid-column: -1 / span 1;
+}
+
+.navbar--navigation {
+    display: none;
+}

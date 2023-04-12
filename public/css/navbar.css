@@ -1,1 +1,1 @@
-.navbar{background-color:purple}.navbar--logo{background-color:aliceblue;grid-column:1 / span 2}.navbar--logo>:first-child{background-color:violet}.navbar--logo>:last-child{font-weight:bold;font-size:var(--font-m);background-color:red}.navbar--navigation{display:none}
+.navbar{background-color:aqua}.navbar--logo{background-color:aliceblue;grid-column:1 / span 2}.navbar--logo>:first-child{background-color:violet}.navbar--logo>:last-child{font-weight:bold;font-size:var(--font-m);background-color:red}.navbar--hamburger{grid-column:-1 / span 1}.navbar--navigation{display:none}

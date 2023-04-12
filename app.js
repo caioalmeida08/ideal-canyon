@@ -6,7 +6,7 @@ const homeRouter = require('./routes/homeRouter.js');
 app.use(express.static('public'));
 
 app.use(sassMiddleware({
-    src: __dirname + '/scss',
+    src: __dirname,
     dest: __dirname + '/public/',
     debug: true,
     outputStyle: 'compressed'
