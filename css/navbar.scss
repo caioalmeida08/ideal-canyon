@@ -1,23 +1,32 @@
 .navbar {
-    background-color: violet;
+    padding-block: var(--spacing-s);
+    align-items: center;
 }
 
 .navbar--logo {
-    background-color: aliceblue;
-    grid-column: 1 / span 2;
+    grid-column: 1 / span 3;
+    display: flex;
+    gap: var(--spacing-xxs);
 
-    > :first-child {
-        background-color: violet;
-    }
     > :last-child {
+        display: flex;
+        align-items: center;
         font-weight: bold;
-        font-size: var(--font-m);
-        background-color: red;
+        font-size: var(--font-s);
+        line-height: 0.6em;
     }
 }
 
 .navbar--hamburger {
     grid-column: -1 / span 1;
+    display: flex;
+
+    background-image: url("/img/icons/icon_menu.png");
+    aspect-ratio: 1;
+    width: var(--font-s);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .navbar--navigation {
