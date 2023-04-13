@@ -140,8 +140,10 @@
     }
 
     .social-proof--video {
-        img {
+        > div {
+            aspect-ratio: 16/9;
             position: relative;
+            isolation: isolate;
 
             max-width: 100%;
 
@@ -149,7 +151,18 @@
                 content: "";
                 position: absolute;
                 inset: 0;
-                background-color: red;
+                z-index: 1;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                z-index: 2;
+                background-image: url("/img/icons/icon_play.png");
+                background-position: center;
+                background-repeat: no-repeat;
             }
         }
     }
