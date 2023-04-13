@@ -1,9 +1,17 @@
 :root {
     /* font-sizes */
     font-size: 112.5%;
+
+    /* 18px */
     --font-s: 1rem;
+
+    /* 24px */
     --font-m: 1.33rem;
+
+    /* 36px */
     --font-l: 2rem;
+
+    /* 48px */
     --font-xl: 2.66rem;
 
     /* colors */
@@ -12,17 +20,42 @@
     --col-main: #f08a00;
 
     /* spacings */
+    /* 8px */
     --spacing-xxs: 0.44rem;
+
+    /* 16px */
     --spacing-xs: 0.88rem;
+
+    /* 24px */
     --spacing-s: 1.33rem;
+
+    /* 32px */
     --spacing-m: 1.77rem;
+
+    /* 48px */
     --spacing-l: 2.66rem;
+
+    /* 64px */
     --spacing-xl: 3.55rem;
+
+    /* 96px */
     --spacing-xxl: 5.33rem;
+
+    /* 128px */
     --spacing-xxxl: 7.11rem;
 }
 
 body {
     font-family: "Futura PT", sans-serif;
     font-weight: 400;
+}
+
+.button-primary {
+    padding: var(--spacing-s) var(--spacing-m);
+    background-color: var(--col-main);
+    border-radius: var(--spacing-xxs);
+    font-weight: bold;
+    color: var(--col-light);
+    white-space: nowrap;
+    width: min-content;
 }

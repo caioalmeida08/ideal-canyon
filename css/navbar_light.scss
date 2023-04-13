@@ -1,9 +1,15 @@
-$col_light: var(--col-light);
-$col_dark: var(--col-dark);
-$col_main: var(--col-main);
+body > * {
+    padding-inline: var(--spacing-s);
+}
+
+@media screen and (min-width: 900px) {
+    body > * {
+        padding-inline: var(--spacing-xl);
+    }
+}
 
 .navbar {
-    padding: var(--spacing-s) var(--spacing-xs);
+    padding-block: var(--spacing-m);
     align-items: center;
 
     display: flex;
@@ -15,12 +21,12 @@ $col_main: var(--col-main);
     gap: var(--spacing-xxs);
 
     > :last-child {
-        max-width: 40vw;
         display: flex;
         align-items: center;
+        max-width: 40vw;
         font-weight: bold;
-        font-size: var(--font-s);
         line-height: 0.6em;
+        font-size: var(--font-m);
     }
 }
 
@@ -30,7 +36,7 @@ $col_main: var(--col-main);
 
     background-image: url("/img/icons/icon_menu.png");
     aspect-ratio: 1;
-    width: var(--font-s);
+    width: var(--font-m);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -42,7 +48,7 @@ $col_main: var(--col-main);
 
 @media screen and (min-width: 900px) {
     .navbar {
-        padding: var(--spacing-s) var(--spacing-m);
+        padding-block: var(--spacing-m);
     }
 
     .navbar--hamburger {
@@ -53,12 +59,11 @@ $col_main: var(--col-main);
         display: flex;
         gap: var(--spacing-m);
 
-        font-size: var(--font-xs);
         font-weight: bold;
 
         > li > a {
             text-decoration: none;
-            color: $col_dark;
+            color: var(--col-dark);
         }
 
         > li:last-of-type {
@@ -66,7 +71,7 @@ $col_main: var(--col-main);
                 display: flex;
                 gap: calc(var(--spacing-xxs) / 2);
 
-                color: $col_main;
+                color: var(--col-main);
                 img {
                     height: 1em;
                 }
