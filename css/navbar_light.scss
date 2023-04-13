@@ -49,6 +49,15 @@ body > * {
 @media screen and (min-width: 900px) {
     .navbar {
         padding-block: var(--spacing-m);
+        align-items: end;
+
+        .navbar--logo {
+            gap: var(--spacing-xs);
+            p {
+                font-size: var(--font-l);
+                align-self: flex-end;
+            }
+        }
     }
 
     .navbar--hamburger {
@@ -57,7 +66,7 @@ body > * {
 
     .navbar--navigation {
         display: flex;
-        gap: var(--spacing-m);
+        gap: var(--spacing-l);
 
         font-weight: bold;
 
