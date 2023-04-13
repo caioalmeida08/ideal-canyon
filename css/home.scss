@@ -1,3 +1,4 @@
+// Hero
 .hero {
     margin-top: var(--spacing-m);
     display: flex;
@@ -25,11 +26,11 @@
     }
 
     p {
-        margin-top: var(--spacing-s);
+        margin-top: var(--spacing-m);
     }
 
     .button-primary {
-        margin-top: var(--spacing-m);
+        margin-top: var(--spacing-l);
     }
 }
 
@@ -42,7 +43,6 @@
 
     p {
         margin-top: var(--spacing-xxs);
-        font-weight: 500;
     }
 }
 
@@ -77,5 +77,80 @@
 @media screen and (min-width: 800px) {
     .hero--content h1 {
         font-size: var(--font-xl);
+    }
+}
+
+// Social proof
+.social-proof {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--spacing-m);
+    align-items: center;
+    text-align: center;
+
+    .social-proof--ratings {
+        display: grid;
+        gap: var(--spacing-l);
+
+        h2 {
+            font-size: var(--font-m);
+            font-weight: bold;
+        }
+
+        .star-ratings {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-s);
+
+            .star-card {
+                display: flex;
+                flex-direction: column;
+                gap: calc(var(--spacing-xxs) * 1.5);
+
+                .stars {
+                    display: flex;
+                    gap: var(--spacing-xxs);
+                    justify-content: center;
+
+                    > * {
+                        aspect-ratio: 1;
+                        height: var(--font-s);
+                    }
+                }
+            }
+        }
+
+        .heart-rating {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-xxs);
+
+            img {
+                width: var(--spacing-xl);
+                align-self: center;
+            }
+
+            span {
+                font-weight: bold;
+                font-size: var(--font-m);
+                color: var(--col-main);
+            }
+        }
+    }
+
+    .social-proof--video {
+        img {
+            position: relative;
+
+            max-width: 100%;
+
+            &::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-color: red;
+            }
+        }
     }
 }

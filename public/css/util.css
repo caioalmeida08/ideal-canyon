@@ -48,6 +48,23 @@
 body {
     font-family: "Futura PT", sans-serif;
     font-weight: 400;
+    padding-inline: var(--spacing-s);
+}
+
+/* controls the gap between sections */
+body > *:not(:is(.navbar, .hero)) {
+    margin-top: var(--spacing-xxl);
+}
+
+@media screen and (min-width: 900px) {
+    body > * {
+        padding-inline: var(--spacing-xl);
+    }
+
+    /* controls the gap between sections */
+    body > *:not(:is(.navbar, .hero)) {
+        margin-top: var(--spacing-xxxl);
+    }
 }
 
 .button-primary {
