@@ -1,10 +1,10 @@
 :root {
     /* font-sizes */
-    --font-xs: 1.1rem;
-    --font-s: 1.8rem;
-    --font-m: 2.4rem;
-    --font-l: 3.6rem;
-    --font-xl: 4.8rem;
+    font-size: 112.5%;
+    --font-s: 1rem;
+    --font-m: 1.33rem;
+    --font-l: 2rem;
+    --font-xl: 2.66rem;
 
     /* colors */
     --col-light: #fff;
@@ -12,18 +12,17 @@
     --col-main: #f08a00;
 
     /* spacings */
-    --spacing-xxs: 0.8rem;
-    --spacing-xs: 1.6rem;
-    --spacing-s: 2.4rem;
-    --spacing-m: 3.2rem;
-    --spacing-l: 4.8rem;
-    --spacing-xl: 6.4rem;
-    --spacing-xxl: 9.6rem;
-    --spacing-xxxl: 12.8rem;
+    --spacing-xxs: 0.44rem;
+    --spacing-xs: 0.88rem;
+    --spacing-s: 1.33rem;
+    --spacing-m: 1.77rem;
+    --spacing-l: 2.66rem;
+    --spacing-xl: 3.55rem;
+    --spacing-xxl: 5.33rem;
+    --spacing-xxxl: 7.11rem;
 }
 
 body {
     font-family: "Futura PT", sans-serif;
     font-weight: 400;
-    font-size: var(--font-s);
 }
