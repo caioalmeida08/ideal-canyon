@@ -23,7 +23,7 @@ app.use(sassMiddleware({
     src: __dirname,
     dest: __dirname + '/public/',
     force: true,
-    debug: true,
+    debug: false,
     outputStyle: 'compressed',
 }));
 
