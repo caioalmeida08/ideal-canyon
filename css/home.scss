@@ -126,6 +126,10 @@
             height: var(--font-s);
         }
     }
+
+    [data-hidden="true"] {
+        display: none;
+    }
 }
 
 .heart-rating {
@@ -219,6 +223,7 @@
         }
 
         [data-hidden="true"] {
+            display: block;
             opacity: 0;
             order: 5;
         }
