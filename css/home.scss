@@ -88,82 +88,146 @@
     gap: var(--spacing-m);
     align-items: center;
     text-align: center;
+}
+.social-proof--ratings {
+    display: grid;
+    gap: var(--spacing-l);
 
-    .social-proof--ratings {
-        display: grid;
-        gap: var(--spacing-l);
+    h2 {
+        font-size: var(--font-m);
+        font-weight: bold;
+    }
+}
 
-        h2 {
-            font-size: var(--font-m);
-            font-weight: bold;
+.ratings-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-l);
+}
+
+.star-ratings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-s);
+}
+
+.star-card {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--spacing-xxs) * 1.5);
+
+    .stars {
+        display: flex;
+        gap: var(--spacing-xxs);
+        justify-content: center;
+
+        > * {
+            aspect-ratio: 1;
+            height: var(--font-s);
         }
+    }
+}
 
-        .star-ratings {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-s);
+.heart-rating {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xxs);
 
-            .star-card {
-                display: flex;
-                flex-direction: column;
-                gap: calc(var(--spacing-xxs) * 1.5);
+    img {
+        width: var(--spacing-xl);
+        align-self: center;
+    }
 
-                .stars {
-                    display: flex;
-                    gap: var(--spacing-xxs);
-                    justify-content: center;
+    span {
+        font-weight: bold;
+        font-size: var(--font-m);
+        color: var(--col-main);
+    }
+}
 
-                    > * {
-                        aspect-ratio: 1;
-                        height: var(--font-s);
-                    }
-                }
-            }
-        }
+.social-proof--video {
+    position: relative;
+    isolation: isolate;
 
-        .heart-rating {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-xxs);
+    aspect-ratio: 16/9;
+    width: 100%;
 
-            img {
-                width: var(--spacing-xl);
-                align-self: center;
-            }
+    background-image: url("/img/social_proof_video.jpg");
+    background-size: contain;
 
-            span {
-                font-weight: bold;
-                font-size: var(--font-m);
-                color: var(--col-main);
-            }
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        background-image: url("/img/icons/icon_play.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: var(--spacing-m);
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .social-proof {
+        display: flex;
+        flex-direction: row-reverse;
+        gap: var(--spacing-s);
+        text-align: left;
+
+        > * {
+            flex: 1;
         }
     }
 
-    .social-proof--video {
-        > div {
-            aspect-ratio: 16/9;
-            position: relative;
-            isolation: isolate;
+    .social-proof--ratings {
+        align-self: flex-start;
+        gap: var(--spacing-m);
 
-            max-width: 100%;
-
-            &::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                z-index: 1;
-                background-color: rgba(0, 0, 0, 0.2);
-            }
-
-            &::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                z-index: 2;
-                background-image: url("/img/icons/icon_play.png");
-                background-position: center;
-                background-repeat: no-repeat;
-            }
+        h2 {
+            font-size: var(--font-l);
         }
+    }
+
+    .ratings-wrapper {
+        display: flex;
+        flex-direction: row;
+        gap: var(--spacing-m);
+
+        > * {
+            flex: 1;
+        }
+    }
+
+    .star-card {
+        flex-direction: row;
+        justify-content: space-between;
+
+        h3 {
+            white-space: nowrap;
+        }
+
+        .stars {
+            gap: var(--spacing-s);
+        }
+
+        [data-hidden="true"] {
+            opacity: 0;
+            order: 5;
+        }
+    }
+
+    .heart-rating {
+        text-align: center;
+        align-self: center;
+        font-weight: 500;
+        white-space: nowrap;
     }
 }

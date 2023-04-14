@@ -49,6 +49,9 @@ body {
     font-family: "Futura PT", sans-serif;
     font-weight: 400;
     padding-inline: var(--spacing-s);
+    min-width: 320px;
+    max-width: 1440px;
+    margin: 0 auto;
 }
 
 /* controls the gap between sections */
@@ -56,9 +59,15 @@ body > *:not(:is(.navbar, .hero)) {
     margin-top: var(--spacing-xxl);
 }
 
+h1,
+h2,
+h3 {
+    line-height: 1.25em;
+}
+
 @media screen and (min-width: 900px) {
     body > * {
-        padding-inline: var(--spacing-xl);
+        padding-inline: var(--spacing-l);
     }
 
     /* controls the gap between sections */
