@@ -46,7 +46,7 @@
     }
 }
 
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 768px) {
     .hero {
         margin-top: var(--spacing-xl);
         flex-direction: row;
@@ -74,7 +74,7 @@
     }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 768px) {
     .hero--content h1 {
         font-size: var(--font-xl);
     }
@@ -179,12 +179,13 @@
     }
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
     .social-proof {
         display: flex;
         flex-direction: row-reverse;
         gap: var(--spacing-s);
         text-align: left;
+        align-items: start;
 
         > * {
             flex: 1;
@@ -192,7 +193,6 @@
     }
 
     .social-proof--ratings {
-        align-self: flex-start;
         gap: var(--spacing-m);
 
         h2 {
@@ -236,3 +236,5 @@
         white-space: nowrap;
     }
 }
+
+// Features

@@ -48,10 +48,13 @@
 body {
     font-family: "Futura PT", sans-serif;
     font-weight: 400;
-    padding-inline: var(--spacing-s);
     min-width: 320px;
     max-width: 1440px;
     margin: 0 auto;
+}
+
+body > *:not(.section-dark) {
+    margin-inline: var(--spacing-s);
 }
 
 /* controls the gap between sections */
@@ -65,14 +68,27 @@ h3 {
     line-height: 1.25em;
 }
 
-@media screen and (min-width: 900px) {
-    body > * {
-        padding-inline: var(--spacing-l);
+@media screen and (min-width: 1024px) {
+    body > *:not(.section-dark) {
+        margin-inline: var(--spacing-xl);
     }
 
     /* controls the gap between sections */
     body > *:not(:is(.navbar, .hero)) {
         margin-top: var(--spacing-xxxl);
+    }
+}
+
+.section-dark {
+    background-color: var(--col-dark);
+    padding: var(--spacing-xl) var(--spacing-s);
+
+    color: var(--col-light);
+}
+
+@media screen and (min-width: 1024px) {
+    .section-dark {
+        padding: var(--spacing-xxl) var(--spacing-xl);
     }
 }
 
