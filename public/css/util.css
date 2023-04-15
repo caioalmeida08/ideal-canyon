@@ -68,6 +68,10 @@ h3 {
     line-height: 1.25em;
 }
 
+img {
+    max-width: 100%;
+}
+
 @media screen and (min-width: 1024px) {
     body > *:not(.section-dark) {
         margin-inline: var(--spacing-xl);
