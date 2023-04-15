@@ -81,83 +81,67 @@
 }
 
 // Social proof
-.social-proof {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: var(--spacing-m);
-    align-items: center;
-    text-align: center;
-}
-.social-proof--ratings {
+.social-proof--content {
     display: grid;
-    gap: var(--spacing-l);
+    justify-items: center;
+    text-align: center;
 
-    h2 {
+    > h2 {
         font-size: var(--font-m);
         font-weight: bold;
+        text-align: center;
     }
-}
 
-.ratings-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-l);
-}
+    .ratings-wrapper {
+        margin-top: var(--spacing-xl);
+    }
 
-.star-ratings {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-s);
-}
-
-.star-card {
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--spacing-xxs) * 1.5);
+    .title {
+        margin-top: var(--spacing-s);
+    }
 
     .stars {
         display: flex;
-        gap: var(--spacing-xxs);
+        gap: var(--spacing-xs);
         justify-content: center;
+        margin-top: calc(var(--spacing-xxs) * 1.5);
 
-        > * {
-            aspect-ratio: 1;
-            height: var(--font-s);
+        > img {
+            height: 1em;
         }
     }
 
-    [data-hidden="true"] {
-        display: none;
-    }
-}
+    .heart-rating {
+        margin-top: var(--spacing-l);
+        display: grid;
+        gap: var(--spacing-xxs);
+        justify-items: center;
 
-.heart-rating {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xxs);
+        > img {
+            max-width: var(--spacing-xl);
+        }
 
-    img {
-        width: var(--spacing-xl);
-        align-self: center;
-    }
+        > h3 {
+            font-weight: 500;
+        }
 
-    span {
-        font-weight: bold;
-        font-size: var(--font-m);
-        color: var(--col-main);
+        > p {
+            font-size: var(--font-m);
+            font-weight: bold;
+            color: var(--col-main);
+        }
     }
 }
 
 .social-proof--video {
     position: relative;
-    isolation: isolate;
+    margin-top: var(--spacing-m);
+    margin-inline: auto;
+    max-width: 500px;
 
-    aspect-ratio: 16/9;
-    width: 100%;
-
-    background-image: url("/img/social_proof_video.jpg");
-    background-size: contain;
+    > img {
+        height: 100%;
+    }
 
     &::before {
         content: "";
@@ -181,59 +165,62 @@
 
 @media screen and (min-width: 1024px) {
     .social-proof {
-        display: flex;
-        flex-direction: row-reverse;
-        gap: var(--spacing-s);
-        text-align: left;
-        align-items: start;
-
-        > * {
-            flex: 1;
-        }
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-s);
     }
 
-    .social-proof--ratings {
-        gap: var(--spacing-m);
+    .social-proof--content {
+        grid-column: 2;
+        grid-row: 1;
+        display: block;
 
-        h2 {
+        > h2 {
             font-size: var(--font-l);
+            font-weight: bold;
+            text-align: left;
         }
-    }
 
-    .ratings-wrapper {
-        display: flex;
-        flex-direction: row;
-        gap: var(--spacing-m);
-
-        > * {
-            flex: 1;
+        .ratings-wrapper {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            margin-top: var(--spacing-xs);
         }
-    }
 
-    .star-card {
-        flex-direction: row;
-        justify-content: space-between;
-
-        h3 {
+        .star-ratings {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xxs);
+            text-align: left;
             white-space: nowrap;
         }
 
-        .stars {
-            gap: var(--spacing-s);
+        .title {
+            margin-top: 0;
         }
 
-        [data-hidden="true"] {
-            display: block;
-            opacity: 0;
-            order: 5;
+        .stars {
+            justify-content: start;
+            gap: var(--spacing-xxs);
+            margin-top: 0;
+        }
+
+        .heart-rating {
+            display: flex;
+            flex-direction: column;
+            align-self: center;
+            align-items: center;
+            margin-top: 0;
+
+            padding-left: var(--spacing-s);
         }
     }
 
-    .heart-rating {
-        text-align: center;
-        align-self: center;
-        font-weight: 500;
-        white-space: nowrap;
+    .social-proof--video {
+        grid-column: 1;
+        grid-row: 1;
+        margin-top: 0;
+        max-width: 100%;
     }
 }
 
