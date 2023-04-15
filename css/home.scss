@@ -387,22 +387,15 @@
     }
 }
 
-.other-products {
-    margin-top: var(--spacing-s);
-    display: flex;
-    justify-content: center;
-    gap: var(--spacing-m);
-
-    font-weight: bold;
-    text-align: center;
-}
-
 .other-product {
-    img {
-    }
+    text-align: center;
+    display: inline-block;
+    width: calc(50% - var(--spacing-s));
+    margin-top: var(--spacing-m);
 
     h2 {
         margin-top: var(--spacing-xxs);
+        font-weight: bold;
     }
 
     a {
@@ -419,6 +412,10 @@
     }
 
     &:last-of-type {
+        float: right;
+    }
+
+    &:last-of-type {
         a {
             transform: rotateZ(180deg);
         }
@@ -426,10 +423,90 @@
 }
 
 @media screen and (min-width: 1024px) {
-    .product img {
-        display: block;
+    .products {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
     }
+
+    .product-images img {
+        display: block !important;
+    }
+
+    .product-images {
+        grid-column: 1 / span 3;
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+        column-gap: var(--spacing-l);
+        align-items: center;
+
+        .left-images {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            row-gap: var(--spacing-xs);
+
+            > img {
+                grid-column: 2;
+            }
+        }
+
+        .right-images {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            row-gap: var(--spacing-xs);
+
+            > img {
+                grid-column: 1;
+            }
+        }
+    }
+
+    .main-image {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+    }
+
     .product-image-slider {
         display: none;
+    }
+
+    .product-informations,
+    .product-description,
+    .product-price-cta-wrapper {
+        grid-column: 2 / 3;
+    }
+
+    .product-informations {
+        h2 {
+            font-size: var(--spacing-m);
+        }
+
+        p {
+            font-weight: 500;
+            opacity: 0.5;
+        }
+    }
+
+    .product-highlights {
+        justify-content: space-evenly;
+    }
+
+    .product-price-cta-wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-s);
+    }
+
+    .other-product {
+        grid-row: 4;
+        width: 50%;
+        transform: translateY(calc(var(--spacing-l) * -3));
+
+        &:first-of-type {
+            grid-column: 1 / 2;
+        }
+        &:last-of-type {
+            grid-column: 3 / 4;
+            justify-self: end;
+        }
     }
 }
