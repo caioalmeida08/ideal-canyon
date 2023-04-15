@@ -510,3 +510,59 @@
         }
     }
 }
+
+// About us
+.about-us--content {
+    text-align: center;
+
+    > * {
+        margin-top: var(--spacing-m);
+    }
+
+    > h2 {
+        font-weight: bold;
+        font-size: var(--font-m);
+    }
+
+    > p {
+        text-align: justify;
+    }
+
+    .button-primary {
+        margin-inline: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .about-us {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--spacing-s);
+
+        > img {
+            grid-column: 1 / span 8;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .about-us--content {
+        grid-column: 9 / span 4;
+
+        > h2 {
+            margin-top: 0;
+            text-align: left;
+            font-size: var(--font-l);
+        }
+
+        p {
+            line-height: 1.25em;
+        }
+
+        .button-primary {
+            margin-top: var(--spacing-l);
+            margin-inline: 0;
+            width: 100%;
+        }
+    }
+}
