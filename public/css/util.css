@@ -94,10 +94,29 @@ h3 {
 
 .button-primary {
     padding: var(--spacing-s) var(--spacing-m);
+    box-sizing: border-box;
     background-color: var(--col-main);
     border-radius: var(--spacing-xxs);
     font-weight: bold;
     color: var(--col-light);
     white-space: nowrap;
     width: min-content;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+}
+
+.button-secondary {
+    padding: var(--spacing-s) var(--spacing-m);
+    box-sizing: border-box;
+    border: 3px solid;
+    border-color: var(--col-main);
+    border-radius: var(--spacing-xxs);
+    font-weight: bold;
+    color: var(--col-main);
+    white-space: nowrap;
+    width: min-content;
+    text-decoration: none;
+    text-align: center;
+    display: block;
 }
