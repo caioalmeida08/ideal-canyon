@@ -64,8 +64,9 @@ body > *:not(:is(.navbar, .hero)) {
 
 h1,
 h2,
-h3 {
-    line-height: 1.25em;
+h3,
+p {
+    line-height: 1.3em;
 }
 
 img {
