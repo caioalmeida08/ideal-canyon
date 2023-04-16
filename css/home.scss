@@ -550,3 +550,78 @@
         }
     }
 }
+
+// Faq
+.faq .section-title {
+    text-align: center;
+}
+
+.faq--content {
+    margin-top: var(--spacing-l);
+
+    ul {
+        list-style: disc;
+        padding-left: var(--spacing-m);
+    }
+}
+
+.faq-static {
+    li {
+        margin-top: var(--spacing-l);
+
+        h3 {
+            font-weight: bold;
+        }
+        p {
+            margin-top: var(--spacing-s);
+        }
+    }
+}
+
+.faq-dynamic {
+    ul {
+        margin-top: var(--spacing-xl);
+        list-style: none;
+    }
+
+    li {
+        margin-top: var(--spacing-s);
+        position: relative;
+
+        h3 {
+            font-weight: 500;
+        }
+
+        &::before {
+            content: "";
+            position: absolute !important;
+            left: calc(var(--spacing-xs) * -1.75);
+
+            display: inline-block;
+
+            aspect-ratio: 1;
+            height: var(--spacing-xs);
+
+            background-image: url("/img/icons/icon_dropdown_main.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .faq--content {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--spacing-s);
+    }
+
+    .faq-static {
+        grid-column: 1 / span 7;
+    }
+
+    .faq-dynamic {
+        grid-column: 9 / span 4;
+    }
+}
