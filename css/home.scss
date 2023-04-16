@@ -87,9 +87,8 @@
     text-align: center;
 
     > h2 {
-        font-size: var(--font-m);
-        font-weight: bold;
         text-align: center;
+        color: var(--col-dark);
     }
 
     .ratings-wrapper {
@@ -229,8 +228,6 @@
     text-align: center;
 
     h2 {
-        font-size: var(--font-m);
-        font-weight: bold;
         color: var(--col-main);
     }
 }

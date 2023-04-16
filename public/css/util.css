@@ -96,6 +96,18 @@ img {
     }
 }
 
+.section-title {
+    font-weight: bold;
+    font-size: var(--font-m);
+    color: var(--col-main);
+}
+
+@media screen and (min-width: 1024px) {
+    .section-title {
+        font-size: var(--font-l);
+    }
+}
+
 .button-primary {
     padding: var(--spacing-s) var(--spacing-m);
     box-sizing: border-box;
