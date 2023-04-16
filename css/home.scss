@@ -685,6 +685,8 @@
         grid-template-columns: 1fr 1fr;
         column-gap: var(--spacing-s);
         row-gap: var(--spacing-m);
+        max-width: 880px;
+        margin-inline: auto;
 
         div:has(textarea) {
             grid-column: 1 / span 2;
