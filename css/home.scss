@@ -625,3 +625,74 @@
         grid-column: 9 / span 4;
     }
 }
+
+// Doubts
+.doubts h2 {
+    text-align: center;
+}
+
+.doubts--content {
+    margin-top: var(--spacing-l);
+    padding: var(--spacing-m);
+
+    border: 3px solid var(--col-dark);
+    border-radius: var(--spacing-xxs);
+
+    display: grid;
+    grid-template-columns: 100%;
+    row-gap: var(--spacing-m);
+
+    > * {
+        max-width: 100%;
+    }
+
+    .input-wrapper {
+        > label {
+            display: block;
+            font-weight: 500;
+
+            &:first-of-type {
+                margin-top: 0;
+            }
+        }
+
+        > input,
+        textarea {
+            margin-top: var(--spacing-xxs);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        a {
+            color: var(--col-dark);
+        }
+
+        div:has(.input-checkbox) {
+            display: flex;
+            column-gap: var(--spacing-xxs);
+            padding-top: var(--spacing-xxs);
+        }
+    }
+
+    .button-primary {
+        margin-top: var(--spacing-m);
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .doubts--content {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-s);
+        row-gap: var(--spacing-m);
+
+        div:has(textarea) {
+            grid-column: 1 / span 2;
+        }
+
+        .button-primary {
+            margin-top: 0;
+            grid-column: 2;
+        }
+    }
+}
