@@ -1,0 +1,56 @@
+.about-hero {
+    margin-top: var(--spacing-xxl);
+
+    font-size: var(--font-xl);
+    font-weight: bold;
+    text-align: center;
+}
+
+.about-story {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    .section-title {
+        font-size: var(--font-l);
+        text-align: center;
+    }
+
+    img,
+    p {
+        width: 100%;
+        max-width: 500px;
+        margin-inline: auto;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .about-story {
+        max-width: none;
+        grid-template-areas:
+            "image title"
+            "image paragraph";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content 1fr;
+        column-gap: var(--spacing-m);
+        row-gap: var(--spacing-xs);
+
+        .section-title {
+            grid-area: title;
+            text-align: left !important;
+        }
+
+        img,
+        p {
+            grid-area: image;
+            max-width: unset;
+        }
+
+        p {
+            grid-area: paragraph;
+        }
+    }
+}
