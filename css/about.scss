@@ -1,3 +1,4 @@
+// Hero
 .about-hero {
     margin-top: var(--spacing-xxl);
 
@@ -6,6 +7,7 @@
     text-align: center;
 }
 
+// Story
 .about-story {
     display: grid;
     row-gap: var(--spacing-m);
@@ -52,5 +54,62 @@
         p {
             grid-area: paragraph;
         }
+    }
+}
+
+// Founders
+.founders {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    max-width: 75%;
+    margin-inline: auto !important;
+
+    background-color: var(--col-dark);
+    padding: var(--spacing-l) var(--spacing-s);
+    border-radius: var(--spacing-xs);
+
+    text-align: center;
+    color: var(--col-light);
+}
+
+.founders--content {
+    display: grid;
+    gap: var(--spacing-l);
+}
+
+.founder-card {
+    display: grid;
+    row-gap: var(--spacing-xs);
+    justify-items: center;
+
+    > * {
+        width: 100%;
+    }
+
+    img {
+        border-radius: var(--spacing-xxs);
+        max-width: 250px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    p {
+        text-align: justify;
+        max-width: 500px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .founders {
+        padding: var(--spacing-xl);
+        row-gap: var(--spacing-l);
+    }
+
+    .founders--content {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-xxl);
     }
 }
