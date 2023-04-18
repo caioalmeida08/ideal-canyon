@@ -1,10 +1,15 @@
 // Navbar
 .navbar {
     color: var(--col-light) !important;
+
     svg {
         & > * {
             fill: var(--col-light);
         }
+    }
+
+    .navbar--hamburger {
+        filter: invert(1);
     }
 }
 
