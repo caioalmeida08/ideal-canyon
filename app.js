@@ -3,6 +3,7 @@ const app = express();
 const sassMiddleware = require('node-sass-middleware');
 const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
+const buyRouter = require('./routes/buyRouter.js');
 
 const os = require('os');
 const ifaces = os.networkInterfaces();
@@ -32,6 +33,7 @@ app.use(express.static('public'));
 
 app.use('/', homeRouter);
 app.use('/sobre', aboutRouter);
+app.use('/comprar', buyRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${ipAddress}:${PORT}`));
