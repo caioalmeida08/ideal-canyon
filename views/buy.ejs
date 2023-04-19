@@ -218,6 +218,69 @@
       </div>
     </div>
   </section>
+  <section class="payment">
+    <h2 class="section-title">Método de pagamento</h2>
+    <div class="payment--content">
+      <div class="payment-method">
+        <p>Selecione o método de pagamento</p>
+        <div class="methods-wrapper">
+          <div class="method" data-active="true">
+            <img src="img/icons/icon_credit_card.png" aria-hidden="true">
+            <p>Cartão de crédito</p>
+          </div>
+          <div class="method">
+            <img src="img/icons/icon_pix.png" aria-hidden="true">
+            <p>Pagamento por Pix</p>
+          </div>
+        </div>
+      </div>
+      <div class="payment-data">
+        <div class="payment-card">
+          <div class="field">
+            <h3>Nome do titular</h3>
+            <input class="input-text" type="text" placeholder="Nome completo">
+          </div>
+          <div class="field">
+            <h3>Número do cartão</h3>
+            <input class="input-text" type="text" placeholder="Número do cartão">
+          </div>
+          <div class="field">
+            <h3>Validade</h3>
+            <input class="input-text" type="text" placeholder="MM/AA">
+          </div>
+          <div class="field">
+            <h3>Código de segurança</h3>
+            <input class="input-text" type="text" placeholder="Código de segurança">
+          </div>
+        </div>
+        <div class="payment-informations">
+          <div class="field">
+            <h3>Frete para endereço 1</h3>
+            <p>R$ 0,00</p>
+          </div>
+          <div class="field">
+            <h3>Valor final</h3>
+            <p id="final-value">R$ 3.200,50</p>
+          </div>
+          <div class="field">
+            <h3>Parcelamento</h3>
+            <div class="input-select-wrapper">
+              <select class="input-select" name="" id="">
+                <option value="" selected disabled> 1x R$ 3.200,50</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="payment-confirmation">
+          <button class="button-primary">
+            Confirmar compra
+          </button>
+          <p>
+            Ao efetuar a compra, você confirma que tem conhecimento e concorda com os <a href="">termos de serviço</a> e <a href="">política de privacidade</a> da Ideal Canyon.
+          </p>
+        </div>
+      </div>
+  </section>
 
   <%- include("templates/footer") %>
 </body>

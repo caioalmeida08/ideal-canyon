@@ -43,9 +43,12 @@
 
 // Specifications
 .specs {
-    text-align: center;
     display: grid;
     row-gap: var(--spacing-xl);
+
+    h2 {
+        text-align: center;
+    }
 }
 
 .specs--content {
@@ -76,6 +79,16 @@
 .scooter-image {
     font-weight: bold;
     margin-top: var(--spacing-xs);
+    text-align: center;
+}
+
+.scooter-informations > * {
+    border-radius: var(--spacing-xs);
+    border: 3px solid var(--col-dark);
+    padding: var(--spacing-m);
+
+    display: grid;
+    row-gap: var(--spacing-xxs);
 }
 
 .scooter-informations .field .input-select-wrapper {
@@ -84,6 +97,7 @@
 }
 
 .scooter-description p {
+    margin-top: var(--spacing-xs);
     text-align: justify;
 }
 
@@ -94,6 +108,12 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .scooter-informations > * {
+        border-radius: unset;
+        border: unset;
+        padding: unset;
+    }
+
     .specs--content {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -115,6 +135,10 @@
         column-gap: var(--spacing-s);
 
         text-align: justify;
+
+        h3 {
+            text-align: left;
+        }
 
         max-width: unset;
 
@@ -158,6 +182,9 @@
 }
 
 .confirmation--content .wrapper {
+    display: grid;
+    row-gap: var(--spacing-s);
+
     > h3 {
         font-weight: bold;
         font-size: var(--font-m);
@@ -165,19 +192,12 @@
 }
 
 .field {
-    margin-top: var(--spacing-s);
     display: flex;
     flex-wrap: nowrap;
     column-gap: var(--spacing-xxs);
 
     h4 {
         font-weight: 500;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .confirmation--content {
-        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -203,6 +223,176 @@
 
         h4 {
             margin-right: var(--spacing-xxs);
+        }
+    }
+}
+
+// Payment
+.payment {
+    display: grid;
+    row-gap: var(--spacing-xl);
+    padding-inline: var(--spacing-s);
+
+    > h2 {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .payment {
+        max-width: 500px;
+        margin-inline: auto !important;
+    }
+}
+
+.payment--content {
+    display: grid;
+    row-gap: var(--spacing-l);
+
+    > * {
+        display: grid;
+        row-gap: var(--spacing-m);
+    }
+}
+
+.payment-method {
+    p {
+        font-weight: 500;
+        text-align: center;
+    }
+}
+
+.methods-wrapper {
+    display: flex;
+    column-gap: var(--spacing-s);
+    justify-content: center;
+}
+
+.method {
+    display: grid;
+    justify-items: center;
+    row-gap: var(--spacing-xxs);
+
+    margin-top: var(--spacing-s);
+    padding: var(--spacing-xs);
+
+    border-radius: var(--spacing-xxs);
+    border: var(--col-dark) 3px solid;
+
+    img {
+        height: var(--spacing-m);
+    }
+
+    opacity: 0.5;
+
+    &[data-active="true"] {
+        opacity: 1;
+        background-color: var(--col-main);
+        color: var(--col-light);
+    }
+}
+
+.payment-card,
+.payment-informations {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    .field {
+        margin-top: unset;
+        h3 {
+            font-weight: 500;
+        }
+    }
+
+    padding: var(--spacing-m);
+    border-radius: var(--spacing-xxs);
+    border: var(--col-dark) 3px solid;
+}
+
+#final-value {
+    font-weight: bold;
+    font-size: var(--font-l);
+}
+
+.payment-confirmation {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    .button-primary {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .payment {
+        h2 {
+            text-align: left;
+        }
+    }
+
+    .payment--content {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(2, fit-content(100%));
+        column-gap: var(--spacing-s);
+
+        > *:not(:first-child) {
+            grid-row: 2;
+        }
+    }
+
+    .payment-method {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 1;
+    }
+
+    .payment-data {
+        grid-column: 1 / span 12;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--spacing-s);
+
+        .payment-card {
+            grid-column: 1 / span 8;
+            grid-row: 1;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, fit-content(100%));
+
+            column-gap: var(--spacing-m);
+
+            > :first-child {
+                grid-row: 1;
+            }
+
+            > :is(:nth-child(2), :nth-child(3)) {
+                grid-row: 2;
+            }
+
+            > :last-child {
+                grid-row: 3;
+            }
+
+            .input-text {
+                width: 100%;
+            }
+        }
+
+        .payment-informations {
+            grid-column: 9 / -1;
+            grid-row: 1;
+
+            max-width: 100%;
+
+            h3,
+            p {
+                max-width: 100%;
+            }
+        }
+
+        .payment-confirmation {
+            grid-column: 9 / -1;
         }
     }
 }
