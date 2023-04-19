@@ -78,6 +78,11 @@
     margin-top: var(--spacing-xs);
 }
 
+.scooter-informations .field .input-select-wrapper {
+    margin-top: var(--spacing-xs);
+    margin-inline: auto;
+}
+
 .scooter-description p {
     text-align: justify;
 }
@@ -133,6 +138,71 @@
         > :nth-child(5) {
             grid-column: 3 / span 6;
             grid-row: 2;
+        }
+    }
+}
+
+// Confirmation
+.confirmation {
+    display: grid;
+    row-gap: var(--spacing-xl);
+
+    > h2 {
+        text-align: center;
+    }
+}
+
+.confirmation--content {
+    display: grid;
+    row-gap: var(--spacing-l);
+}
+
+.confirmation--content .wrapper {
+    > h3 {
+        font-weight: bold;
+        font-size: var(--font-m);
+    }
+}
+
+.field {
+    margin-top: var(--spacing-s);
+    display: flex;
+    flex-wrap: nowrap;
+    column-gap: var(--spacing-xxs);
+
+    h4 {
+        font-weight: 500;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .confirmation--content {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .confirmation h2 {
+        text-align: left;
+    }
+
+    .confirmation--content {
+        display: flex;
+        column-gap: var(--spacing-xl);
+    }
+
+    .field {
+        display: block;
+
+        h4,
+        p {
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0;
+        }
+
+        h4 {
+            margin-right: var(--spacing-xxs);
         }
     }
 }

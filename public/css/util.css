@@ -174,3 +174,41 @@ img {
     background-size: var(--spacing-xs);
     background-position: center center;
 }
+
+.input-select-wrapper {
+    position: relative;
+    width: fit-content;
+}
+
+.input-select-wrapper::after {
+    content: "";
+    position: absolute;
+    right: var(--spacing-xxs);
+    inset-block: calc(50% - 4px);
+
+    aspect-ratio: 20 / 13;
+    height: 8px;
+
+    background-image: url("/img/icons/icon_dropdown.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right center;
+}
+
+.input-select {
+    border: 0;
+    border-radius: var(--spacing-xxs);
+    padding: var(--spacing-xxs);
+    padding-right: var(--spacing-m);
+
+    font-weight: bold;
+    color: var(--col-light);
+
+    appearance: none;
+    background-color: var(--col-main);
+
+    display: block;
+
+    position: relative;
+    width: fit-content;
+}
