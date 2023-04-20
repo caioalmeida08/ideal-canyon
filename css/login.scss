@@ -2,24 +2,12 @@ body {
     background: var(--col-dark);
 }
 
-.navbar {
-    color: var(--col-light);
+.navbar-navigation a[href="/cadastrar"] {
+    color: var(--col-main);
+}
 
-    svg path {
-        fill: var(--col-light);
-    }
-
-    .navbar--navigation li a {
-        color: var(--col-light);
-    }
-
-    .navbar--navigation li:has(img) {
-        display: none;
-    }
-
-    .navbar--hamburger {
-        filter: invert(1);
-    }
+.navbar-navigation > li:last-child {
+    display: none;
 }
 
 // Login

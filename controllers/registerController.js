@@ -2,7 +2,7 @@ const registerController = {
     index(req, res) {
         let data = {
             title: 'Ideal Canyon',
-            styles: ['navbar', 'register'],
+            styles: ['navbar_dark', 'register'],
             navItems: [
                 { title: 'Modelos', url: '/' },
                 { title: 'Contatos', url: '/' },

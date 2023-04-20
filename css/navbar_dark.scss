@@ -4,6 +4,7 @@
 
     display: flex;
     justify-content: space-between;
+    background-color: var(--col-dark);
 }
 
 .navbar-logo {
@@ -14,6 +15,10 @@
 
     svg {
         height: auto;
+
+        path {
+            fill: var(--col-light);
+        }
     }
 
     p {
@@ -24,7 +29,7 @@
 
         font-weight: bold;
         font-size: var(--font-m);
-        color: var(--col-dark);
+        color: var(--col-light);
     }
 }
 
@@ -40,6 +45,8 @@
 
     aspect-ratio: 1;
     width: var(--font-m);
+
+    filter: invert(1);
 }
 
 .navbar-navigation {
@@ -76,7 +83,7 @@
 
         > li > a {
             text-decoration: none;
-            color: var(--col-dark);
+            color: var(--col-light);
         }
 
         > li:last-of-type {
