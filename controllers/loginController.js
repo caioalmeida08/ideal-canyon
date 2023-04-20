@@ -1,16 +1,16 @@
-const homeController = {
+const loginController = {
     index(req, res) {
         let data = {
             title: 'Ideal Canyon',
-            styles: ['navbar', 'home'],
+            styles: ['navbar', 'login'],
             navItems: [
                 { title: 'Modelos', url: '/' },
                 { title: 'Contatos', url: '/' },
                 { title: 'Sobre nós', url: '/sobre' }]
         }
 
-        res.render('index.ejs', data);
+        res.render('login.ejs', data);
     },
 };
 
-module.exports = homeController;
+module.exports = loginController;
