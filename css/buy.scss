@@ -184,6 +184,7 @@
 .confirmation--content .wrapper {
     display: grid;
     row-gap: var(--spacing-s);
+    grid-template-rows: repeat(11, fit-content(100%));
 
     > h3 {
         font-weight: bold;
@@ -325,6 +326,8 @@
 
 @media screen and (min-width: 1024px) {
     .payment {
+        padding-inline: unset;
+
         h2 {
             text-align: left;
         }
@@ -344,6 +347,10 @@
     .payment-method {
         grid-column: 1 / span 4;
         grid-row: 1 / span 1;
+
+        p {
+            text-align: left;
+        }
     }
 
     .payment-data {
@@ -394,5 +401,9 @@
         .payment-confirmation {
             grid-column: 9 / -1;
         }
+    }
+
+    .methods-wrapper {
+        justify-content: flex-start;
     }
 }
