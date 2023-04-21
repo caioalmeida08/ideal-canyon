@@ -1,6 +1,7 @@
 .aside {
     position: fixed;
     inset: 0;
+    left: 100%;
     z-index: 3;
 
     background-color: var(--col-dark);
@@ -11,6 +12,21 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    > * {
+        opacity: 0;
+    }
+
+    transition: left 0.3s ease-in-out;
+}
+
+.aside[data-active="true"] {
+    left: 0;
+
+    > * {
+        opacity: 1;
+        transition: opacity 0.35s ease-in-out;
+    }
 }
 
 .head {
@@ -45,7 +61,7 @@
     }
 }
 
-.head-close {
+.aside-close {
     filter: invert(1);
     aspect-ratio: 1;
     height: var(--spacing-s);
@@ -98,11 +114,12 @@
 .aside .button-primary {
     margin-top: var(--spacing-s);
     width: 100%;
+    max-width: 500px;
+    margin-inline: auto !important;
 }
 
 @media screen and (max-width: 1023px) {
     .aside .button-primary {
         width: fit-content;
-        margin-inline: auto !important;
     }
 }
