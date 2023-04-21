@@ -2,7 +2,7 @@ const homeController = {
     index(req, res) {
         let data = {
             title: 'Ideal Canyon',
-            styles: ['navbar', 'home'],
+            styles: ['navbar', 'home', 'aside'],
             navItems: [
                 { title: 'Modelos', url: '/' },
                 { title: 'Contatos', url: '/' },
