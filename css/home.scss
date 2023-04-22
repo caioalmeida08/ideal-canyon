@@ -749,3 +749,83 @@
         }
     }
 }
+
+// Modal
+.modal {
+    position: fixed;
+    z-index: 4;
+    inset: 0;
+    overflow: auto;
+    margin: unset !important;
+    background-color: var(--col-light);
+
+    padding: var(--spacing-s);
+
+    text-align: center;
+
+    display: grid;
+    row-gap: var(--spacing-xl);
+}
+
+.modal--content {
+    display: grid;
+    row-gap: var(--spacing-l);
+
+    > * {
+        display: grid;
+        row-gap: var(--spacing-m);
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    h4 {
+        font-weight: 500;
+        color: var(--col-input);
+    }
+
+    h5 {
+        font-weight: 500;
+    }
+
+    .field {
+        margin-top: var(--spacing-xs);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        row-gap: var(--spacing-xxs);
+
+        > label {
+            font-weight: 500;
+            margin-bottom: var(--spacing-xxs);
+        }
+    }
+}
+
+.scooter-image p {
+    margin-top: var(--spacing-xxs);
+}
+
+.scooter-informations {
+    display: grid;
+    row-gap: var(--spacing-l);
+}
+
+.scooter-informations > * {
+    border-radius: var(--spacing-xs);
+    border: 3px solid var(--col-dark);
+    padding: var(--spacing-m);
+
+    display: grid;
+    row-gap: var(--spacing-xxs);
+}
+
+@media screen and (max-width: 1023px) {
+    .scooter-image,
+    .modal--content {
+        max-width: 500px;
+        margin-inline: auto !important;
+    }
+}
