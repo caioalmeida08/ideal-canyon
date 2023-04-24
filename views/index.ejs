@@ -138,7 +138,7 @@
       </div>
       <div class="product-cta">
         <a href="" class="button-primary">Comprar agora</a>
-        <a href="" class="button-secondary">Mais detalhes</a>
+        <div class="button-secondary" id="modal-open">Mais detalhes</div>
       </div>
     </div>
     <div class="other-product">
@@ -223,9 +223,10 @@
       <button class="button-primary">Confirmar envio</button>
     </form>
   </section>
-  <div class="modal">
+  <div class="modal" data-active="false">
     <div class="modal-head">
       <h2 class="section-title">Mais detalhes</h2>
+      <img class="modal-close" src="/img/icons/icon_close.png" alt="Fechar o modal de mais detalhes"></img>
     </div>
     <div class="modal--content">
       <div class="scooter-image--wrapper">
@@ -327,6 +328,8 @@
 
     </div>
   </div>
+
+  <script src="js/modal.js"></script>
 
   <%- include("templates/footer") %>
   <%- include("templates/aside") %>

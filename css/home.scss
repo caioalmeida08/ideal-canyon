@@ -755,6 +755,7 @@
     position: fixed;
     z-index: 4;
     inset: 0;
+    left: 100%;
     overflow: auto;
     margin: unset !important;
     background-color: var(--col-light);
@@ -767,9 +768,30 @@
     row-gap: var(--spacing-xl);
 }
 
+.modal[data-active="true"] {
+    left: 0;
+    transition: left 0.3s ease-in-out;
+
+    .modal--content {
+        opacity: 1;
+        transition: opacity 0.1s ease-in-out 0.2s;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: var(--spacing-m);
+    right: var(--spacing-s);
+
+    aspect-ratio: 1;
+    height: var(--spacing-xs);
+}
+
 .modal--content {
     display: grid;
     row-gap: var(--spacing-l);
+
+    opacity: 0;
 
     > * {
         display: grid;
@@ -835,6 +857,11 @@
 }
 
 @media screen and (min-width: 1024px) {
+    .modal-close {
+        aspect-ratio: 1;
+        height: var(--spacing-s);
+    }
+
     .modal--content {
         grid-template-columns: 4fr 8fr;
         column-gap: var(--spacing-s);
