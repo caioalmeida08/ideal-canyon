@@ -10,6 +10,7 @@ const homeController = {
         }
 
         res.render('index.ejs', data);
+
     },
 };
 

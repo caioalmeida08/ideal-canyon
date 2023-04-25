@@ -1,24 +1,6 @@
 const express = require('express');
 const app = express();
 
-const { Sequelize } = require('sequelize');
-
-const sequelize = new Sequelize({
-    dialect: 'sqlite',
-    storage: './database/idealcanyon.sqlite'
-});
-
-async function connectToDatabase() {
-    try {
-        await sequelize.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
-}
-
-connectToDatabase()
-
 const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
 const buyRouter = require('./routes/buyRouter.js');
