@@ -1,6 +1,24 @@
 const express = require('express');
 const app = express();
-const sassMiddleware = require('node-sass-middleware');
+
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
+    dialect: 'sqlite',
+    storage: './database/idealcanyon.sqlite'
+});
+
+async function connectToDatabase() {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');
+    } catch (error) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+
+connectToDatabase()
+
 const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
 const buyRouter = require('./routes/buyRouter.js');
@@ -22,14 +40,6 @@ Object.keys(ifaces).forEach((ifname) => {
         return;
     }
 });
-
-app.use(sassMiddleware({
-    src: __dirname,
-    dest: __dirname + '/public/',
-    force: true,
-    debug: false,
-    outputStyle: 'compressed',
-}));
 
 app.use(express.static('public'));
 
