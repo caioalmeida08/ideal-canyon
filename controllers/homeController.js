@@ -1,3 +1,5 @@
+const sequelize = require('../database/db').sequelize;
+
 const homeController = {
     index(req, res) {
         let data = {

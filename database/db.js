@@ -17,4 +17,6 @@ async function connect() {
     }
 }
 
-module.exports = { sequelize, connect };
+connect()
+
+module.exports = { sequelize };
