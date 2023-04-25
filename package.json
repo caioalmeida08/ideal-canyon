@@ -17,6 +17,7 @@
     },
     "homepage": "https://github.com/caioalmeida08/ideal-canyon#readme",
     "dependencies": {
+        "body-parser": "^1.20.2",
         "ejs": "^3.1.9",
         "express": "^4.18.2",
         "sass": "^1.62.0",

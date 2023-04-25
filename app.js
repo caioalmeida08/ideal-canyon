@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser');
 
 const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
@@ -22,6 +23,8 @@ Object.keys(ifaces).forEach((ifname) => {
         return;
     }
 });
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
