@@ -1,5 +1,5 @@
-const { Sequelize, DataTypes } = require("sequelize");
-const sequelize = new Sequelize("../database/db");
+const { DataTypes } = require("sequelize");
+const sequelize = require("../database/db.js").sequelize;
 
 const User = sequelize.define("user", {
     user_id: {
@@ -21,7 +21,6 @@ const User = sequelize.define("user", {
         allowNull: false,
         validate: {
             len: [3, 64],
-            isAlpha: true,
             notEmpty: true,
         }
     },
@@ -38,20 +37,20 @@ const User = sequelize.define("user", {
     user_cpf: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             isNumeric: true,
             len: [11, 11],
-            unique: true,
             notEmpty: true,
         }
     },
     user_email: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             isEmail: true,
             len: [5, 64],
-            unique: true,
             notEmpty: true,
         },
     },
@@ -66,25 +65,27 @@ const User = sequelize.define("user", {
     user_phone1: {
         type: DataTypes.STRING,
         allowNull: false,
+        unique: true,
         validate: {
             isNumeric: true,
             len: [10, 11],
             notEmpty: true,
-            unique: true
         }
     },
     user_phone2: {
         type: DataTypes.STRING,
         allowNull: true,
+        unique: true,
         validate: {
             isNumeric: true,
             len: [10, 11],
             notEmpty: true,
-            unique: true
         }
     },
 });
 
 (async () => {
-    await sequelize.sync({ force: true });
+    await sequelize.sync({ force: false });
 })();
+
+module.exports = User;
