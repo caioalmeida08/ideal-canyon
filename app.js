@@ -7,6 +7,7 @@ const aboutRouter = require('./routes/aboutRouter.js');
 const buyRouter = require('./routes/buyRouter.js');
 const loginRouter = require('./routes/loginRouter.js');
 const registerRouter = require('./routes/registerRouter.js');
+const scooterRouter = require('./routes/scooterRouter.js');
 
 const os = require('os');
 const ifaces = os.networkInterfaces();
@@ -34,6 +35,7 @@ app.use('/sobre', aboutRouter);
 app.use('/comprar', buyRouter);
 app.use('/login', loginRouter);
 app.use('/cadastrar', registerRouter);
+app.use('/scooter', scooterRouter);
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${ipAddress}:${PORT}`));
