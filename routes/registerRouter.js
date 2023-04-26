@@ -6,4 +6,5 @@ router.get('/debug', registerController.debug);
 router.get('/', registerController.index);
 router.post('/', registerController.register);
 router.put('/', registerController.update);
+router.delete('/', registerController.delete);
 module.exports = router;
