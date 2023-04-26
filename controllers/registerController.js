@@ -15,7 +15,7 @@ const registerController = {
         res.render('register.ejs', data);
     },
 
-    async register(req, res) {
+    async create(req, res) {
         try {
             req.body.user_id = uuidv4;
             const response = await userModel.create(req.body)
