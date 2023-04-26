@@ -20,7 +20,20 @@ const registerController = {
         try {
             const response = await userModel.create(req.body)
             res.status(201).send(response)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
 
+    async update(req, res) {
+        req.body.user_id;
+        try {
+            const response = await userModel.update(req.body, { where: { user_id: req.body.user_id } })
+            if (response == 0) {
+                res.status(400).send('Usuário não encontrado')
+                return
+            }
+            res.status(201).send(response)
         } catch (error) {
             res.status(400).send(error)
         }
