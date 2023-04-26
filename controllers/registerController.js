@@ -15,20 +15,24 @@ const registerController = {
         res.render('register.ejs', data);
     },
 
-    register(req, res) {
+    async register(req, res) {
         req.body.user_id = uuidv4;
-        userModel.create(req.body).then((cont) => {
-            res.send(cont)
-        }).catch((err) => {
-            res.send(err)
-        })
+        try {
+            const response = await userModel.create(req.body)
+            res.status(201).send(response)
+
+        } catch (error) {
+            res.status(400).send(error)
+        }
     },
 
-    debug(req, res) {
-        userModel.findAll().then((cont) => {
-            console.log(cont)
-            res.send(cont)
-        })
+    async debug(req, res) {
+        try {
+            const response = await userModel.findAll()
+            res.status(201).send(response)
+        } catch (error) {
+            res.status(400).send(error)
+        }
     }
 };
 

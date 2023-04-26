@@ -82,7 +82,7 @@ const User = sequelize.define("user", {
             notEmpty: true,
         }
     },
-});
+}, { sequelize });
 
 (async () => {
     await sequelize.sync({ force: false });
