@@ -33,7 +33,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_max_speed: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -42,7 +42,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_max_load: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -51,7 +51,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_weight: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -60,7 +60,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_dim_h: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -69,7 +69,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_dim_w: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -78,7 +78,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_dim_l: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -95,7 +95,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_battery_capacity: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -104,7 +104,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_battery_range: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -113,16 +113,16 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_charging_time: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
-            len: [1, 2],
+            len: [1, 3],
             notEmpty: true,
         }
     },
     scooter_charger_power: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -140,7 +140,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_charger_output: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
@@ -157,7 +157,7 @@ const Scooter = sequelize.define("scooter", {
         }
     },
     scooter_price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             isNumeric: true,
