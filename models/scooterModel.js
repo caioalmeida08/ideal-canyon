@@ -4,6 +4,7 @@ const sequelize = require("../database/db.js").sequelize;
 const Scooter = sequelize.define("scooter", {
     scooter_id: {
         type: DataTypes.UUIDV4,
+        defaultValue: DataTypes.UUIDV4,
         allowNull: false,
         primaryKey: true
     },

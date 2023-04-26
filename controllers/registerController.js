@@ -1,4 +1,3 @@
-const uuidv4 = require('uuid').v4();
 const userModel = require('../models/userModel.js');
 
 const registerController = {
@@ -17,7 +16,6 @@ const registerController = {
 
     async create(req, res) {
         try {
-            req.body.user_id = uuidv4;
             const response = await userModel.create(req.body)
             res.status(201).send(response)
         } catch (error) {
