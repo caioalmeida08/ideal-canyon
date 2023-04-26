@@ -21,7 +21,7 @@ const registerController = {
             const response = await userModel.create(req.body)
             res.status(201).send(response)
         } catch (error) {
-            res.status(400).send(error)
+            res.status(400).send(error.message)
         }
     },
 
@@ -34,7 +34,7 @@ const registerController = {
             }
             res.status(201).send(response)
         } catch (error) {
-            res.status(400).send(error)
+            res.status(400).send(error.message)
         }
     },
 
@@ -50,7 +50,7 @@ const registerController = {
 
             res.status(201).send(response)
         } catch (error) {
-            res.status(400).send(error)
+            res.status(400).send(error.message)
         }
     },
 
@@ -59,7 +59,7 @@ const registerController = {
             const response = await userModel.findAll()
             res.status(201).send(response)
         } catch (error) {
-            res.status(400).send(error)
+            res.status(400).send(error.message)
         }
     }
 };
