@@ -1,4 +1,5 @@
 const userModel = require('../models/userModel.js');
+const addressModel = require('../models/addressModel.js');
 
 const registerController = {
     index(req, res) {
@@ -54,7 +55,8 @@ const registerController = {
 
     async debug(req, res) {
         try {
-            const response = await userModel.findAll()
+            const response = await userModel.findAll({ include: addressModel })
+
             res.status(201).send(response)
         } catch (error) {
             res.status(400).send(error.message)

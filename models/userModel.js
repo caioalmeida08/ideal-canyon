@@ -1,6 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/db.js").sequelize;
 
+const Address = require("./addressModel.js");
+
 const User = sequelize.define("user", {
     user_id: {
         type: DataTypes.UUIDV4,
@@ -85,8 +87,12 @@ const User = sequelize.define("user", {
     },
 }, { sequelize });
 
-(async () => {
-    await sequelize.sync({ force: false });
-})();
+User.hasMany(Address, {
+    foreignKey: {
+        name: "address_user_id",
+    }
+});
+
+Address.belongsTo(User);
 
 module.exports = User;

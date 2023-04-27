@@ -98,8 +98,4 @@ const Address = sequelize.define('address', {
     },
 }, { sequelize });
 
-(async () => {
-    await sequelize.sync({ force: false });
-})();
-
 module.exports = Address;

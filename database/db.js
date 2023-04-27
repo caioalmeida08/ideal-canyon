@@ -15,4 +15,8 @@ try {
     console.error('Erro ao conectar com o banco de dados:', error);
 }
 
+(async () => {
+    await sequelize.sync({ alter: false });
+})();
+
 module.exports = { sequelize };
