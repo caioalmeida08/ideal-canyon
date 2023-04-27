@@ -1,0 +1,151 @@
+// Hero
+.about-hero {
+    margin-top: var(--spacing-xxl);
+
+    font-size: var(--font-xl);
+    font-weight: bold;
+    text-align: center;
+}
+
+// Story
+.about-story {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    .section-title {
+        font-size: var(--font-l);
+        text-align: center;
+    }
+
+    img,
+    p {
+        width: 100%;
+        max-width: 500px;
+        margin-inline: auto;
+    }
+
+    p {
+        text-align: justify;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .about-story {
+        max-width: none;
+        grid-template-areas:
+            "image title"
+            "image paragraph";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: min-content 1fr;
+        column-gap: var(--spacing-m);
+        row-gap: var(--spacing-xs);
+
+        .section-title {
+            grid-area: title;
+            text-align: left !important;
+        }
+
+        img,
+        p {
+            grid-area: image;
+            max-width: unset;
+        }
+
+        p {
+            grid-area: paragraph;
+        }
+    }
+}
+
+// Founders
+.founders {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    max-width: 75%;
+    margin-inline: auto !important;
+
+    background-color: var(--col-dark);
+    padding: var(--spacing-l) var(--spacing-s);
+    border-radius: var(--spacing-xs);
+
+    text-align: center;
+    color: var(--col-light);
+}
+
+.founders--content {
+    display: grid;
+    gap: var(--spacing-l);
+}
+
+.founder-card {
+    display: grid;
+    row-gap: var(--spacing-xs);
+    justify-items: center;
+
+    > * {
+        width: 100%;
+    }
+
+    img {
+        border-radius: var(--spacing-xxs);
+        max-width: 250px;
+    }
+
+    h3 {
+        font-weight: bold;
+    }
+
+    p {
+        text-align: justify;
+        max-width: 500px;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .founders {
+        padding: var(--spacing-xl);
+        row-gap: var(--spacing-l);
+    }
+
+    .founders--content {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-xxl);
+    }
+}
+
+// Departments
+.departments {
+    display: grid;
+    text-align: center;
+}
+
+.department {
+    display: grid;
+    row-gap: var(--spacing-xl);
+}
+
+.department--content {
+    display: grid;
+    row-gap: var(--spacing-l);
+    justify-items: center;
+}
+
+.team-member {
+    max-width: 500px;
+    h3 {
+        font-weight: bold;
+        font-size: var(--font-m);
+    }
+
+    p {
+        margin-top: var(--spacing-xs);
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .departments {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-xl);
+    }
+}

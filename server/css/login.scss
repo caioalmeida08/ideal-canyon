@@ -1,0 +1,65 @@
+body {
+    background: var(--col-dark);
+}
+
+.navbar-navigation a[href="/cadastrar"] {
+    color: var(--col-main);
+}
+
+.navbar-navigation > li:last-child {
+    display: none;
+}
+
+// Login
+.login {
+    display: grid;
+    row-gap: var(--spacing-m);
+    max-width: 300px;
+    margin-inline: auto !important;
+
+    h1 {
+        text-align: center;
+    }
+
+    border-radius: var(--spacing-xxs);
+    background-color: var(--col-light);
+    padding: var(--spacing-m);
+
+    margin-top: var(--spacing-m) !important;
+}
+
+.login--content {
+    display: grid;
+    row-gap: var(--spacing-m);
+
+    form {
+        display: grid;
+        row-gap: var(--spacing-xs);
+
+        h2 {
+            font-weight: 500;
+        }
+    }
+
+    .field > * {
+        width: 100%;
+    }
+
+    .button-primary {
+        width: 100%;
+
+        a {
+            color: var(--col-light);
+            text-decoration: none;
+        }
+    }
+
+    :last-child {
+        text-align: center;
+        color: var(--col-input);
+
+        a {
+            font-weight: 500;
+        }
+    }
+}

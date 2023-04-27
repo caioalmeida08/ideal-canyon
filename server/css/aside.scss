@@ -1,0 +1,125 @@
+.aside {
+    position: fixed;
+    inset: 0;
+    left: 100%;
+    z-index: 3;
+
+    background-color: var(--col-dark);
+
+    margin: unset !important;
+    padding: var(--spacing-s);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    > * {
+        opacity: 0;
+    }
+
+    transition: left 0.3s ease-in-out;
+}
+
+.aside[data-active="true"] {
+    left: 0;
+
+    > * {
+        opacity: 1;
+        transition: opacity 0.35s ease-in-out;
+    }
+}
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.head-logo {
+    display: flex;
+    gap: var(--spacing-xxs);
+
+    text-decoration: none;
+
+    svg {
+        height: auto;
+        path {
+            fill: var(--col-light);
+        }
+    }
+
+    p {
+        display: flex;
+        align-items: center;
+
+        max-width: min-content;
+
+        font-weight: bold;
+        font-size: var(--font-m);
+        color: var(--col-light);
+        line-height: 1em;
+    }
+}
+
+.aside-close {
+    filter: invert(1);
+    aspect-ratio: 1;
+    height: var(--spacing-s);
+}
+
+.aside-navbar {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-s);
+
+    margin-top: var(--spacing-s);
+
+    text-align: center;
+    color: var(--col-light);
+
+    h2 {
+        font-weight: 500;
+        font-size: var(--font-m);
+    }
+
+    a {
+        color: var(--col-light);
+        text-decoration: none;
+    }
+}
+
+.aside-navbar-navigation {
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--spacing-xs);
+}
+
+.aside-login {
+    font-size: var(--font-m);
+    font-weight: 500;
+    color: var(--col-main) !important;
+
+    display: flex;
+    column-gap: var(--spacing-xxs);
+
+    width: fit-content;
+    margin-inline: auto !important;
+
+    img {
+        display: inline-block;
+        height: 1em;
+    }
+}
+
+.aside .button-primary {
+    margin-top: var(--spacing-s);
+    width: 100%;
+    max-width: 500px;
+    margin-inline: auto !important;
+}
+
+@media screen and (max-width: 1023px) {
+    .aside .button-primary {
+        width: fit-content;
+    }
+}

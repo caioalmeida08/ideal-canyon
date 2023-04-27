@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include("templates/head") %>
+
+<body>
+  <%- include("templates/navbar")  %>
+
+</body>
+<section class="login">
+  <h1 class="section-title">Login</h1>
+
+  <div class="login--content">
+    <form action="" method="post">
+      <div class="field">
+        <h2>Email</h2>
+        <input type="text" class="input-text"></input>
+      </div>
+      <div class="field">
+        <h2>Senha</h2>
+        <input type="text" class="input-text"></input>
+      </div>
+      <button class="button-primary">
+        <a href="/">Entrar</a>
+      </button>
+    </form>
+    <p>
+      ou <br>
+      <a href="/cadastrar">Cadastre-se</a>
+    </p>
+  </div>
+</section>
+
+</html>
