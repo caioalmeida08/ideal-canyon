@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import Navbar from "./components/Navbar/Navbar.js"
 
 function App() {
-  const [data, setData] = useState([{}]);
-
-  useEffect(() => {
-    fetch('/cadastrar/debug')
-      .then(res => res.json())
-      .then(data => setData(data))
-  }, [])
-
   return (
-    < div > App</div >
+    <div>
+      <Navbar />
+    </div>
   )
+
+
 }
 
 export default App
