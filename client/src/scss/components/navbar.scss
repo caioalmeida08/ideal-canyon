@@ -1,0 +1,79 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-block: var(--spacing-32);
+}
+
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    column-gap: var(--spacing-8);
+
+    text-decoration: none;
+    line-height: var(--spacing-24);
+}
+
+.navbar-hamburger {
+    display: block;
+}
+
+.navbar-navigation {
+    display: none;
+}
+
+@media (width >= 900px) {
+    .navbar {
+        column-gap: var(--spacing-64);
+    }
+
+    .navbar-logo {
+        width: fit-content;
+        line-height: var(--spacing-32);
+
+        svg {
+            min-width: var(--spacing-64);
+        }
+    }
+
+    .navbar-hamburger {
+        display: none;
+    }
+
+    .navbar-navigation {
+        display: flex;
+        column-gap: var(--spacing-48);
+
+        > * {
+            width: max-content;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--col-dark);
+            font-weight: bold;
+        }
+
+        li:last-of-type a {
+            position: relative;
+            color: var(--col-main);
+            margin-left: var(--spacing-24);
+
+            &::before {
+                content: "";
+                position: absolute;
+
+                aspect-ratio: 1;
+                height: 1em;
+
+                left: calc(var(--spacing-24) * -1);
+
+                background-image: url("../../../public/img/icons/login.svg");
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        }
+    }
+}

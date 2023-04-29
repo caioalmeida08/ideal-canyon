@@ -11,7 +11,7 @@ const homeController = {
                 { title: 'Sobre nós', url: '/sobre' }]
         }
 
-        res.render('index.ejs', data);
+        res.json(data);
 
     },
 };

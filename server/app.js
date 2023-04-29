@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
@@ -25,6 +26,14 @@ Object.keys(ifaces).forEach((ifname) => {
         return;
     }
 });
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));

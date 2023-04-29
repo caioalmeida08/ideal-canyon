@@ -1,14 +1,10 @@
 import React from 'react'
-import Navbar from "./components/Navbar/Navbar.js"
+import Index from './pages/Home/Index'
 
 function App() {
   return (
-    <div>
-      <Navbar />
-    </div>
+    <Index />
   )
-
-
 }
 
 export default App

@@ -1,0 +1,104 @@
+@font-face {
+  font-family: "Futura PT";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../public/fonts/FuturaPTBook.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../public/fonts/FuturaPTDemi.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Futura PT";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../public/fonts/FuturaPTBold.woff2") format("woff2");
+}
+:root {
+  font-size: 112.5%;
+  font-family: "Futura PT", sans-serif;
+  --font-18: 1rem;
+  --font-24: 1.33rem;
+  --font-36: 2rem;
+  --font-48: 2.66rem;
+  /* colors */
+  --col-light: rgba(1, 1, 1, 1);
+  --col-dark: rgba(0, 0, 0, 1);
+  --col-main: rgba(240, 138, 0, 1);
+  /* spacings */
+  --spacing-8: calc(16px / 2);
+  --spacing-16: calc(16px);
+  --spacing-24: calc(16px * 1.5);
+  --spacing-32: calc(16px * 2);
+  --spacing-48: calc(16px * 3);
+  --spacing-64: calc(16px * 4);
+  --spacing-96: calc(16px * 6);
+  --spacing-128: calc(16px * 8);
+}
+
+.side-bleed {
+  padding-inline: var(--spacing-24);
+}
+
+@media (width >= 768px) {
+  .side-bleed {
+    padding-inline: var(--spacing-64);
+  }
+}
+.text-h1 {
+  font-size: var(--font-36);
+  font-weight: bold;
+}
+
+.text-h2 {
+  font-size: var(--font-24);
+  font-weight: bold;
+}
+
+.text-h3 {
+  font-size: var(--font-18);
+  font-weight: bold;
+}
+
+.text-p {
+  font-size: var(--font-18);
+}
+
+.text-dark {
+  color: var(--col-dark);
+}
+
+.text-light {
+  color: var(--col-light);
+}
+
+.text-main {
+  color: var(--col-main);
+}
+
+@media screen and (min-width: 768px) {
+  .text-h1 {
+    font-size: var(--font-48);
+  }
+
+  .text-h2 {
+    font-size: var(--font-36);
+  }
+
+  .text-h3 {
+    font-size: var(--font-24);
+  }
+}
+.text-bold {
+  font-weight: bold;
+}
+
+.text-demi {
+  font-weight: 500;
+}
+
+.text-regular {
+  font-weight: 400;
+}
