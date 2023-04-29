@@ -1,0 +1,11 @@
+.button-primary {
+    background-color: var(--col-main);
+
+    border-radius: var(--spacing-8);
+
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--col-light);
+
+    padding: var(--spacing-24) var(--spacing-32);
+}

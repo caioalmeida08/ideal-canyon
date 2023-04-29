@@ -42,7 +42,7 @@
     // ---------------
     /* colors */
     // ---------------
-    --col-light: rgba(1, 1, 1, 1);
+    --col-light: rgba(255, 255, 255, 1);
     --col-dark: rgba(0, 0, 0, 1);
     --col-main: rgba(240, 138, 0, 1);
 
@@ -72,6 +72,27 @@
     .side-bleed {
         // used for bleed in desktop
         padding-inline: var(--spacing-64);
+    }
+}
+
+.grid-col-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: var(--spacing-32);
+
+    > * {
+        grid-column: span 1;
+    }
+}
+
+@media (width >= 768px) {
+    .grid-col-2 {
+        grid-template-columns: repeat(12, 1fr);
+        column-gap: var(--spacing-24);
+
+        > * {
+            grid-column: span 6;
+        }
     }
 }
 
@@ -134,4 +155,56 @@
 
 .text-regular {
     font-weight: 400;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+@media (width >= 768px) {
+    .text-desktop-center {
+        text-align: center;
+    }
+
+    .text-desktop-left {
+        text-align: left;
+    }
+}
+
+// ----------------------------------
+// gaps
+// ----------------------------------
+
+.gap-h-8 {
+    > * {
+        margin-top: var(--spacing-8);
+    }
+
+    :first-child {
+        margin-top: unset;
+    }
+}
+
+.gap-h-16 {
+    > * {
+        margin-top: var(--spacing-16);
+    }
+
+    :first-child {
+        margin-top: unset;
+    }
+}
+
+.gap-h-32 {
+    > * {
+        margin-top: var(--spacing-32);
+    }
+
+    :first-child {
+        margin-top: unset;
+    }
 }
