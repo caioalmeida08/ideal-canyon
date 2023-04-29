@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonPrimary } from '../Utils/Buttons';
+import { ButtonPrimary, ButtonSecondary } from '../Utils/Buttons';
 
 const Hero = () => {
     return (
@@ -15,6 +15,7 @@ const Hero = () => {
                 </div>
                 <div>
                     <ButtonPrimary url='/produtos' text='Ver Produtos' />
+                    <ButtonSecondary url='/produtos' text='Ver Produtos' />
                 </div>
             </section>
         </>
