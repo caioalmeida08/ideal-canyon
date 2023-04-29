@@ -1,10 +1,20 @@
-import React from 'react'
-import Index from './pages/Home/Index'
+import React from 'react';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+
+import Home from './pages/Home/Home';
 
 function App() {
   return (
-    <Index />
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
