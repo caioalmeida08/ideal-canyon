@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../../scss/components/navbar.scss';
 import LogoAndText from '../../assets/img/LogoAndText';
 import HamburgerSVG from '../../assets/img/HamburgerSVG';
+import PageTitle from '../Utils/PageTitle';
 
 const NavLink = (link) => {
     return (
@@ -32,25 +33,28 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="navbar side-bleed">
-            <a className="navbar-logo" href="/" alt="Logo da Ideal Canyon. Link para a página inicial.">
-                <LogoAndText />
-            </a>
+        <>
+            <PageTitle title={navbarData["title"]} />
+            <nav className="navbar side-bleed">
+                <a className="navbar-logo" href="/" alt="Logo da Ideal Canyon. Link para a página inicial.">
+                    <LogoAndText />
+                </a>
 
-            <ul className="navbar-navigation">
-                {
-                    navbarData["navItems"].map((link, index) => (
-                        <NavLink key={index} {...link} />
-                    ), this)
-                }
+                <ul className="navbar-navigation">
+                    {
+                        navbarData["navItems"].map((link, index) => (
+                            <NavLink key={index} {...link} />
+                        ), this)
+                    }
 
-                <NavLink url="/login" title="Login" />
-            </ul>
+                    <NavLink url="/login" title="Login" />
+                </ul>
 
-            <div className="navbar-hamburger" alt="Abrir menu lateral">
-                <HamburgerSVG />
-            </div>
-        </nav>
+                <div className="navbar-hamburger" alt="Abrir menu lateral">
+                    <HamburgerSVG />
+                </div>
+            </nav>
+        </>
     );
 };
 
