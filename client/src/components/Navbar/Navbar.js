@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../../scss/components/navbar.scss';
-import LogoAndText from '../../assets/img/LogoAndText';
-import HamburgerSVG from '../../assets/img/HamburgerSVG';
+import LogoAndText from '../Utils/LogoAndText';
+import HamburgerSVG from '../Utils/HamburgerSVG';
 import PageTitle from '../Utils/PageTitle';
 import NavLink from './NavLink';
 
