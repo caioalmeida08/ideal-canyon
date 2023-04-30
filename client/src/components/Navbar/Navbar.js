@@ -4,7 +4,7 @@ import '../../scss/components/navbar.scss';
 import LogoAndText from '../../assets/img/LogoAndText';
 import HamburgerSVG from '../../assets/img/HamburgerSVG';
 import PageTitle from '../Utils/PageTitle';
-import NavLink from './NavLink.js';
+import NavLink from './NavLink';
 
 const Navbar = () => {
     const [navbarData, setNavbarData] = useState([]);
