@@ -22,7 +22,7 @@ export default function Home() {
         <>
             <PageTitle title="Ideal Canyon" />
             <Navbar {...navItems} />
-            <section className="hero grid-col-2 side-bleed">
+            <section className="hero grid-col-2 side-bleed section-margin-top max-width-500 max-width-desktop-unset">
                 <div className="gap-h-32">
                     <h1 className="text-h1 text-center text-desktop-left">
                         Nós temos a{" "}
@@ -41,10 +41,13 @@ export default function Home() {
                 </div>
                 <div>
                     <img
-                        className="hero-img"
+                        className="hero-img max-width-500"
                         src={HeroImage.src}
                         alt="Scooter do modelo Canyon Elite na cor branca"
                     />
+                    <p className="text-demi text-center text-desktop-right">
+                        +5.000 unidades vendidas | n° 1 nas pesquisas de mercado
+                    </p>
                 </div>
             </section>
         </>

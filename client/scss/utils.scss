@@ -75,6 +75,16 @@
     }
 }
 
+.section-margin-top {
+    margin-top: var(--spacing-32);
+}
+
+@media (width >= 768px) {
+    .section-margin-top {
+        margin-top: var(--spacing-64);
+    }
+}
+
 .grid-col-2 {
     display: grid;
     grid-template-columns: 1fr;
@@ -92,6 +102,26 @@
 
         > * {
             grid-column: span 6;
+        }
+    }
+}
+
+.max-width-500 {
+    max-width: 500px;
+    margin-inline: auto;
+
+    * {
+        margin-inline: auto;
+    }
+}
+
+@media (width >= 768px) {
+    .max-width-desktop-unset {
+        max-width: unset;
+        margin-inline: unset;
+
+        * {
+            margin-inline: unset;
         }
     }
 }
@@ -172,6 +202,10 @@
 
     .text-desktop-left {
         text-align: left;
+    }
+
+    .text-desktop-right {
+        text-align: right;
     }
 }
 
