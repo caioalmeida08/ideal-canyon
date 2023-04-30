@@ -1,7 +1,7 @@
-const NavLink = (link) => {
+const NavLink = (props) => {
     return (
         <li>
-            <a href={link.url}>{link.title}</a>
+            <a href={props.url}>{props.title}</a>
         </li>
     );
 };
