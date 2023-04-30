@@ -4,14 +4,7 @@ import '../../scss/components/navbar.scss';
 import LogoAndText from '../../assets/img/LogoAndText';
 import HamburgerSVG from '../../assets/img/HamburgerSVG';
 import PageTitle from '../Utils/PageTitle';
-
-const NavLink = (link) => {
-    return (
-        <li>
-            <a href={link.url}>{link.title}</a>
-        </li>
-    );
-};
+import NavLink from './NavLink.js';
 
 const Navbar = () => {
     const [navbarData, setNavbarData] = useState([]);
@@ -28,10 +21,6 @@ const Navbar = () => {
             });
     }, []);
 
-    if (loading) {
-        return <div>Carregando...</div>;
-    }
-
     return (
         <>
             <PageTitle title={navbarData["title"]} />
@@ -41,12 +30,11 @@ const Navbar = () => {
                 </a>
 
                 <ul className="navbar-navigation">
-                    {
+                    {!loading &&
                         navbarData["navItems"].map((link, index) => (
                             <NavLink key={index} {...link} />
                         ), this)
                     }
-
                     <NavLink url="/login" title="Login" />
                 </ul>
 
