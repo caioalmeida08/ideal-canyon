@@ -3,7 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const homeRouter = require('./routes/homeRouter.js');
 const aboutRouter = require('./routes/aboutRouter.js');
 const buyRouter = require('./routes/buyRouter.js');
 const loginRouter = require('./routes/loginRouter.js');
@@ -40,7 +39,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
-app.use('/', homeRouter);
 app.use('/sobre', aboutRouter);
 app.use('/comprar', buyRouter);
 app.use('/login', loginRouter);
