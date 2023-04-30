@@ -1,5 +1,3 @@
-import '../../scss/components/buttons.scss';
-
 const ButtonPrimary = ({ url, text }) => {
     return (
         <a className="button-primary" href={url}>
