@@ -25,9 +25,9 @@ export default function Home() {
             <section className="hero grid-col-2 side-bleed section-margin-top max-width-500 max-width-desktop-unset">
                 <div className="gap-h-32">
                     <h1 className="text-h1 text-center text-desktop-left">
-                        Nós temos a{" "}
-                        <span className="text-main">scooter perfeita</span> que
-                        você está procurando.
+                        Nós temos a <span className="text-main">scooter</span>{" "}
+                        que você{" "}
+                        <span className="text-main">está procurando.</span>
                     </h1>
                     <p className="text-p text-center text-desktop-left">
                         Nossa coleção de modelos abrange todas as necessidades
