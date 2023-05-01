@@ -2,14 +2,16 @@ import LogoAndText from "../Utils/LogoAndText";
 import HamburgerSVG from "../Utils/HamburgerSVG";
 import NavLink from "./NavLink";
 
+import style from "./Navbar.module.scss";
+
 const Navbar = (props) => {
     return (
         <>
-            <nav className="navbar side-bleed">
-                <a className="navbar-logo" href="/">
+            <nav className={`${style.navbar} side-bleed`}>
+                <a className={style.logo} href="/">
                     <LogoAndText />
                 </a>
-                <ul className="navbar-navigation">
+                <ul className={style.navigation}>
                     {Object.values(props).map((item) => {
                         return (
                             <NavLink
@@ -22,7 +24,7 @@ const Navbar = (props) => {
                     <NavLink url="/login" title="Login" />
                 </ul>
 
-                <div className="navbar-hamburger">
+                <div className={style.hamburger}>
                     <HamburgerSVG />
                 </div>
             </nav>

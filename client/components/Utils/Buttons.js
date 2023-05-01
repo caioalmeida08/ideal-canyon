@@ -1,6 +1,9 @@
+import style from './Buttons.module.scss';
+
 const ButtonPrimary = ({ url, text }) => {
+
     return (
-        <a className="button-primary" href={url}>
+        <a className={style.primary} href={url}>
             {text}
         </a>
     );
@@ -8,7 +11,7 @@ const ButtonPrimary = ({ url, text }) => {
 
 const ButtonSecondary = ({ url, text }) => {
     return (
-        <a className="button-secondary" href={url}>
+        <a className={style.secondary} href={url}>
             {text}
         </a>
     );

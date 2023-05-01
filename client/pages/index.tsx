@@ -3,8 +3,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import PageTitle from "@/components/Utils/PageTitle";
 import { ButtonPrimary } from "@/components/Utils/Buttons";
+import { IconHeart, IconStar } from "@/components/Utils/Icons";
+
 import HeroImage from "@/assets/img/hero_image.png";
 import ReviewVideo from "@/assets/img/review_video.jpg";
+
+import style from "@/scss/pages/index.module.scss";
 
 export default function Home() {
     const [navItems, setNavItems] = useState([
@@ -42,7 +46,7 @@ export default function Home() {
                 </div>
                 <div>
                     <img
-                        className="hero-img max-width-500"
+                        className={`${style.img} max-width-500`}
                         src={HeroImage.src}
                         alt="Scooter do modelo Canyon Elite na cor branca"
                     />
@@ -56,6 +60,15 @@ export default function Home() {
                     alt="Vídeo com opiniões de clientes sobre a marca"
                     src={ReviewVideo.src}
                 />
+                <div>
+                    <div className="star-ratings">
+                        <div className="title">Qualidade do produto</div>
+                        <div className="stars">
+                            <IconHeart />
+                            <IconStar />
+                        </div>
+                    </div>
+                </div>
             </section>
         </>
     );

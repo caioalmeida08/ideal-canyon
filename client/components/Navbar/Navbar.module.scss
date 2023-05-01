@@ -6,7 +6,7 @@
     padding-block: var(--spacing-32);
 }
 
-.navbar-logo {
+.logo {
     display: flex;
     align-items: center;
     column-gap: var(--spacing-8);
@@ -15,11 +15,11 @@
     line-height: var(--spacing-24);
 }
 
-.navbar-hamburger {
+.hamburger {
     display: block;
 }
 
-.navbar-navigation {
+.navigation {
     display: none;
 }
 
@@ -28,16 +28,16 @@
         column-gap: var(--spacing-64);
     }
 
-    .navbar-logo {
+    .logo {
         width: fit-content;
         line-height: var(--spacing-32);
     }
 
-    .navbar-hamburger {
+    .hamburger {
         display: none;
     }
 
-    .navbar-navigation {
+    .navigation {
         display: flex;
         column-gap: var(--spacing-48);
 
