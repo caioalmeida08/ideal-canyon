@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar/Navbar.jsx";
 import PageTitle from "@/components/Utils/PageTitle";
 import { ButtonPrimary } from "@/components/Utils/Buttons";
 import HeroImage from "@/assets/img/hero_image.png";
+import ReviewVideo from "@/assets/img/review_video.jpg";
 
 export default function Home() {
     const [navItems, setNavItems] = useState([
@@ -49,6 +50,12 @@ export default function Home() {
                         +5.000 unidades vendidas | n° 1 nas pesquisas de mercado
                     </p>
                 </div>
+            </section>
+            <section className="reviews grid-col-2 side-bleed section-margin-top">
+                <img
+                    alt="Vídeo com opiniões de clientes sobre a marca"
+                    src={ReviewVideo.src}
+                />
             </section>
         </>
     );
