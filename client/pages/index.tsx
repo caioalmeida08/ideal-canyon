@@ -57,11 +57,13 @@ export default function Home() {
                     </p>
                 </div>
             </section>
-            <section className="reviews grid-col-2 side-bleed section-margin-top text-center text-desktop-left">
+            <section
+                className={`${style.reviews} grid-col-2 side-bleed section-margin-top text-center text-desktop-left`}
+            >
                 <img
                     alt="Vídeo com opiniões de clientes sobre a marca"
                     src={ReviewVideo.src}
-                    className={style.video}
+                    className={`${style.video} max-width-500`}
                 />
                 <div className="gap-h-32">
                     <h2 className="text-h2">
