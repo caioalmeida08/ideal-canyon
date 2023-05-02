@@ -27,7 +27,9 @@ export default function Home() {
         <>
             <PageTitle title="Ideal Canyon" />
             <Navbar {...navItems} />
-            <section className="hero grid-col-2 side-bleed section-margin-top max-width-500 max-width-desktop-unset">
+            <section
+                className={`${style.hero} grid-col-2 side-bleed section-margin-top max-width-500 max-width-desktop-unset`}
+            >
                 <div className="gap-h-32">
                     <h1 className="text-h1 text-center text-desktop-left">
                         Nós temos a <span className="text-main">scooter</span>{" "}
@@ -55,18 +57,64 @@ export default function Home() {
                     </p>
                 </div>
             </section>
-            <section className="reviews grid-col-2 side-bleed section-margin-top">
+            <section className="reviews grid-col-2 side-bleed section-margin-top text-center text-desktop-left">
                 <img
                     alt="Vídeo com opiniões de clientes sobre a marca"
                     src={ReviewVideo.src}
+                    className={style.video}
                 />
-                <div>
-                    <div className="star-ratings">
-                        <div className="title">Qualidade do produto</div>
+                <div className="gap-h-32">
+                    <h2 className="text-h2">
+                        O que nossos clientes dizem sobre nós
+                    </h2>
+                    <div className={style.star_rating}>
+                        <div className={style.title}>Qualidade do produto</div>
                         <div className="stars">
-                            <IconHeart />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
                             <IconStar />
                         </div>
+                    </div>
+                    <div className={style.star_rating}>
+                        <div className={style.title}>
+                            Atendimento ao cliente
+                        </div>
+                        <div className="stars">
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                        </div>
+                    </div>
+                    <div className={style.star_rating}>
+                        <div className={style.title}>
+                            Preço e valor do produto
+                        </div>
+                        <div className="stars">
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                        </div>
+                    </div>
+                    <div className={style.star_rating}>
+                        <div className={style.title}>Tempo de entrega</div>
+                        <div className="stars">
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                            <IconStar />
+                        </div>
+                    </div>
+                    <div className="gap-h-8">
+                        <IconHeart />
+                        <p className="text-demi">Recomendaria a marca</p>
+                        <p className="text-main text-bold text-h2">95%</p>
                     </div>
                 </div>
             </section>

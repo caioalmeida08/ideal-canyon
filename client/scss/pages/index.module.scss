@@ -1,6 +1,22 @@
+// Hero section
+.hero {
+    margin-top: var(--spacing-32);
+}
+
 @media (width>=1024px) {
     .img {
         max-width: 80%;
         margin-left: 20%;
+    }
+}
+
+// Reviews section
+.title {
+    margin-bottom: var(--spacing-8);
+}
+
+@media (width<768px) {
+    .video {
+        order: 2;
     }
 }
