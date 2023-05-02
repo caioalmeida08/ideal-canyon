@@ -17,6 +17,15 @@
         text-align: center;
         justify-items: center;
     }
+
+    .star_rating {
+        grid-template-columns: 1fr;
+        row-gap: unset;
+    }
+
+    .video {
+        max-width: 500px;
+    }
 }
 
 .title {
@@ -26,5 +35,46 @@
 @media (width<768px) {
     .video {
         order: 2;
+    }
+}
+
+@media (width>=1024px) {
+    .reviews_content {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        column-gap: var(--spacing-24);
+
+        > h2 {
+            grid-column: span 6;
+            grid-row: 1;
+        }
+
+        .star_rating {
+            grid-column: 1 / span 4;
+            margin-top: unset;
+            flex-grow: 0;
+
+            > :last-child {
+                display: flex;
+                column-gap: var(--spacing-8);
+            }
+        }
+
+        .heart_rating {
+            grid-column: 5 / span 2;
+            grid-row: 2 / span 4;
+
+            margin-top: unset;
+
+            text-align: center;
+
+            > * {
+                margin-top: unset;
+            }
+
+            > :not(:first-child) {
+                margin-top: var(--spacing-8);
+            }
+        }
     }
 }

@@ -63,13 +63,13 @@ export default function Home() {
                 <img
                     alt="Vídeo com opiniões de clientes sobre a marca"
                     src={ReviewVideo.src}
-                    className={`${style.video} max-width-500`}
+                    className={`${style.video} max-width-500 max-width-desktop-unset`}
                 />
-                <div className="gap-h-32">
+                <div className={`${style.reviews_content} gap-h-32`}>
                     <h2 className="text-h2">
                         O que nossos clientes dizem sobre nós
                     </h2>
-                    <div className={style.star_rating}>
+                    <div className={`${style.star_rating} grid-col-2`}>
                         <div className={style.title}>Qualidade do produto</div>
                         <div className="stars">
                             <IconStar />
@@ -79,7 +79,7 @@ export default function Home() {
                             <IconStar />
                         </div>
                     </div>
-                    <div className={style.star_rating}>
+                    <div className={`${style.star_rating} grid-col-2`}>
                         <div className={style.title}>
                             Atendimento ao cliente
                         </div>
@@ -91,7 +91,7 @@ export default function Home() {
                             <IconStar />
                         </div>
                     </div>
-                    <div className={style.star_rating}>
+                    <div className={`${style.star_rating} grid-col-2`}>
                         <div className={style.title}>
                             Preço e valor do produto
                         </div>
@@ -100,20 +100,18 @@ export default function Home() {
                             <IconStar />
                             <IconStar />
                             <IconStar />
-                            <IconStar />
                         </div>
                     </div>
-                    <div className={style.star_rating}>
+                    <div className={`${style.star_rating} grid-col-2`}>
                         <div className={style.title}>Tempo de entrega</div>
                         <div className="stars">
                             <IconStar />
                             <IconStar />
                             <IconStar />
                             <IconStar />
-                            <IconStar />
                         </div>
                     </div>
-                    <div className="gap-h-8">
+                    <div className={`${style.heart_rating} gap-h-32`}>
                         <IconHeart />
                         <p className="text-demi">Recomendaria a marca</p>
                         <p className="text-main text-bold text-h2">95%</p>
