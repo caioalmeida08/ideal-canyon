@@ -10,6 +10,12 @@ import ReviewVideo from "@/assets/img/review_video.jpg";
 import VelocimeterIcon from "@/assets/img/icons/icon_velocimeter.png";
 import CheapIcon from "@/assets/img/icons/icon_cheap.png";
 import ShieldIcon from "@/assets/img/icons/icon_shield.png";
+import CanyonEliteScooter1 from "@/assets/img/scooters/canyon_elite_scooter1.png";
+import CanyonEliteScooter2 from "@/assets/img/scooters/canyon_elite_scooter2.jpg";
+import CanyonEliteScooter3 from "@/assets/img/scooters/canyon_elite_scooter3.jpg";
+import CanyonEliteScooter4 from "@/assets/img/scooters/canyon_elite_scooter4.jpg";
+import CanyonComfortScooter1 from "@/assets/img/scooters/canyon_comfort_scooter1.png";
+import CanyonMasterScooter1 from "@/assets/img/scooters/canyon_master_scooter1.png";
 
 import style from "@/scss/pages/index.module.scss";
 
@@ -170,6 +176,94 @@ export default function Home() {
                             alta qualidade e são resistentes ao desgaste diário.
                         </p>
                     </div>
+                </div>
+            </section>
+            <section className="products">
+                <div className="product-images">
+                    <img
+                        src={CanyonEliteScooter1.src}
+                        alt="Imagem da Canyon Elite Scooter em fundo transparente"
+                        className="main-image"
+                    />
+                    <div className="left-images">
+                        <img src={CanyonEliteScooter2.src} aria-hidden="true" />
+                        <img src={CanyonEliteScooter3.src} aria-hidden="true" />
+                        <img src={CanyonEliteScooter4.src} aria-hidden="true" />
+                    </div>
+                    <div className="right-images">
+                        <img src={CanyonEliteScooter4.src} aria-hidden="true" />
+                        <img src={CanyonEliteScooter3.src} aria-hidden="true" />
+                        <img src={CanyonEliteScooter2.src} aria-hidden="true" />
+                    </div>
+                    <div className="product-image-slider">
+                        <div className="slider"></div>
+                        <div className="slider"></div>
+                        <div className="slider" data-active="true"></div>
+                        <div className="slider"></div>
+                        <div className="slider"></div>
+                    </div>
+                </div>
+                <div className="product-informations">
+                    <h2 className="product-name">Canyon Elite Scooter</h2>
+                    <div className="product-highlights">
+                        <div className="product-highlight">
+                            <h3>25</h3>
+                            <span>km/h</span>
+                            <p>velocidade máxima</p>
+                        </div>
+                        <div className="product-highlight">
+                            <h3>40</h3>
+                            <span>km</span>
+                            <p>autonomia</p>
+                        </div>
+                        <div className="product-highlight">
+                            <h3>6</h3>
+                            <span>hr</span>
+                            <p>recarga completa</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="product-description">
+                    A Canyon Elite Scooter é uma opção excepcional para aqueles
+                    que procuram uma scooter elétrica de alta qualidade. Com uma
+                    velocidade máxima de 25km/h, esta scooter oferece uma
+                    condução suave e rápida, permitindo que os usuários se movam
+                    pela cidade com facilidade. Além disso, a bateria da Canyon
+                    Elite oferece uma autonomia de até 40 km por carga, o que é
+                    uma ótima opção para aqueles que precisam se deslocar por
+                    longas distâncias. E com um tempo de recarga de apenas 6
+                    horas, você pode rapidamente recarregar sua bateria e estar
+                    pronto para outra jornada.
+                </div>
+                <div className="product-price-cta-wrapper">
+                    <div className="product-price">
+                        <h3>R$3.200,00</h3>
+                        <p>até 24x de R$160,00</p>
+                    </div>
+                    <div className="product-cta">
+                        <a href="" className="button-primary">
+                            Comprar agora
+                        </a>
+                        <div className="button-secondary" id="modal-open">
+                            Mais detalhes
+                        </div>
+                    </div>
+                </div>
+                <div className="other-product">
+                    <img src={CanyonComfortScooter1.src} aria-hidden="true" />
+                    <h2>Canyon Comfort</h2>
+                    <a
+                        href=""
+                        aria-label="Ver informações da Canyon Comfort Scooter"
+                    ></a>
+                </div>
+                <div className="other-product">
+                    <img src={CanyonMasterScooter1.src} aria-hidden="true" />
+                    <h2>Canyon Master</h2>
+                    <a
+                        href=""
+                        aria-label="Ver informações da Canyon Comfort Scooter"
+                    ></a>
                 </div>
             </section>
         </>
