@@ -211,17 +211,17 @@ export default function Home() {
                     </h2>
                     <div className={style.product_highlights}>
                         <div className={style.product_highlight}>
-                            <h3>25</h3>
+                            <h3 className="text-bold text-h1">25</h3>
                             <span>km/h</span>
                             <p>velocidade máxima</p>
                         </div>
                         <div className={style.product_highlight}>
-                            <h3>40</h3>
+                            <h3 className="text-bold text-h1">40</h3>
                             <span>km</span>
                             <p>autonomia</p>
                         </div>
                         <div className={style.product_highlight}>
-                            <h3>6</h3>
+                            <h3 className="text-bold text-h1">6</h3>
                             <span>hr</span>
                             <p>recarga completa</p>
                         </div>
