@@ -13,6 +13,12 @@ const addressRouter = require('./routes/addressRouter.js');
 const os = require('os');
 const ifaces = os.networkInterfaces();
 
+const corsOptions = {
+    origin: 'http://localhost:5000',
+};
+
+app.use(cors(corsOptions));
+
 let ipAddress = null;
 Object.keys(ifaces).forEach((ifname) => {
     ifaces[ifname].forEach((iface) => {
@@ -25,14 +31,6 @@ Object.keys(ifaces).forEach((ifname) => {
         return;
     }
 });
-
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200,
-}
-
-app.use(cors(corsOptions))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
