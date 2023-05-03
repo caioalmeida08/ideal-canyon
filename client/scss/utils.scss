@@ -127,7 +127,18 @@
     }
 }
 
-@media (width >= 768px) {
+@media (width<1024px) {
+    .max-width-tablet-500 {
+        max-width: 500px;
+        margin-inline: auto;
+
+        * {
+            margin-inline: auto;
+        }
+    }
+}
+
+@media (width >= 1024px) {
     .max-width-desktop-unset {
         max-width: unset;
         margin-inline: unset;

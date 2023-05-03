@@ -179,7 +179,7 @@ export default function Home() {
                 </div>
             </section>
             <section
-                className={`${style.products} section-margin-top max-width-500 max-width-desktop-unset`}
+                className={`${style.products} side-bleed section-margin-top max-width-tablet-500 max-width-desktop-unset`}
             >
                 <div className={style.product_images}>
                     <img
