@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import PageTitle from "@/components/Utils/PageTitle";
-import { ButtonPrimary } from "@/components/Utils/Buttons";
+import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconHeart, IconStar } from "@/components/Utils/Icons";
 
 import HeroImage from "@/assets/img/hero_image.png";
@@ -178,52 +178,56 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <section className="products">
-                <div className="product-images">
+            <section
+                className={`${style.products} section-margin-top max-width-500 max-width-desktop-unset`}
+            >
+                <div className={style.product_images}>
                     <img
                         src={CanyonEliteScooter1.src}
                         alt="Imagem da Canyon Elite Scooter em fundo transparente"
-                        className="main-image"
+                        className={style.main_image}
                     />
-                    <div className="left-images">
+                    <div className={style.left_images}>
                         <img src={CanyonEliteScooter2.src} aria-hidden="true" />
                         <img src={CanyonEliteScooter3.src} aria-hidden="true" />
                         <img src={CanyonEliteScooter4.src} aria-hidden="true" />
                     </div>
-                    <div className="right-images">
+                    <div className={style.right_images}>
                         <img src={CanyonEliteScooter4.src} aria-hidden="true" />
                         <img src={CanyonEliteScooter3.src} aria-hidden="true" />
                         <img src={CanyonEliteScooter2.src} aria-hidden="true" />
                     </div>
-                    <div className="product-image-slider">
-                        <div className="slider"></div>
-                        <div className="slider"></div>
-                        <div className="slider" data-active="true"></div>
-                        <div className="slider"></div>
-                        <div className="slider"></div>
+                    <div className={style.image_slider}>
+                        <div className={style.slider}></div>
+                        <div className={style.slider}></div>
+                        <div className={style.slider} data-active="true"></div>
+                        <div className={style.slider}></div>
+                        <div className={style.slider}></div>
                     </div>
                 </div>
-                <div className="product-informations">
-                    <h2 className="product-name">Canyon Elite Scooter</h2>
-                    <div className="product-highlights">
-                        <div className="product-highlight">
+                <div className={style.product_informations}>
+                    <h2 className={`${style.product_name} text-h2 text-center`}>
+                        Canyon Elite Scooter
+                    </h2>
+                    <div className={style.product_highlights}>
+                        <div className={style.product_highlight}>
                             <h3>25</h3>
                             <span>km/h</span>
                             <p>velocidade máxima</p>
                         </div>
-                        <div className="product-highlight">
+                        <div className={style.product_highlight}>
                             <h3>40</h3>
                             <span>km</span>
                             <p>autonomia</p>
                         </div>
-                        <div className="product-highlight">
+                        <div className={style.product_highlight}>
                             <h3>6</h3>
                             <span>hr</span>
                             <p>recarga completa</p>
                         </div>
                     </div>
                 </div>
-                <div className="product-description">
+                <div className={style.product_description}>
                     A Canyon Elite Scooter é uma opção excepcional para aqueles
                     que procuram uma scooter elétrica de alta qualidade. Com uma
                     velocidade máxima de 25km/h, esta scooter oferece uma
@@ -235,21 +239,20 @@ export default function Home() {
                     horas, você pode rapidamente recarregar sua bateria e estar
                     pronto para outra jornada.
                 </div>
-                <div className="product-price-cta-wrapper">
-                    <div className="product-price">
+                <div className={style.price_cta_wrapper}>
+                    <div className={style.product_price}>
                         <h3>R$3.200,00</h3>
                         <p>até 24x de R$160,00</p>
                     </div>
-                    <div className="product-cta">
-                        <a href="" className="button-primary">
-                            Comprar agora
-                        </a>
-                        <div className="button-secondary" id="modal-open">
-                            Mais detalhes
-                        </div>
+                    <div className={style.product_cta}>
+                        <ButtonPrimary url="/comprar" text="Comprar agora" />
+                        <ButtonSecondary
+                            url="#modal-open"
+                            text="Mais detalhes"
+                        />
                     </div>
                 </div>
-                <div className="other-product">
+                <div className={style.other_product}>
                     <img src={CanyonComfortScooter1.src} aria-hidden="true" />
                     <h2>Canyon Comfort</h2>
                     <a
@@ -257,7 +260,7 @@ export default function Home() {
                         aria-label="Ver informações da Canyon Comfort Scooter"
                     ></a>
                 </div>
-                <div className="other-product">
+                <div className={style.other_product}>
                     <img src={CanyonMasterScooter1.src} aria-hidden="true" />
                     <h2>Canyon Master</h2>
                     <a
