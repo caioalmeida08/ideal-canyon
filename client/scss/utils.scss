@@ -305,9 +305,29 @@
     }
 }
 
+.gap-h-24 {
+    > * {
+        margin-top: var(--spacing-24);
+    }
+
+    :first-child {
+        margin-top: unset;
+    }
+}
+
 .gap-h-32 {
     > * {
         margin-top: var(--spacing-32);
+    }
+
+    :first-child {
+        margin-top: unset;
+    }
+}
+
+.gap-h-48 {
+    > * {
+        margin-top: var(--spacing-48);
     }
 
     :first-child {
