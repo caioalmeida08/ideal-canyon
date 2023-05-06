@@ -4,6 +4,11 @@ import Navbar from "@/components/Navbar/Navbar.jsx";
 import PageTitle from "@/components/Utils/PageTitle";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconHeart, IconStar } from "@/components/Utils/Icons";
+import {
+    InputCheckbox,
+    InputText,
+    InputTextArea,
+} from "@/components/Utils/Inputs";
 
 import HeroImage from "@/assets/img/hero_image.png";
 import ReviewVideo from "@/assets/img/review_video.jpg";
@@ -365,6 +370,46 @@ export default function Home() {
                         </li>
                     </ul>
                 </div>
+            </section>
+            <section
+                className={`${style.doubts_form} section-margin-top side-bleed max-width-tablet-800 gap-h-32`}
+            >
+                <h2 className="text-h2 text-main text-center ">
+                    Restou alguma dúvida?
+                    <br />
+                    Entre em contato
+                </h2>
+                <form action="" className="gap-h-32">
+                    <InputText
+                        label="Nome completo"
+                        name="nome_completo"
+                        value=""
+                        placeholder="Digite seu nome completo"
+                    />
+                    <InputText
+                        label="Assunto"
+                        name="assunto"
+                        value=""
+                        placeholder="Ex: Dúvida sobre o método de envio"
+                    />
+                    <InputTextArea
+                        label="Mensagem"
+                        name="mensagem"
+                        value=""
+                        placeholder="Digite sua mensagem"
+                    />
+                    <InputText
+                        label="Email para contato"
+                        name="email_contato"
+                        value=""
+                        placeholder="Ex: nomedeusuario@emai.com"
+                    />
+                    <InputCheckbox
+                        label="Concordo com os termos de uso e política de privacidade"
+                        name="termos"
+                        value=""
+                    />
+                </form>
             </section>
         </>
     );

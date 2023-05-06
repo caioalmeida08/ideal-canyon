@@ -394,3 +394,13 @@
         }
     }
 }
+
+// Doubts form
+.doubts_form {
+    form {
+        padding: var(--spacing-32);
+
+        border: 3px solid var(--col-dark);
+        border-radius: var(--spacing-8);
+    }
+}
