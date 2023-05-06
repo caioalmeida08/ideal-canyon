@@ -36,10 +36,9 @@
     border: 3px solid rgba(127, 127, 127);
 }
 
-.field:has(.checkbox) {
+.field:has(.checkbox) div {
     display: flex;
     align-items: center;
-    justify-content: center;
     column-gap: var(--spacing-8);
 }
 

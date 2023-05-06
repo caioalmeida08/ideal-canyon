@@ -26,8 +26,11 @@ const InputCheckbox = ({ label, name, value, width = "max" }) => {
     return (
         <>
             <div className={style.field} data-width={width}>
-                <input className={style.checkbox} type="checkbox" id={`input_${name}`} name={name} value={value} />
-                <label for={`input_${name}`}>{label}</label>
+                <p className="text-demi">Termos de uso</p>
+                <div>
+                    <input className={style.checkbox} type="checkbox" id={`input_${name}`} name={name} value={value} />
+                    <label for={`input_${name}`}>{label}</label>
+                </div>
             </div>
         </>
     )

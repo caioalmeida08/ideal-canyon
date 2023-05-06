@@ -379,7 +379,7 @@ export default function Home() {
                     <br />
                     Entre em contato
                 </h2>
-                <form action="" className="gap-h-32">
+                <form action="">
                     <InputText
                         label="Nome completo"
                         name="nome_completo"
