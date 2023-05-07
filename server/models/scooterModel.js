@@ -8,6 +8,14 @@ const Scooter = sequelize.define("scooter", {
         allowNull: false,
         primaryKey: true
     },
+    scooter_model_short: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [3, 32],
+            notEmpty: true,
+        }
+    },
     scooter_model: {
         type: DataTypes.STRING,
         allowNull: false,

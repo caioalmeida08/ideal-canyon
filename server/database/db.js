@@ -16,7 +16,7 @@ try {
 }
 
 (async () => {
-    await sequelize.sync({ alter: false });
+    await sequelize.sync({ force: true });
 })();
 
 module.exports = { sequelize };
