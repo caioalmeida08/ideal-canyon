@@ -9,6 +9,7 @@ import {
     InputText,
     InputTextArea,
 } from "@/components/Utils/Inputs";
+import Footer from "@/components/Footer/Footer";
 
 import HeroImage from "@/assets/img/hero_image.png";
 import ReviewVideo from "@/assets/img/review_video.jpg";
@@ -412,6 +413,7 @@ export default function Home() {
                     <ButtonPrimary url="/contato" text="Enviar mensagem" />
                 </form>
             </section>
+            <Footer />
         </>
     );
 }

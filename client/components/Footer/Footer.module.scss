@@ -1,0 +1,36 @@
+.footer {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    row-gap: var(--spacing-64);
+    text-align: center;
+
+    > :first-child * {
+        color: var(--col-main);
+        fill: var(--col-main);
+    }
+
+    > :last-child {
+        display: grid;
+        row-gap: var(--spacing-64);
+
+        > div {
+            color: var(--col-light);
+            & a {
+                color: var(--col-light);
+            }
+        }
+
+        h3 {
+            font-size: var(--font-24);
+            margin-bottom: var(--spacing-16);
+        }
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .footer > :last-child {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: var(--spacing-64);
+    }
+}
