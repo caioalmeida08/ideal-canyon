@@ -409,6 +409,7 @@ export default function Home() {
                         name="termos"
                         value=""
                     />
+                    <ButtonPrimary url="/contato" text="Enviar mensagem" />
                 </form>
             </section>
         </>

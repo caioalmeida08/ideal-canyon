@@ -422,17 +422,31 @@
         display: grid;
         row-gap: var(--spacing-32);
     }
+
+    a {
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
 }
 
 @media (width>=768px) {
     .doubts_form form {
+        padding: var(--spacing-48);
         grid-template-columns: 1fr 1fr;
         grid-template-rows: repeat(3, fit-content(100%));
         column-gap: var(--spacing-24);
-        row-gap: var(--spacing-16);
+        row-gap: var(--spacing-32);
 
         div:has([name="mensagem"]) {
             grid-column: 1 / span 2;
+        }
+
+        a {
+            grid-column: 2;
+            margin-left: auto;
+            margin-right: 0;
+            width: fit-content;
         }
     }
 }
