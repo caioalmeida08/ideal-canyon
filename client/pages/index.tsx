@@ -10,6 +10,7 @@ import {
     InputTextArea,
 } from "@/components/Utils/Inputs";
 import Footer from "@/components/Footer/Footer";
+import ScooterDetails from "@/components/Utils/ScooterDetails";
 
 import HeroImage from "@/assets/img/hero_image.png";
 import ReviewVideo from "@/assets/img/review_video.jpg";
@@ -251,11 +252,15 @@ export default function Home() {
                         <h3>R$3.200,00</h3>
                         <p>até 24x de R$160,00</p>
                     </div>
-                    <div className={style.product_cta}>
+                    <div
+                        className={style.product_cta}
+                        data-scooterModel="canyon-elite-scooter"
+                    >
                         <ButtonPrimary url="/comprar" text="Comprar agora" />
                         <ButtonSecondary
                             url="#modal-open"
                             text="Mais detalhes"
+                            id="botao"
                         />
                     </div>
                 </div>
@@ -414,6 +419,7 @@ export default function Home() {
                 </form>
             </section>
             <Footer />
+            <ScooterDetails btnOpenId="botao" />
         </>
     );
 }
