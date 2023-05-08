@@ -1,0 +1,216 @@
+// Products
+.product_images img:not(.main_image) {
+    display: none;
+}
+
+.main_image {
+    display: block !important;
+}
+
+.image_slider {
+    display: flex;
+    gap: var(--spacing-8);
+    margin-top: var(--spacing-16);
+    width: fit-content;
+    margin-inline: auto;
+}
+
+.slider {
+    background-color: var(--col-main);
+    opacity: 0.5;
+    height: var(--spacing-8);
+    width: var(--spacing-24);
+    border-radius: 3px;
+
+    &[data-active="true"] {
+        opacity: 1;
+    }
+}
+
+.product_informations {
+    margin-top: var(--spacing-24);
+}
+
+.product_name {
+    background-color: var(--col-dark);
+    color: var(--col-light);
+    padding: var(--spacing-16) var(--spacing-8);
+}
+
+.product_highlights {
+    margin-top: var(--spacing-24);
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-32);
+}
+
+.product_highlight {
+    text-align: center;
+
+    span {
+        font-weight: 500;
+    }
+
+    p {
+        margin-top: var(--spacing-8);
+    }
+}
+
+.product_description {
+    margin-top: var(--spacing-24);
+    text-align: justify;
+}
+
+.product_price {
+    margin-top: var(--spacing-24);
+    text-align: center;
+
+    h3 {
+        font-weight: bold;
+        font-size: var(--font-36);
+    }
+    p {
+        font-size: var(--font-m);
+    }
+}
+
+.product_cta {
+    margin-top: var(--spacing-24);
+    display: flex;
+    gap: var(--spacing-16);
+    flex-direction: column;
+    align-items: center;
+
+    a {
+        box-sizing: border-box;
+        text-align: center;
+        width: 100%;
+    }
+}
+
+.other_product {
+    text-align: center;
+    display: inline-block;
+    width: fit-content;
+    max-width: 40%;
+
+    margin-top: var(--spacing-32);
+
+    > * {
+        max-width: 100%;
+    }
+
+    h2 {
+        margin-top: var(--spacing-8);
+        font-weight: bold;
+    }
+
+    a {
+        display: block;
+        aspect-ratio: 1;
+        width: var(--spacing-32);
+        margin: 0 auto;
+        border-radius: 50%;
+        margin-top: calc(var(--spacing-8) * 1.5);
+        background-color: var(--col-dark);
+        background-image: url("../../assets/img/icons/icon_next_prev.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    &:last-of-type {
+        float: right;
+    }
+
+    &:last-of-type {
+        a {
+            transform: rotateZ(180deg);
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .products {
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+    }
+
+    .product_images img {
+        display: block !important;
+    }
+
+    .product_images {
+        grid-column: 1 / span 3;
+        display: grid;
+        grid-template-columns: 3fr 6fr 3fr;
+        column-gap: var(--spacing-48);
+        align-items: center;
+
+        .left_images {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            row-gap: var(--spacing-16);
+
+            > img {
+                grid-column: 2;
+            }
+        }
+
+        .right_images {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            row-gap: var(--spacing-16);
+
+            > img {
+                grid-column: 1;
+            }
+        }
+    }
+
+    .main_image {
+        grid-column: 2;
+        grid-row: 1 / span 3;
+    }
+
+    .image_slider {
+        display: none;
+    }
+
+    .product_informations,
+    .product_description,
+    .price_cta_wrapper {
+        grid-column: 2 / 3;
+    }
+
+    .product_informations {
+        p {
+            font-weight: 500;
+            opacity: 0.5;
+        }
+    }
+
+    .product_highlights {
+        justify-content: space-evenly;
+    }
+
+    .price_cta_wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--spacing-24);
+    }
+
+    .other_product {
+        grid-row: 4;
+        width: 50%;
+        padding-inline: var(--spacing-48);
+        transform: translateY(calc(var(--spacing-48) * -3));
+
+        &:first-of-type {
+            grid-column: 1 / 2;
+        }
+        &:last-of-type {
+            grid-column: 3 / 4;
+            justify-self: end;
+        }
+    }
+}
