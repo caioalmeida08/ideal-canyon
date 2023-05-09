@@ -7,6 +7,7 @@ const scooterController = {
             let response = await sequelize.query(`
             SELECT
             scooter_model,
+            scooter_model_short,
             MIN(scooter_year) AS scooter_year,
             scooter_max_speed,
             scooter_battery_range,
