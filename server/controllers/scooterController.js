@@ -36,7 +36,7 @@ const scooterController = {
             scooter_description
             
             FROM Scooter 
-            WHERE scooter_model_short = '${req.query.scooterModel}'
+            WHERE scooter_model_short = '${req.query.modelShort}'
             LIMIT 1`,
                 { type: sequelize.QueryTypes.SELECT });
 
