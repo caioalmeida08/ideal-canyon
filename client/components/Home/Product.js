@@ -5,6 +5,8 @@ import CanyonEliteScooter4 from "@/assets/img/scooters/canyon_elite_scooter4.jpg
 import CanyonComfortScooter1 from "@/assets/img/scooters/canyon_comfort_scooter1.png";
 import CanyonMasterScooter1 from "@/assets/img/scooters/canyon_master_scooter1.png";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
+import ScooterDetails from "./ScooterDetails";
+
 import style from "./Product.module.scss";
 import React, { useEffect, useState } from "react";
 
@@ -95,14 +97,14 @@ const Product = () => {
 
                         <div
                             className={style.product_cta}
-                            data-scooterModel="canyon-elite-scooter"
                         >
                             <ButtonPrimary url="/comprar" text="Comprar agora" />
                             <ButtonSecondary
                                 url="#modal-open"
                                 text="Mais detalhes"
-                                id="botao"
+                                onClick={() => document.querySelector(`dialog`).showModal()}
                             />
+                            <ScooterDetails {...data} />
                         </div>
                     </div>
 

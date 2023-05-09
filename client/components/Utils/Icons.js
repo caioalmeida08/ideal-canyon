@@ -16,17 +16,9 @@ const IconStar = () => {
     );
 };
 
-const IconClose = () => {
-    useEffect(() => {
-        const btnClose = document.querySelector('#close');
-
-        btnClose.addEventListener('click', () => {
-            btnClose.parentElement.close();
-        })
-    }, [])
-
+const IconClose = ({ onClick }) => {
     return (
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" id="close">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
             <rect x="0.542969" y="22.8994" width="32" height="4" rx="2" transform="rotate(-45 0.542969 22.8994)" fill="black" />
             <rect x="3.37109" y="0.272461" width="32" height="4" rx="2" transform="rotate(45 3.37109 0.272461)" fill="black" />
         </svg>

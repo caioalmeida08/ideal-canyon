@@ -14,6 +14,8 @@ body:has(.modal[open]) {
     padding-inline: var(--spacing-64);
     padding-bottom: var(--spacing-64);
 
+    margin-inline: auto;
+
     > * p {
         margin-top: var(--spacing-8);
     }
@@ -21,7 +23,7 @@ body:has(.modal[open]) {
     svg {
         position: absolute;
         top: var(--spacing-32);
-        right: var(--spacing-32);
+        right: var(--spacing-24);
 
         aspect-ratio: 1;
         width: var(--spacing-16);

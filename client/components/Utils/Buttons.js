@@ -9,9 +9,9 @@ const ButtonPrimary = ({ url, text, id = "" }) => {
     );
 }
 
-const ButtonSecondary = ({ url, text, id = "" }) => {
+const ButtonSecondary = ({ url, text, id = "", onClick }) => {
     return (
-        <a className={style.secondary} href={url} {...(id && { id })}>
+        <a className={style.secondary} href={url} {...(id && { id })} onClick={onClick} >
             {text}
         </a>
     );
