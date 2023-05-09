@@ -31,8 +31,8 @@ const scooterController = {
             LIMIT 1`,
                 { type: sequelize.QueryTypes.SELECT });
 
-            let allColors = await sequelize.query(`SELECT DISTINCT scooter_color FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
-
+            let allColors = await sequelize.query(`SELECT DISTINCT scooter_color FROM Scooter WHERE scooter_model_short = '${req.query.modelShort}'`, { type: sequelize.QueryTypes.SELECT });
+            console.log(allColors)
             allColors = Object.values(allColors).map(color => color.scooter_color);
             response[0].allColors = allColors;
 
