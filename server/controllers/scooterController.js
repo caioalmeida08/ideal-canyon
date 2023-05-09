@@ -36,8 +36,15 @@ const scooterController = {
             allColors = Object.values(allColors).map(color => color.scooter_color);
             response[0].allColors = allColors;
 
-            let allModels = await sequelize.query(`SELECT DISTINCT scooter_model_short FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
-            allModels = Object.values(allModels).map(model => model.scooter_model_short);
+            let allModelsShort = await sequelize.query(`SELECT DISTINCT scooter_model_short FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
+            allModelsShort = Object.values(allModelsShort).map(model => model.scooter_model_short);
+            response[0].allModelsShort = allModelsShort;
+
+            let allModels = [];
+            for (let i = 0; i < allModelsShort.length; i++) {
+                let model = await sequelize.query(`SELECT DISTINCT scooter_model FROM Scooter WHERE scooter_model_short = '${allModelsShort[i]}'`, { type: sequelize.QueryTypes.SELECT });
+                allModels.push(model[0].scooter_model);
+            }
             response[0].allModels = allModels;
 
             return res.status(200).json(response);
