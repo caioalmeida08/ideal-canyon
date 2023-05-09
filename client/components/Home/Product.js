@@ -8,7 +8,9 @@ import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import style from "./Product.module.scss";
 import React, { useEffect, useState } from "react";
 
-const Product = ({ modelShort, stateChanger }) => {
+const Product = () => {
+    const [modelShort, setModelShort] = useState('canyon-comfort-scooter');
+
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -104,7 +106,7 @@ const Product = ({ modelShort, stateChanger }) => {
                         </div>
                     </div>
 
-                    <div className={style.other_product} onClick={() => stateChanger(data.allModelsShort[prev])}>
+                    <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[prev])}>
                         <img src={CanyonComfortScooter1.src} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[prev]}</h2>
                         <button
@@ -112,7 +114,7 @@ const Product = ({ modelShort, stateChanger }) => {
                             aria-label="Ver informações da Canyon Comfort Scooter"
                         ></button>
                     </div>
-                    <div className={style.other_product} onClick={() => stateChanger(data.allModelsShort[next])}>
+                    <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[next])}>
                         <img src={CanyonMasterScooter1.src} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[next]}</h2>
                         <button
