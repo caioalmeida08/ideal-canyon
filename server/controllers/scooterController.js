@@ -2,16 +2,6 @@ const { sequelize } = require('../database/db');
 const scooterModel = require('../models/scooterModel');
 
 const scooterController = {
-    async findAllModels(req, res) {
-        try {
-            let response = await sequelize.query(`SELECT DISTINCT scooter_model_short FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
-            response = Object.values(response).map(model => model.scooter_model_short);
-            return res.status(200).json(response);
-        } catch (error) {
-            return res.status(500).json(error.message);
-        }
-    },
-
     async findDetails(req, res) {
         try {
             let response = await sequelize.query(`
@@ -44,6 +34,10 @@ const scooterController = {
 
             allColors = Object.values(allColors).map(color => color.scooter_color);
             response[0].allColors = allColors;
+
+            let allModels = await sequelize.query(`SELECT DISTINCT scooter_model_short FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
+            allModels = Object.values(allModels).map(model => model.scooter_model_short);
+            response[0].allModels = allModels;
 
             return res.status(200).json(response);
         } catch (error) {
