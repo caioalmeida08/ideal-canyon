@@ -11,7 +11,7 @@ import {
 } from "@/components/Utils/Inputs";
 import Footer from "@/components/Footer/Footer";
 import ScooterDetails from "@/components/Utils/ScooterDetails";
-import Products from "@/components/Home/Products";
+import ProductsSection from "@/components/Home/ProductsSection";
 
 import HeroImage from "@/assets/img/hero_image.png";
 import ReviewVideo from "@/assets/img/review_video.jpg";
@@ -181,7 +181,8 @@ export default function Home() {
                     </div>
                 </div>
             </section>
-            <Products />
+
+            <ProductsSection />
             <section
                 className={`${style.meet} section-dark section-margin-top grid-col-8-4`}
             >
@@ -320,7 +321,6 @@ export default function Home() {
                 </form>
             </section>
             <Footer />
-            <ScooterDetails btnOpenId="botao" />
         </>
     );
 }

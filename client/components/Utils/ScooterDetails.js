@@ -4,13 +4,12 @@ import { IconClose } from '../Utils/Icons';
 
 import style from "./ScooterDetails.module.scss"
 
-const ScooterDetails = ({ btnOpenId }) => {
+const ScooterDetails = ({ btnOpenId, scooterModel }) => {
     const [data, setData] = useState(null);
     const [isLoading, setLoading] = useState(true);
 
     // Fetch data from API
     useEffect(() => {
-        const scooterModel = document.querySelector(`#${btnOpenId}`).parentElement.dataset.scootermodel;
 
         const fetchData = async () => {
             const res = await fetch(`http://localhost:3000/scooter/details?scooterModel=${scooterModel}`);
