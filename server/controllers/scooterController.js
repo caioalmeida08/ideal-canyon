@@ -62,7 +62,7 @@ const scooterController = {
             let imgs = [];
             for (file of files) {
                 // check if file is one of the images of the scooter
-                if (file.includes('canyon-elite-scooter')) {
+                if (file.includes(req.query.modelShort)) {
                     imgs.push(file)
                 }
             }

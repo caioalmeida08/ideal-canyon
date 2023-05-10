@@ -18,7 +18,7 @@ const Product = () => {
         const fetchData = async () => {
             const response = await fetch(`/api/scooter/details?modelShort=${modelShort}`);
             const data = await response.json();
-            setData(...data);
+            setData(data);
             setIsLoading(false);
         };
         fetchData();
@@ -50,6 +50,34 @@ const Product = () => {
         prev = current - 1 < 0 ? data.allModelsShort.length - 1 : current - 1
         next = current + 1 > data.allModelsShort.length - 1 ? 0 : current + 1
 
+        let leftImages = [];
+        data.imgs.slice(1, 4).map((img, index) => {
+            leftImages.push(
+                <>
+                    <img
+                        key={index}
+                        src={`api/img/scooters/${img}`}
+                        aria-hidden="true"
+                        data-index={index + 2}
+                    />
+                </>
+            )
+        })
+
+        let right_images = [];
+        data.imgs.slice(4, 7).map((img, index) => {
+            right_images.push(
+                <>
+                    <img
+                        key={index}
+                        src={`api/img/scooters/${img}`}
+                        aria-hidden="true"
+                    />
+                </>
+            )
+        })
+
+
         return (
             <>
                 <section
@@ -62,14 +90,10 @@ const Product = () => {
                             className={`${style.main_image}`}
                         />
                         <div className={style.left_images}>
-                            <img src={`api/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
-                            <img src={`api/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
-                            <img src={`api/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
+                            {leftImages}
                         </div>
                         <div className={style.right_images}>
-                            <img src={`api/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
-                            <img src={`api/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
-                            <img src={`api/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
+                            {right_images}
                         </div>
                         <div className={style.image_slider} id="image_slider"
                             onClick={(e) => { handleSlider(e) }}

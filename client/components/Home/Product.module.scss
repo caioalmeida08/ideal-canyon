@@ -152,7 +152,7 @@
         column-gap: var(--spacing-24);
 
         img {
-            object-fit: contain;
+            object-fit: cover;
             aspect-ratio: 16 / 9;
             max-height: 100%;
         }
