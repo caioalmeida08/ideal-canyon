@@ -30,9 +30,9 @@ const Product = () => {
         const mainImage = document.querySelector(`.${style.main_image}`);
 
         if (sliderIndex == 1) {
-            mainImage.attributes.src.value = `/img/scooters/${data.scooter_model_short}${sliderIndex}.png`;
+            mainImage.attributes.src.value = `api/img/scooters/${data.scooter_model_short}${sliderIndex}.png`;
         } else {
-            mainImage.attributes.src.value = `/img/scooters/${data.scooter_model_short}${sliderIndex}.jpg`;
+            mainImage.attributes.src.value = `api/img/scooters/${data.scooter_model_short}${sliderIndex}.jpg`;
         }
 
         const active = document.querySelector("#image_slider [data-active='true']");
@@ -57,19 +57,19 @@ const Product = () => {
                 >
                     <div className={`${style.product_images} max-width-500 max-width-desktop-unset`} onClick={(e) => { handleSlider(e) }}>
                         <img
-                            src={`/img/scooters/${data.scooter_model_short}1.png`}
+                            src={`api/img/scooters/${data.scooter_model_short}1.png`}
                             alt="Imagem da Canyon Elite Scooter em fundo transparente"
                             className={`${style.main_image}`}
                         />
                         <div className={style.left_images}>
-                            <img src={`/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
-                            <img src={`/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
-                            <img src={`/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
                         </div>
                         <div className={style.right_images}>
-                            <img src={`/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
-                            <img src={`/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
-                            <img src={`/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
+                            <img src={`api/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
                         </div>
                         <div className={style.image_slider} id="image_slider"
                             onClick={(e) => { handleSlider(e) }}
@@ -125,7 +125,7 @@ const Product = () => {
                     </div>
 
                     <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[prev])}>
-                        <img src={`/img/scooters/${data.allModelsShort[prev]}1.png`} aria-hidden="true" />
+                        <img src={`api/img/scooters/${data.allModelsShort[prev]}1.png`} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[prev]}</h2>
                         <button
                             href=""
@@ -133,7 +133,7 @@ const Product = () => {
                         ></button>
                     </div>
                     <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[next])}>
-                        <img src={`/img/scooters/${data.allModelsShort[next]}1.png`} aria-hidden="true" />
+                        <img src={`api/img/scooters/${data.allModelsShort[next]}1.png`} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[next]}</h2>
                         <button
                             href=""

@@ -42,7 +42,7 @@ export default function Home() {
             >
                 <img
                     alt="Vídeo com opiniões de clientes sobre a marca"
-                    src={"img/review_video.jpg"}
+                    src={"api/img/review_video.jpg"}
                     className={`${style.video} max-width-500 max-width-desktop-unset`}
                 />
                 <div className={`${style.reviews_content} gap-h-32`}>
@@ -155,7 +155,7 @@ export default function Home() {
                 className={`${style.meet} section-dark section-margin-top grid-col-8-4`}
             >
                 <img
-                    src={"@/public/img/meet_the_team_image.jpg"}
+                    src={"api/img/meet_the_team_image.jpg"}
                     alt="Pessoas da equipe Ideal Canyon com as mãos juntas ao centro da imagem"
                 />
                 <div className="gap-h-32">

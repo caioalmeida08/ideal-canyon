@@ -28,7 +28,7 @@ const Hero = () => {
                 <div>
                     <img
                         className={`${style.img} max-width-500`}
-                        src={`/img/hero_image.png`}
+                        src={`/api/img/hero_image.png`}
                         alt="Scooter do modelo Canyon Elite na cor branca"
                     />
                     <p className="text-demi text-center text-tablet-right">
