@@ -16,7 +16,7 @@ const Product = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await fetch(`http://localhost:3000/scooter/details?modelShort=${modelShort}`);
+            const response = await fetch(`/api/scooter/details?modelShort=${modelShort}`);
             const data = await response.json();
             setData(...data);
             setIsLoading(false);
