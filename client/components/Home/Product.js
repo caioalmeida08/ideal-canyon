@@ -10,6 +10,8 @@ const Product = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [sliderIndex, setSliderIndex] = useState(1);
+
     let prev, current, next = null;
 
     useEffect(() => {
@@ -21,6 +23,25 @@ const Product = () => {
         };
         fetchData();
     }, [modelShort]);
+
+    const handleSlider = (e) => {
+        setSliderIndex(sliderIndex + 1 > 4 ? 1 : sliderIndex + 1)
+
+        const mainImage = document.querySelector(`.${style.main_image}`);
+
+        if (sliderIndex == 1) {
+            mainImage.attributes.src.value = `/img/scooters/${data.scooter_model_short}${sliderIndex}.png`;
+        } else {
+            mainImage.attributes.src.value = `/img/scooters/${data.scooter_model_short}${sliderIndex}.jpg`;
+        }
+
+        const active = document.querySelector("#image_slider [data-active='true']");
+        active.removeAttribute('data-active');
+
+        const next = document.querySelector(`#image_slider [data-index='${sliderIndex}']`);
+        next.setAttribute('data-active', 'true');
+
+    }
 
 
     if (!isLoading) {
@@ -34,7 +55,7 @@ const Product = () => {
                 <section
                     className={`${style.products} side-bleed section-margin-top max-width-tablet-500 max-width-desktop-unset`}
                 >
-                    <div className={`${style.product_images} max-width-500 max-width-desktop-unset`}>
+                    <div className={`${style.product_images} max-width-500 max-width-desktop-unset`} onClick={(e) => { handleSlider(e) }}>
                         <img
                             src={`/img/scooters/${data.scooter_model_short}1.png`}
                             alt="Imagem da Canyon Elite Scooter em fundo transparente"
@@ -50,12 +71,13 @@ const Product = () => {
                             <img src={`/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
                             <img src={`/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
                         </div>
-                        <div className={style.image_slider}>
-                            <div className={style.slider}></div>
-                            <div className={style.slider}></div>
-                            <div className={style.slider} data-active="true"></div>
-                            <div className={style.slider}></div>
-                            <div className={style.slider}></div>
+                        <div className={style.image_slider} id="image_slider"
+                            onClick={(e) => { handleSlider(e) }}
+                        >
+                            <div className={style.slider} data-index="4"></div>
+                            <div className={style.slider} data-index="1" data-active="true"></div>
+                            <div className={style.slider} data-index="2"></div>
+                            <div className={style.slider} data-index="3"></div>
                         </div>
                     </div>
                     <div className={`${style.product_informations} max-width-500 max-width-desktop-unset`}>

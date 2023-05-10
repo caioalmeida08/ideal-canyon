@@ -7,6 +7,8 @@
 
 .main_image {
     display: flex !important;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
 }
 
 .image_slider {
