@@ -1,9 +1,3 @@
-import CanyonEliteScooter1 from "@/assets/img/scooters/canyon_elite_scooter1.png";
-import CanyonEliteScooter2 from "@/assets/img/scooters/canyon_elite_scooter2.jpg";
-import CanyonEliteScooter3 from "@/assets/img/scooters/canyon_elite_scooter3.jpg";
-import CanyonEliteScooter4 from "@/assets/img/scooters/canyon_elite_scooter4.jpg";
-import CanyonComfortScooter1 from "@/assets/img/scooters/canyon_comfort_scooter1.png";
-import CanyonMasterScooter1 from "@/assets/img/scooters/canyon_master_scooter1.png";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import ScooterDetails from "./ScooterDetails";
 
@@ -40,21 +34,21 @@ const Product = () => {
                 <section
                     className={`${style.products} side-bleed section-margin-top max-width-tablet-500 max-width-desktop-unset`}
                 >
-                    <div className={style.product_images}>
+                    <div className={`${style.product_images} max-width-500 max-width-desktop-unset`}>
                         <img
-                            src={CanyonEliteScooter1.src}
+                            src={`/img/scooters/${data.scooter_model_short}1.png`}
                             alt="Imagem da Canyon Elite Scooter em fundo transparente"
-                            className={style.main_image}
+                            className={`${style.main_image}`}
                         />
                         <div className={style.left_images}>
-                            <img src={CanyonEliteScooter2.src} aria-hidden="true" />
-                            <img src={CanyonEliteScooter3.src} aria-hidden="true" />
-                            <img src={CanyonEliteScooter4.src} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
                         </div>
                         <div className={style.right_images}>
-                            <img src={CanyonEliteScooter4.src} aria-hidden="true" />
-                            <img src={CanyonEliteScooter3.src} aria-hidden="true" />
-                            <img src={CanyonEliteScooter2.src} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}3.jpg`} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}4.jpg`} aria-hidden="true" />
+                            <img src={`/img/scooters/${data.scooter_model_short}2.jpg`} aria-hidden="true" />
                         </div>
                         <div className={style.image_slider}>
                             <div className={style.slider}></div>
@@ -64,7 +58,7 @@ const Product = () => {
                             <div className={style.slider}></div>
                         </div>
                     </div>
-                    <div className={style.product_informations}>
+                    <div className={`${style.product_informations} max-width-500 max-width-desktop-unset`}>
                         <h2 className={`${style.product_name} text-h2 text-center text-capitalize`}>
                             {data.scooter_model}
                         </h2>
@@ -86,7 +80,7 @@ const Product = () => {
                             </div>
                         </div>
                     </div>
-                    <div className={style.product_description}>
+                    <div className={`${style.product_description} max-width-500 max-width-desktop-unset`}>
                         {data.scooter_description}
                     </div>
                     <div className={style.price_cta_wrapper}>
@@ -96,7 +90,7 @@ const Product = () => {
                         </div>
 
                         <div
-                            className={style.product_cta}
+                            className={`${style.product_cta} max-width-500 max-width-desktop-unset`}
                         >
                             <ButtonPrimary url="/comprar" text="Comprar agora" />
                             <ButtonSecondary
@@ -109,7 +103,7 @@ const Product = () => {
                     </div>
 
                     <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[prev])}>
-                        <img src={CanyonComfortScooter1.src} aria-hidden="true" />
+                        <img src={`/img/scooters/${data.allModelsShort[prev]}1.png`} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[prev]}</h2>
                         <button
                             href=""
@@ -117,7 +111,7 @@ const Product = () => {
                         ></button>
                     </div>
                     <div className={style.other_product} onClick={() => setModelShort(data.allModelsShort[next])}>
-                        <img src={CanyonMasterScooter1.src} aria-hidden="true" />
+                        <img src={`/img/scooters/${data.allModelsShort[next]}1.png`} aria-hidden="true" />
                         <h2 className="text-capitalize">{data.allModels[next]}</h2>
                         <button
                             href=""

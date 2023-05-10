@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Navbar from "@/components/Navbar/Navbar.jsx";
+import Hero from "@/components/Home/Hero";
 import PageTitle from "@/components/Utils/PageTitle";
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconHeart, IconStar } from "@/components/Utils/Icons";
@@ -12,12 +13,9 @@ import {
 import Footer from "@/components/Footer/Footer";
 import Product from "@/components/Home/Product";
 
-import HeroImage from "@/assets/img/hero_image.png";
-import ReviewVideo from "@/assets/img/review_video.jpg";
 import VelocimeterIcon from "@/assets/img/icons/icon_velocimeter.png";
 import CheapIcon from "@/assets/img/icons/icon_cheap.png";
 import ShieldIcon from "@/assets/img/icons/icon_shield.png";
-import MeetTheTeam from "@/assets/img/meet_the_team_image.jpg";
 
 import style from "@/scss/pages/index.module.scss";
 
@@ -38,42 +36,13 @@ export default function Home() {
         <>
             <PageTitle title="Ideal Canyon" />
             <Navbar {...navItems} />
-            <section
-                className={`${style.hero} grid-col-6 side-bleed section-margin-top max-width-tablet-800 max-width-desktop-unset`}
-            >
-                <div className="gap-h-32">
-                    <h1 className="text-h1 text-center text-tablet-left">
-                        Nós temos a <span className="text-main">scooter</span>{" "}
-                        que você{" "}
-                        <span className="text-main">está procurando.</span>
-                    </h1>
-                    <p className="text-p text-center text-tablet-left">
-                        Nossa coleção de modelos abrange todas as necessidades
-                        de uma pessoa moderna: praticidade, durabilidade e
-                        eficiência são o nosso foco.
-                    </p>
-                    <ButtonPrimary
-                        url="/produtos"
-                        text="Encontre a sua scooter"
-                    />
-                </div>
-                <div>
-                    <img
-                        className={`${style.img} max-width-500`}
-                        src={HeroImage.src}
-                        alt="Scooter do modelo Canyon Elite na cor branca"
-                    />
-                    <p className="text-demi text-center text-tablet-right">
-                        +5.000 unidades vendidas | n° 1 nas pesquisas de mercado
-                    </p>
-                </div>
-            </section>
+            <Hero />
             <section
                 className={`${style.reviews} grid-col-6 side-bleed section-margin-top text-center text-desktop-left`}
             >
                 <img
                     alt="Vídeo com opiniões de clientes sobre a marca"
-                    src={ReviewVideo.src}
+                    src={"img/review_video.jpg"}
                     className={`${style.video} max-width-500 max-width-desktop-unset`}
                 />
                 <div className={`${style.reviews_content} gap-h-32`}>
@@ -186,7 +155,7 @@ export default function Home() {
                 className={`${style.meet} section-dark section-margin-top grid-col-8-4`}
             >
                 <img
-                    src={MeetTheTeam.src}
+                    src={"@/public/img/meet_the_team_image.jpg"}
                     alt="Pessoas da equipe Ideal Canyon com as mãos juntas ao centro da imagem"
                 />
                 <div className="gap-h-32">
