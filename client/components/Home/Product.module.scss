@@ -220,12 +220,10 @@
         max-width: unset;
 
         &:not(:last-of-type) {
-            padding-right: var(--spacing-64);
             grid-column: 1 / 2;
         }
 
         &:last-of-type {
-            padding-left: var(--spacing-64);
             grid-column: 3 / 4;
             justify-self: end;
         }
