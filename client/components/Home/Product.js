@@ -34,28 +34,24 @@ const Product = () => {
         if (side == "left") {
             data.imgs.slice(0, 3).map((img, index) => {
                 imgs.push(
-                    <>
-                        <img
-                            key={index}
-                            src={`api/img/scooters/${img}`}
-                            aria-hidden="true"
-                            data-index={index}
-                            onMouseEnter={(e) => { handleSideImage(e) }}
-                        />
-                    </>
+                    <img
+                        key={index}
+                        src={`api/img/scooters/${img}`}
+                        aria-hidden="true"
+                        data-index={index}
+                        onMouseEnter={(e) => { handleSideImage(e) }}
+                    />
                 )
             })
         } else {
             data.imgs.slice(3, 6).map((img, index) => {
                 imgs.push(
-                    <>
-                        <img
-                            key={index}
-                            src={`api/img/scooters/${img}`}
-                            aria-hidden="true"
-                            onMouseEnter={(e) => { handleSideImage(e) }}
-                        />
-                    </>
+                    <img
+                        key={index}
+                        src={`api/img/scooters/${img}`}
+                        aria-hidden="true"
+                        onMouseEnter={(e) => { handleSideImage(e) }}
+                    />
                 )
             })
         }
@@ -74,12 +70,12 @@ const Product = () => {
             data.imgs.map((img, index) => {
                 if (index == 0) {
                     return (
-                        <div className={style.slider} data-active="true" data-index={index}></div>
+                        <div key={index} className={style.slider} data-active="true" data-index={index}></div>
                     )
                 }
 
                 return (
-                    <div className={style.slider} data-index={index}></div>
+                    <div key={index} className={style.slider} data-index={index}></div>
                 )
             })
         )

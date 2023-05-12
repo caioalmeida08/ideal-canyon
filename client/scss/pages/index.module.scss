@@ -51,7 +51,7 @@
             > :last-child {
                 display: flex;
                 column-gap: var(--spacing-8);
-                justify-content: start;
+                justify-content: flex-start;
             }
         }
 
@@ -123,45 +123,5 @@
 @media (width>=1024px) {
     .meet a {
         margin-inline: unset;
-    }
-}
-
-// Doubts form
-.doubts_form {
-    form {
-        padding: var(--spacing-32);
-
-        border: 3px solid var(--col-dark);
-        border-radius: var(--spacing-8);
-
-        display: grid;
-        row-gap: var(--spacing-32);
-    }
-
-    a {
-        text-align: center;
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-@media (width>=768px) {
-    .doubts_form form {
-        padding: var(--spacing-48);
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: repeat(3, fit-content(100%));
-        column-gap: var(--spacing-24);
-        row-gap: var(--spacing-32);
-
-        div:has([name="mensagem"]) {
-            grid-column: 1 / span 2;
-        }
-
-        a {
-            grid-column: 2;
-            margin-left: auto;
-            margin-right: 0;
-            width: fit-content;
-        }
     }
 }

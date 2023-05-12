@@ -3,16 +3,13 @@ import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar/Navbar.jsx";
 import Hero from "@/components/Home/Hero";
 import PageTitle from "@/components/Utils/PageTitle";
-import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
+import { ButtonPrimary } from "@/components/Utils/Buttons";
 import { IconHeart, IconStar } from "@/components/Utils/Icons";
-import {
-    InputCheckbox,
-    InputText,
-    InputTextArea,
-} from "@/components/Utils/Inputs";
-import Footer from "@/components/Footer/Footer";
+
 import Product from "@/components/Home/Product";
+import DoubtsForm from "@/components/Home/DoubtsForm";
 import Faq from "@/components/Home/Faq";
+import Footer from "@/components/Footer/Footer";
 
 import VelocimeterIcon from "@/assets/img/icons/icon_velocimeter.png";
 import CheapIcon from "@/assets/img/icons/icon_cheap.png";
@@ -180,47 +177,7 @@ export default function Home() {
                 </div>
             </section>
             <Faq />
-            <section
-                className={`${style.doubts_form} section-margin-top side-bleed max-width-tablet-800 gap-h-32`}
-            >
-                <h2 className="text-h2 text-main text-center ">
-                    Restou alguma dúvida?
-                    <br />
-                    Entre em contato
-                </h2>
-                <form action="">
-                    <InputText
-                        label="Nome completo"
-                        name="nome_completo"
-                        value=""
-                        placeholder="Digite seu nome completo"
-                    />
-                    <InputText
-                        label="Assunto"
-                        name="assunto"
-                        value=""
-                        placeholder="Ex: Dúvida sobre o método de envio"
-                    />
-                    <InputTextArea
-                        label="Mensagem"
-                        name="mensagem"
-                        value=""
-                        placeholder="Digite sua mensagem"
-                    />
-                    <InputText
-                        label="Email para contato"
-                        name="email_contato"
-                        value=""
-                        placeholder="Ex: nomedeusuario@emai.com"
-                    />
-                    <InputCheckbox
-                        label="Concordo com os termos de uso e política de privacidade"
-                        name="termos"
-                        value=""
-                    />
-                    <ButtonPrimary url="/contato" text="Enviar mensagem" />
-                </form>
-            </section>
+            <DoubtsForm />
             <Footer />
         </>
     );
