@@ -40,7 +40,7 @@ const Product = () => {
                             src={`api/img/scooters/${img}`}
                             aria-hidden="true"
                             data-index={index}
-                            onClick={(e) => { handleSideImage(e) }}
+                            onMouseEnter={(e) => { handleSideImage(e) }}
                         />
                     </>
                 )
@@ -53,7 +53,7 @@ const Product = () => {
                             key={index}
                             src={`api/img/scooters/${img}`}
                             aria-hidden="true"
-                            onClick={(e) => { handleSideImage(e) }}
+                            onMouseEnter={(e) => { handleSideImage(e) }}
                         />
                     </>
                 )
