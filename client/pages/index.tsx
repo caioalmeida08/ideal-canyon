@@ -12,6 +12,7 @@ import {
 } from "@/components/Utils/Inputs";
 import Footer from "@/components/Footer/Footer";
 import Product from "@/components/Home/Product";
+import Faq from "@/components/Home/Faq";
 
 import VelocimeterIcon from "@/assets/img/icons/icon_velocimeter.png";
 import CheapIcon from "@/assets/img/icons/icon_cheap.png";
@@ -178,75 +179,7 @@ export default function Home() {
                     <ButtonPrimary url="/sobre" text="Conheça nossa equipe" />
                 </div>
             </section>
-            <section className="side-bleed section-margin-top gap-h-32">
-                <h2 className="text-h2 text-center text-main">
-                    Dúvidas frequentes
-                </h2>
-                <div className={`${style.faq} grid-col-8-4`}>
-                    <ul className="gap-h-32">
-                        <li className="gap-h-16">
-                            <h3 className="text-h3">
-                                Qual é o prazo de entrega para os scooters da
-                                Ideal Canyon?
-                            </h3>
-                            <p>
-                                O prazo de entrega para nossas scooters pode
-                                variar dependendo da sua localização e da
-                                disponibilidade de estoque. Geralmente, leva-se
-                                em torno de 7 a 15 dias.
-                            </p>
-                        </li>
-                        <li className="gap-h-16">
-                            <h3 className="text-h3">
-                                A Ideal Canyon oferece garantia em seus
-                                produtos?
-                            </h3>
-                            <p>
-                                Sim, oferecemos garantia em todos os nossos
-                                produtos. A duração da garantia varia de acordo
-                                com o modelo do scooter, mas garantimos que
-                                todos os produtos da Ideal Canyon são fabricados
-                                com materiais de alta qualidade e construídos
-                                para durar.
-                            </p>
-                        </li>
-                        <li className="gap-h-16">
-                            <h3 className="text-h3">
-                                As scooters da Ideal Canyon são fáceis de
-                                montar?
-                            </h3>
-                            <p>
-                                Sim! Nossas scooters são projetadas para serem
-                                fáceis de montar. Incluímos instruções
-                                detalhadas para ajudá-lo a montar seu scooter
-                                rapidamente e sem complicações. Caso tenha
-                                alguma dúvida, nossa equipe de suporte está
-                                sempre disponível para ajudá-lo.
-                            </p>
-                        </li>
-                    </ul>
-                    <ul className="gap-h-32">
-                        <li className="text-demi">
-                            <h3>
-                                Posso devolver meu scooter se não estiver
-                                satisfeito?
-                            </h3>
-                        </li>
-                        <li className="text-demi">
-                            <h3>
-                                Como faço para manter meu scooter da Ideal
-                                Canyon?
-                            </h3>
-                        </li>
-                        <li className="text-demi">
-                            <h3>
-                                Qual é a diferença entre os modelos de scooters
-                                da Ideal Canyon?
-                            </h3>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            <Faq />
             <section
                 className={`${style.doubts_form} section-margin-top side-bleed max-width-tablet-800 gap-h-32`}
             >

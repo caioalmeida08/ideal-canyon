@@ -126,61 +126,6 @@
     }
 }
 
-// FAQ
-.faq {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    column-gap: var(--spacing-24);
-
-    margin-top: var(--spacing-48);
-    margin-left: var(--spacing-16);
-
-    ul:first-of-type {
-        list-style-type: disc;
-        grid-column: span 7;
-    }
-
-    ul:last-of-type {
-        grid-column: 9 / span 4;
-
-        li {
-            position: relative;
-        }
-
-        li::before {
-            content: "";
-            position: absolute;
-            left: calc(var(--spacing-8) * -3);
-            top: 0;
-
-            display: inline-block;
-
-            aspect-ratio: 1;
-            height: var(--spacing-16);
-
-            background-image: url("../../assets/img/icons/icon_dropdown_main.png");
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: bottom;
-        }
-    }
-}
-
-@media (width<1024px) {
-    .faq {
-        display: block;
-        padding-inline: var(--spacing-16);
-
-        ul:last-of-type {
-            grid-column: 1;
-            grid-row: 2;
-
-            margin-top: var(--spacing-48);
-            margin-left: var(--spacing-8);
-        }
-    }
-}
-
 // Doubts form
 .doubts_form {
     form {
