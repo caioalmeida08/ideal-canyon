@@ -95,11 +95,13 @@
 .other_product {
     text-align: center;
     display: inline-block;
-    width: fit-content;
-    max-width: 40%;
+    width: 50%;
     margin-top: var(--spacing-32);
+    padding-inline: var(--spacing-16);
+    box-sizing: border-box;
 
     img {
+        max-width: var(--spacing-128);
         aspect-ratio: 16 / 9;
         object-fit: contain;
     }
