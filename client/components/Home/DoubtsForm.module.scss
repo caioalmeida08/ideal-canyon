@@ -10,7 +10,7 @@
         row-gap: var(--spacing-32);
     }
 
-    a {
+    button {
         text-align: center;
         width: 100%;
         box-sizing: border-box;
@@ -18,10 +18,7 @@
 }
 
 .error_display {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-
-    grid-column: span 2;
+    display: none;
 }
 
 @media (width>=768px) {
@@ -42,5 +39,9 @@
             margin-right: 0;
             width: fit-content;
         }
+    }
+
+    .error_display {
+        grid-column: span 2;
     }
 }

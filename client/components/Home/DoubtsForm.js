@@ -38,12 +38,14 @@ const handleSubmit = async (e) => {
         const errorDisplay = document.getElementById('error_display');
         errorDisplay.innerHTML = 'Mensagem enviada com sucesso!';
         errorDisplay.style.color = 'green';
+        errorDisplay.style.display = "block"
 
     } catch (error) {
         // display error message
         const errorDisplay = document.getElementById('error_display');
         errorDisplay.innerHTML = error.message;
         errorDisplay.style.color = '#cc0000';
+        errorDisplay.style.display = "block"
 
     }
 
@@ -109,7 +111,7 @@ const DoubtsForm = () => {
                         onChange={handleInputChanges}
                     />
                     <ButtonSubmit text="Enviar mensagem" />
-                    <span className={style.error_display} id="error_display">Makonha</span>
+                    <span className={style.error_display} id="error_display"></span>
                 </form>
             </section>
         </>
