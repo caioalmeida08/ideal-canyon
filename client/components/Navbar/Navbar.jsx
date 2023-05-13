@@ -2,6 +2,7 @@ import LogoAndText from "../Utils/LogoAndText";
 import HamburgerSVG from "../Utils/HamburgerSVG";
 
 import style from "./Navbar.module.scss";
+import NavLink from "./NavLink";
 
 const Navbar = (props) => {
     return (
@@ -11,7 +12,10 @@ const Navbar = (props) => {
                     <LogoAndText />
                 </a>
 
-                <ul className={style.navigation}>{props.children}</ul>
+                <ul className={style.navigation}>
+                    {props.children}
+                    <NavLink href="/login">Login</NavLink>
+                </ul>
 
                 <div className={style.hamburger}>
                     <HamburgerSVG />

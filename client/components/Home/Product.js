@@ -10,10 +10,6 @@ const Product = () => {
     const [data, setData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
-    // controls the reset of the product slider when changing models
-    const [lastModel, setLastModel] = useState(null);
-    const [currentModel, setCurrentModel] = useState(null);
-
     let prev, current, next = null;
 
     // fetch the data for this model of scooter
@@ -153,6 +149,7 @@ const Product = () => {
             <>
                 <section
                     className={`${style.products} side-bleed section-margin-top max-width-tablet-500 max-width-desktop-unset`}
+                    id="products_section"
                 >
                     <div className={`${style.product_images} max-width-500 max-width-desktop-unset`} id="product_images" data-model={data.scooter_model_short} onTouchEnd={(e) => { handleSlider(e) }}>
                         <img

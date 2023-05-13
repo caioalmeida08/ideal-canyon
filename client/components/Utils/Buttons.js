@@ -1,17 +1,17 @@
 import style from './Buttons.module.scss';
 
-const ButtonPrimary = ({ url, text, id = "" }) => {
+const ButtonPrimary = ({ href, text, id = "" }) => {
 
     return (
-        <a className={style.primary} href={url} {...(id && { id })}>
+        <a className={style.primary} href={href} {...(id && { id })}>
             {text}
         </a>
     );
 }
 
-const ButtonSecondary = ({ url, text, id = "", onClick }) => {
+const ButtonSecondary = ({ href, text, id = "", onClick }) => {
     return (
-        <a className={style.secondary} href={url} {...(id && { id })} onClick={onClick} >
+        <a className={style.secondary} href={href} {...(id && { id })} onClick={onClick} >
             {text}
         </a>
     );

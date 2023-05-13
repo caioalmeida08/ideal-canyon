@@ -28,7 +28,7 @@ const MeetTheTeam = () => {
                     Conheça nosso time agora e saiba mais sobre as pessoas
                     que fazem a Ideal Canyon acontecer.
                 </p>
-                <ButtonPrimary url="/sobre" text="Conheça nossa equipe" />
+                <ButtonPrimary href="/sobre" text="Conheça nossa equipe" />
             </div>
         </section>
     )

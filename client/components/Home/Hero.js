@@ -21,7 +21,7 @@ const Hero = () => {
                         eficiência são o nosso foco.
                     </p>
                     <ButtonPrimary
-                        url="/produtos"
+                        href="#products_section"
                         text="Encontre a sua scooter"
                     />
                 </div>

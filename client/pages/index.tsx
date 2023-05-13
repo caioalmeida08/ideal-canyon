@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import Navbar from "@/components/Navbar/Navbar";
 import NavLink from "@/components/Navbar/NavLink";
@@ -18,9 +18,9 @@ export default function Home() {
         <>
             <PageTitle title="Ideal Canyon" />
             <Navbar>
-                <NavLink href="/">Modelos</NavLink>
-                <NavLink href="/">Contato</NavLink>
-                <NavLink href="/">Sobre</NavLink>
+                <NavLink href="#products_section">Modelos</NavLink>
+                <NavLink href="#doubts_form">Contato</NavLink>
+                <NavLink href="#footer">Sobre</NavLink>
             </Navbar>
             <Hero />
             <Review />
