@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 
-import Navbar from "@/components/Navbar/Navbar.jsx";
+import Navbar from "@/components/Navbar/Navbar";
+import NavLink from "@/components/Navbar/NavLink";
 import Hero from "@/components/Home/Hero";
 import PageTitle from "@/components/Utils/PageTitle";
 
@@ -13,22 +14,14 @@ import Faq from "@/components/Home/Faq";
 import Footer from "@/components/Footer/Footer";
 
 export default function Home() {
-    const [navItems, setNavItems] = useState([
-        { title: "Carregando...", url: "#" },
-    ]);
-
-    useEffect(() => {
-        setNavItems([
-            { title: "Modelos", url: "#modelos" },
-            { title: "Contatos", url: "#contatos" },
-            { title: "Sobre", url: "/sobre" },
-        ]);
-    }, []);
-
     return (
         <>
             <PageTitle title="Ideal Canyon" />
-            <Navbar {...navItems} />
+            <Navbar>
+                <NavLink href="/">Modelos</NavLink>
+                <NavLink href="/">Contato</NavLink>
+                <NavLink href="/">Sobre</NavLink>
+            </Navbar>
             <Hero />
             <Review />
             <Benefits />

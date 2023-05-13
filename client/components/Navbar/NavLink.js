@@ -1,7 +1,7 @@
 const NavLink = (props) => {
     return (
         <li>
-            <a href={props.url}>{props.title}</a>
+            <a href={props.href}>{props.children}</a>
         </li>
     );
 };
