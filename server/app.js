@@ -9,6 +9,7 @@ const loginRouter = require('./routes/loginRouter.js');
 const registerRouter = require('./routes/registerRouter.js');
 const scooterRouter = require('./routes/scooterRouter.js');
 const addressRouter = require('./routes/addressRouter.js');
+const contactRouter = require('./routes/contactRouter.js');
 
 const os = require('os');
 const ifaces = os.networkInterfaces();
@@ -43,6 +44,7 @@ app.use('/login', loginRouter);
 app.use('/cadastrar', registerRouter);
 app.use('/scooter', scooterRouter);
 app.use('/endereco', addressRouter);
+app.use('/contato', contactRouter)
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${ipAddress}:${PORT}`));

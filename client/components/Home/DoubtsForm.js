@@ -1,5 +1,5 @@
 import style from './DoubtsForm.module.scss';
-import { ButtonPrimary } from "@/components/Utils/Buttons";
+import { ButtonSubmit } from "@/components/Utils/Buttons";
 import {
     InputCheckbox,
     InputText,
@@ -12,13 +12,35 @@ const handleInputChanges = (e) => {
     console.log(e)
 }
 
-const DoubtsForm = () => {
-    const router = useRouter();
+const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(e)
+    // turn form data into json
+    const formData = new FormData(e.target);
+    const formDataObj = Object.fromEntries(formData.entries());
+
+    // send form data to server
+    try {
+        const response = await fetch('/api/contato', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDataObj),
+        })
+        const data = await response.json()
+
+        // throw error if response is not ok
+        if (!response.ok) {
+            throw new Error(data)
+        }
+    } catch (error) {
+        console.log(error)
     }
+
+}
+
+const DoubtsForm = () => {
 
     return (
         <>
@@ -33,17 +55,17 @@ const DoubtsForm = () => {
                 <form action="/contato" method="POST" onSubmit={(e) => { handleSubmit(e) }} id="doubts_form">
                     <InputText
                         label="Nome completo"
-                        name="nome_completo"
+                        name="contact_name"
                         value=""
                         placeholder="Digite seu nome completo"
                         required
-                        pattern="[a-z]{8, 64}"
-                        title="O nome deve conter entre 8 e 64 caracteres"
+                        pattern="[a-zA-Z]+"
+                        title="O nome deve conter apenas letras maiúsculas e minúsculas"
                         onChange={handleInputChanges}
                     />
                     <InputText
                         label="Assunto"
-                        name="assunto"
+                        name="contact_subject"
                         value=""
                         placeholder="Ex: Dúvida sobre o método de envio"
                         required
@@ -53,7 +75,7 @@ const DoubtsForm = () => {
                     />
                     <InputTextArea
                         label="Mensagem"
-                        name="mensagem"
+                        name="contact_message"
                         value=""
                         placeholder="Digite sua mensagem"
                         required
@@ -63,12 +85,12 @@ const DoubtsForm = () => {
                     />
                     <InputText
                         label="Email para contato"
-                        name="email_contato"
+                        name="contact_email"
                         value=""
                         placeholder="Ex: nomedeusuario@emai.com"
                         required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
-                        title="O email deve ser válido"
+                        title="O email deve ser válido. Ex: email@plataforma.com"
                         onChange={handleInputChanges}
                     />
                     <InputCheckbox
@@ -77,9 +99,7 @@ const DoubtsForm = () => {
                         required
                         onChange={handleInputChanges}
                     />
-                    <ButtonPrimary url="/contato" text="Enviar mensagem" onClick={() => {
-                        document.getElementById("doubts_form").submit();
-                    }} />
+                    <ButtonSubmit text="Enviar mensagem" />
                 </form>
             </section>
         </>

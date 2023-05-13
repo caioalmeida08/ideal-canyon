@@ -17,4 +17,12 @@ const ButtonSecondary = ({ url, text, id = "", onClick }) => {
     );
 }
 
-export { ButtonPrimary, ButtonSecondary };
+const ButtonSubmit = ({ text, id = "" }) => {
+    return (
+        <button className={style.primary} type="submit" {...(id && { id })}>
+            {text}
+        </button>
+    );
+}
+
+export { ButtonPrimary, ButtonSecondary, ButtonSubmit };
