@@ -46,5 +46,5 @@ app.use('/scooter', scooterRouter);
 app.use('/endereco', addressRouter);
 app.use('/contato', contactRouter)
 
-const PORT = 3000;
+const PORT = 5000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${ipAddress}:${PORT}`));
