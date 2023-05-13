@@ -4,5 +4,13 @@
     },
     "scripts": {
         "dev": "concurrently \"cd server && nodemon app\" \"cd client && npm run dev\""
+    },
+    "dependencies": {
+        "@tanstack/react-query": "^4.29.5",
+        "eslint-config-next": "^13.4.2",
+        "next": "^13.4.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "sass": "^1.62.1"
     }
 }
