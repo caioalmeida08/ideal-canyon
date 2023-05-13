@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonPrimary, ButtonSecondary } from '../Utils/Buttons';
+import { ButtonPrimary } from '../Utils/Buttons';
 
 import style from './Hero.module.scss';
 
