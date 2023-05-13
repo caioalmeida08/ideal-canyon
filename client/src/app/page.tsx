@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar/Navbar";
 import NavLink from "../components/Navbar/NavLink";
 import Hero from "../components/Home/Hero";
+import Review from "../components/Home/Review";
 
 import "../styles/reset.css";
 import "../styles/utils.scss";
@@ -14,6 +15,7 @@ export default function Home() {
                 <NavLink href="#footer">Sobre</NavLink>
             </Navbar>
             <Hero />
+            <Review />
         </>
     );
 }
