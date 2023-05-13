@@ -34,8 +34,17 @@ const handleSubmit = async (e) => {
         if (!response.ok) {
             throw new Error(data)
         }
+
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = 'Mensagem enviada com sucesso!';
+        errorDisplay.style.color = 'green';
+
     } catch (error) {
-        console.log(error)
+        // display error message
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = error.message;
+        errorDisplay.style.color = '#cc0000';
+
     }
 
 }
@@ -95,11 +104,12 @@ const DoubtsForm = () => {
                     />
                     <InputCheckbox
                         label="Concordo com os termos de uso e política de privacidade"
-                        name="termos"
+                        name="contact_agrees_with_terms"
                         required
                         onChange={handleInputChanges}
                     />
                     <ButtonSubmit text="Enviar mensagem" />
+                    <span className={style.error_display} id="error_display">Makonha</span>
                 </form>
             </section>
         </>

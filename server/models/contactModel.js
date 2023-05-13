@@ -51,7 +51,21 @@ const Contato = sequelize.define('contato', {
                 msg: 'Por favor, insira uma mensagem válida. De 8 a 512 caracteres.'
             },
         }
-    }
+    },
+    contact_agrees_with_terms: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            isIn: {
+                args: [['on']],
+                msg: 'Por favor, aceite os termos de uso e política de privacidade.'
+            },
+            notNull: {
+                args: true,
+                msg: 'Por favor, aceite os termos de uso e política de privacidade.'
+            },
+        }
+    },
 
 }, { sequelize });
 
