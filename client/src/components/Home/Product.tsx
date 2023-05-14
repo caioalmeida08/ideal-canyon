@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { FC, MouseEventHandler, useState } from "react";
+import { FC } from "react";
 import axios from "axios";
 import { useSwipeable } from "react-swipeable";
 
