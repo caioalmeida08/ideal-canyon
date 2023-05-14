@@ -29,6 +29,13 @@ type ScooterData = {
 const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
     const [modelShort, setModelShort]: [string, any] = useState(modelShortProp);
 
+    const handleSideImage = (e: any) => {
+        const src = e.target.getAttribute("src");
+        const mainImageElement = document.querySelector(`.${style.main_image}`);
+        mainImageElement?.setAttribute("src", src);
+        mainImageElement?.setAttribute("srcset", src);
+    };
+
     const handleSlider = useSwipeable({
         onSwipedLeft: () => {
             // Only run if slider is shown
@@ -214,6 +221,7 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
+                                    onMouseEnter={handleSideImage}
                                 />
                             );
                         })}
@@ -227,6 +235,7 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
+                                    onMouseEnter={handleSideImage}
                                 />
                             );
                         })}
