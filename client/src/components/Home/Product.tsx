@@ -154,6 +154,13 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
     });
 
     const handleOtherProducts = (e: any) => {
+        // Check if the event was not triggered by unwanted keypress
+        if (e.type == "keydown") {
+            if (e.key != "Enter" && e.key != " ") {
+                return;
+            }
+        }
+
         const model =
             e.target.dataset.model || e.target.parentElement.dataset.model;
 
@@ -222,6 +229,8 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
                                     onMouseEnter={handleSideImage}
+                                    onFocus={handleSideImage}
+                                    tabIndex={0}
                                 />
                             );
                         })}
@@ -236,6 +245,8 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
                                     onMouseEnter={handleSideImage}
+                                    onFocus={handleSideImage}
+                                    tabIndex={0}
                                 />
                             );
                         })}
@@ -344,7 +355,9 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                 <div
                     className={style.other_product}
                     onClick={handleOtherProducts}
+                    onKeyDown={handleOtherProducts}
                     data-model={scooterData.allModelsShort[0]}
+                    tabIndex={0}
                 >
                     <Image
                         width={500}
@@ -356,12 +369,17 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                     <h2 className="text-capitalize">
                         {scooterData.allModels[0]}
                     </h2>
-                    <button aria-label="Ver informações da Canyon Comfort Scooter"></button>
+                    <button
+                        tabIndex={-1}
+                        aria-label="Ver informações da Canyon Comfort Scooter"
+                    ></button>
                 </div>
                 <div
                     className={style.other_product}
                     onClick={handleOtherProducts}
+                    onKeyDown={handleOtherProducts}
                     data-model={scooterData.allModelsShort[1]}
+                    tabIndex={0}
                 >
                     <Image
                         width={500}
@@ -373,7 +391,10 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                     <h2 className="text-capitalize">
                         {scooterData.allModels[1]}
                     </h2>
-                    <button aria-label="Ver informações da Canyon Comfort Scooter"></button>
+                    <button
+                        tabIndex={-1}
+                        aria-label="Ver informações da Canyon Comfort Scooter"
+                    ></button>
                 </div>
             </section>
         </>
