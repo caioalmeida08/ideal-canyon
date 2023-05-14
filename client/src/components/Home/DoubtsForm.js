@@ -6,12 +6,6 @@ import {
     InputTextArea,
 } from "@/components/Utils/Inputs";
 
-import { useRouter } from 'next/router';
-
-const handleInputChanges = (e) => {
-    console.log(e)
-}
-
 const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -72,7 +66,6 @@ const DoubtsForm = () => {
                         required
                         pattern="[a-zA-Z\s]+"
                         title="O nome deve conter apenas letras maiúsculas e minúsculas"
-                        onChange={handleInputChanges}
                     />
                     <InputText
                         label="Assunto"
@@ -82,7 +75,6 @@ const DoubtsForm = () => {
                         required
                         pattern="[a-z0-9]{8, 64}"
                         title="O assunto deve conter entre 8 e 64 caracteres"
-                        onChange={handleInputChanges}
                     />
                     <InputTextArea
                         label="Mensagem"
@@ -90,9 +82,8 @@ const DoubtsForm = () => {
                         value=""
                         placeholder="Digite sua mensagem"
                         required
-                        pattern="[a-z0-9]{8, 512}"
+                        pattern="[a-z0-9]{64, 512}"
                         title="A mensagem deve conter entre 8 e 512 caracteres"
-                        onChange={handleInputChanges}
                     />
                     <InputText
                         label="Email para contato"
@@ -102,13 +93,11 @@ const DoubtsForm = () => {
                         required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
                         title="O email deve ser válido. Ex: email@plataforma.com"
-                        onChange={handleInputChanges}
                     />
                     <InputCheckbox
                         label="Concordo com os termos de uso e política de privacidade"
                         name="contact_agrees_with_terms"
                         required
-                        onChange={handleInputChanges}
                     />
                     <ButtonSubmit text="Enviar mensagem" />
                     <span className={style.error_display} id="error_display"></span>
