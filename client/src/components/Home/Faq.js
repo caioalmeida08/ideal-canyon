@@ -3,7 +3,7 @@ import style from "./Faq.module.scss";
 const Faq = () => {
     return (
         <>
-            <section className="side-bleed section-margin-top gap-h-32">
+            <section className="side-bleed section-margin-top gap-h-64">
                 <h2 className="text-h2 text-center text-main">
                     Dúvidas frequentes
                 </h2>
