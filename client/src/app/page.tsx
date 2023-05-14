@@ -23,7 +23,7 @@ export default function Home() {
             </Navbar>
             <Hero />
             <Review />
-            <Product modelShort="canyon-elite-scooter" />
+            <Product modelShortProp="canyon-elite-scooter" />
         </QueryClientProvider>
     );
 }

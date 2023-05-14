@@ -14,7 +14,7 @@ body:has(.modal[open]) {
     padding-inline: var(--spacing-64);
     padding-bottom: var(--spacing-64);
 
-    margin-inline: auto;
+    margin-inline: auto !important;
 
     > * p {
         margin-top: var(--spacing-8);

@@ -1,5 +1,3 @@
-import { useState, useEffect, use } from 'react';
-
 import { IconClose } from '../Utils/Icons';
 
 import style from "./ScooterDetails.module.scss"
@@ -7,7 +5,7 @@ import style from "./ScooterDetails.module.scss"
 const ScooterDetails = (data) => {
     return (
         <>
-            <dialog className={`${style.modal} gap-h-48`} id={data.scooter_short_model} >
+            <dialog className={`${style.modal} gap-h-48`} id={data.scooter_model_short} >
                 <>
                     <IconClose onClick={() => { document.querySelector(`dialog`).close() }} />
                     <div className='gap-h-48 text-center'>

@@ -39,12 +39,23 @@ const scooterController = {
 
             // gets every available color for this model os scooter
             let allColors = await sequelize.query(`SELECT DISTINCT scooter_color FROM Scooter WHERE scooter_model_short = '${req.query.modelShort}'`, { type: sequelize.QueryTypes.SELECT });
-            console.log(allColors)
             allColors = Object.values(allColors).map(color => color.scooter_color);
+
             response.allColors = allColors;
 
             // gets every available model-short of scooter
             let allModelsShort = await sequelize.query(`SELECT DISTINCT scooter_model_short FROM Scooter`, { type: sequelize.QueryTypes.SELECT });
+
+            // get index of the current model
+            let indexOfTheCurrentModel = allModelsShort.findIndex(model => model.scooter_model_short === req.query.modelShort);
+            console.log(allModelsShort, indexOfTheCurrentModel)
+
+            // return the previous model and the next model
+            previousModelShort = allModelsShort[indexOfTheCurrentModel - 1] || allModelsShort[allModelsShort.length - 1];
+            nextModelShort = allModelsShort[indexOfTheCurrentModel + 1] || allModelsShort[0];
+
+            // parse the two models to the response
+            allModelsShort = [previousModelShort, nextModelShort]
             allModelsShort = Object.values(allModelsShort).map(model => model.scooter_model_short);
             response.allModelsShort = allModelsShort;
 

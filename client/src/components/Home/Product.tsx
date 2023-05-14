@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { FC } from "react";
+import { FC, MouseEventHandler, useState } from "react";
 import axios from "axios";
 import { useSwipeable } from "react-swipeable";
 
@@ -10,7 +10,7 @@ import ScooterDetails from "./ScooterDetails";
 import style from "./Product.module.scss";
 
 type ProductProps = {
-    modelShort: string;
+    modelShortProp: string;
 };
 
 type ScooterData = {
@@ -26,7 +26,9 @@ type ScooterData = {
     imgs: string[];
 };
 
-const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
+const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
+    const [modelShort, setModelShort]: [string, any] = useState(modelShortProp);
+
     const handleSlider = useSwipeable({
         onSwipedLeft: () => {
             // Only run if slider is shown
@@ -53,7 +55,7 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
                 let nextSliderIndex = activeSliderIndex + 1;
 
                 // Check if next slider is within bounds and set it accordingly
-                if (nextSliderIndex > 5) {
+                if (nextSliderIndex > scooterData.imgs.length - 1) {
                     nextSliderIndex = 0;
                 }
 
@@ -111,7 +113,7 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
 
                 // Check if prev slider is within bounds and set it accordingly
                 if (prevSliderIndex < 0) {
-                    prevSliderIndex = 5;
+                    prevSliderIndex = scooterData.imgs.length - 1;
                 }
 
                 // Get prev slider element
@@ -144,8 +146,27 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
         },
     });
 
+    const handleOtherProducts = (e: any) => {
+        const model =
+            e.target.dataset.model || e.target.parentElement.dataset.model;
+
+        setModelShort(model);
+
+        // reset the slider children dataset
+        const sliderChildren = document.querySelectorAll(
+            `.${style.slider}`
+        ) as NodeListOf<HTMLElement>;
+
+        sliderChildren.forEach((child) => {
+            child.setAttribute("data-active", "false");
+        });
+
+        // Set the first slider to active
+        sliderChildren[0].setAttribute("data-active", "true");
+    };
+
     const { data, isLoading, isError, error } = useQuery({
-        queryKey: ["scooterDetails"],
+        queryKey: [modelShort],
         queryFn: async () => {
             const data = await axios.get(
                 `/api/scooter/details?modelShort=${modelShort}`
@@ -164,7 +185,6 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
     }
 
     let scooterData = data.data as ScooterData;
-    console.log(scooterData);
 
     return (
         <>
@@ -294,17 +314,29 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
                     <div
                         className={`${style.product_cta} max-width-500 max-width-desktop-unset`}
                     >
+                        <ScooterDetails {...scooterData} />
                         <ButtonPrimary href="/comprar" text="Comprar agora" />
                         <ButtonSecondary
-                            href="#modal-open"
+                            href="#product_details"
                             text="Mais detalhes"
-                            onClick={() => {}}
+                            onClick={(e: Event) => {
+                                e.preventDefault();
+                                const modal = document.querySelector(
+                                    `#${scooterData.scooter_model_short}`
+                                ) as HTMLDialogElement;
+
+                                modal?.showModal();
+                            }}
                         />
-                        {/* <ScooterDetails {...data} /> */}
+                        <ScooterDetails {...scooterData} />
                     </div>
                 </div>
 
-                <div className={style.other_product} onClick={() => {}}>
+                <div
+                    className={style.other_product}
+                    onClick={handleOtherProducts}
+                    data-model={scooterData.allModelsShort[0]}
+                >
                     <Image
                         width={500}
                         height={500}
@@ -317,16 +349,20 @@ const Product: FC<ProductProps> = ({ modelShort }: ProductProps) => {
                     </h2>
                     <button aria-label="Ver informações da Canyon Comfort Scooter"></button>
                 </div>
-                <div className={style.other_product} onClick={() => {}}>
+                <div
+                    className={style.other_product}
+                    onClick={handleOtherProducts}
+                    data-model={scooterData.allModelsShort[1]}
+                >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.allModelsShort[0]}1.png`}
+                        src={`/api/img/scooters/${scooterData.allModelsShort[1]}1.png`}
                         aria-hidden="true"
                         alt=""
                     />
                     <h2 className="text-capitalize">
-                        {scooterData.allModels[0]}
+                        {scooterData.allModels[1]}
                     </h2>
                     <button aria-label="Ver informações da Canyon Comfort Scooter"></button>
                 </div>
