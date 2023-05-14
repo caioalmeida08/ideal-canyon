@@ -8,6 +8,7 @@ import Hero from "../components/Home/Hero";
 import Review from "../components/Home/Review";
 import Benefits from "../components/Home/Benefits";
 import Product from "@/components/Home/Product";
+import MeetTheTeam from "../components/Home/MeetTheTeam";
 
 import "../styles/reset.css";
 import "../styles/utils.scss";
@@ -26,6 +27,7 @@ export default function Home() {
             <Review />
             <Benefits />
             <Product modelShortProp="canyon-elite-scooter" />
+            <MeetTheTeam />
         </QueryClientProvider>
     );
 }

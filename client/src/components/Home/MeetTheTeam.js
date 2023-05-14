@@ -1,4 +1,5 @@
 import { ButtonPrimary } from "@/components/Utils/Buttons";
+import Image from "next/image";
 
 import style from "./MeetTheTeam.module.scss"
 
@@ -7,15 +8,17 @@ const MeetTheTeam = () => {
         <section
             className={`${style.meet} section-dark section-margin-top grid-col-8-4`}
         >
-            <img
-                src={"api/img/meet_the_team_image.jpg"}
+            <Image
+                width={1080}
+                height={1080}
+                src={"/api/img/meet_the_team_image.jpg"}
                 alt="Pessoas da equipe Ideal Canyon com as mãos juntas ao centro da imagem"
             />
             <div className="gap-h-32">
                 <h2 className="text-light text-center text-desktop-left text-h2">
                     Conheça nossa história
                 </h2>
-                <p className="text-justify text-desktop-left text-light">
+                <p className="text-justify text-desktop-left text-light line-height-125">
                     Nossa equipe é composta por profissionais dedicados que
                     trabalham duro para oferecer a você os melhores produtos
                     e serviços possíveis. Cada membro da nossa equipe possui
