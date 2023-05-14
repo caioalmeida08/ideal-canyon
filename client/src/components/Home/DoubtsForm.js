@@ -70,7 +70,7 @@ const DoubtsForm = () => {
                         value=""
                         placeholder="Digite seu nome completo"
                         required
-                        pattern="[a-zA-Z]+"
+                        pattern="[a-zA-Z\s]+"
                         title="O nome deve conter apenas letras maiúsculas e minúsculas"
                         onChange={handleInputChanges}
                     />
