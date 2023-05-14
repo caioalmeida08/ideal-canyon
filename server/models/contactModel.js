@@ -47,8 +47,8 @@ const Contato = sequelize.define('contato', {
         allowNull: false,
         validate: {
             len: {
-                args: [8, 512],
-                msg: 'Por favor, insira uma mensagem válida. De 8 a 512 caracteres.'
+                args: [64, 512],
+                msg: 'Por favor, insira uma mensagem válida. De 64 a 512 caracteres.'
             },
         }
     },
