@@ -1,0 +1,40 @@
+.register {
+    margin-inline: var(--spacing-24);
+
+    form {
+        border-radius: var(--spacing-8);
+        border: 3px solid var(--col-dark);
+
+        padding: var(--spacing-48) var(--spacing-24);
+
+        max-width: 500px;
+        margin-inline: auto;
+
+        // Extra margin top for the first email field
+        > div:has(input[name="user_email"]) {
+            margin-top: var(--spacing-48);
+        }
+
+        // Extra margin top for the first password field
+        > div:has(input[name="user_password"]) {
+            margin-top: var(--spacing-48);
+        }
+
+        button {
+            margin-top: var(--spacing-32);
+            width: 100%;
+        }
+
+        #error_display {
+            display: none;
+        }
+    }
+}
+
+@media (width > 768px) {
+    .register {
+        form {
+            padding: var(--spacing-64);
+        }
+    }
+}

@@ -54,3 +54,20 @@
 .checkbox:checked {
     background-color: var(--col-main);
 }
+
+.field:has(.date) {
+    label {
+        box-sizing: border-box;
+
+        font-weight: 500;
+    }
+}
+
+.date {
+    border: rgb(127, 127, 127) 3px solid;
+    font-family: "Futura PT";
+    font-size: 0.9em;
+    color: rgb(127, 127, 127);
+    height: var(--spacing-32);
+    padding-inline: var(--spacing-8);
+}

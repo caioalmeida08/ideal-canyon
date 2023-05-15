@@ -18,6 +18,11 @@
     font-size: inherit;
     line-height: inherit;
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+        outline: 3px solid var(--col-dark);
+    }
 }
 
 .secondary {
