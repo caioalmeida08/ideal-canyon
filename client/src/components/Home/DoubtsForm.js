@@ -2,6 +2,7 @@ import style from './DoubtsForm.module.scss';
 import { ButtonSubmit } from "@/components/Utils/Buttons";
 import {
     InputCheckbox,
+    InputEmail,
     InputText,
     InputTextArea,
 } from "@/components/Utils/Inputs";
@@ -61,7 +62,6 @@ const DoubtsForm = () => {
                     <InputText
                         label="Nome completo"
                         name="contact_name"
-                        value=""
                         placeholder="Digite seu nome completo"
                         required
                         pattern="[a-zA-Z\s]+"
@@ -70,7 +70,6 @@ const DoubtsForm = () => {
                     <InputText
                         label="Assunto"
                         name="contact_subject"
-                        value=""
                         placeholder="Ex: Dúvida sobre o método de envio"
                         required
                         pattern="[a-z0-9]{8, 64}"
@@ -79,16 +78,14 @@ const DoubtsForm = () => {
                     <InputTextArea
                         label="Mensagem"
                         name="contact_message"
-                        value=""
                         placeholder="Digite sua mensagem"
                         required
                         pattern="[a-z0-9]{64, 512}"
                         title="A mensagem deve conter entre 8 e 512 caracteres"
                     />
-                    <InputText
-                        label="Email para contato"
+                    <InputEmail
+                        label="E-mail para contato"
                         name="contact_email"
-                        value=""
                         placeholder="Ex: nomedeusuario@emai.com"
                         required
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
