@@ -9,7 +9,6 @@ const InputText = ({ label, name, placeholder, width = "max", ...rest }) => {
                 type="text"
                 id={`input_${name}`}
                 name={name}
-                defaultValue={value}
                 placeholder={placeholder}
                 {...rest}
             />
@@ -26,7 +25,6 @@ const InputTextArea = ({ label, name, placeholder, width = "max", ...rest }) => 
                 type="text"
                 id={`input_${name}`}
                 name={name}
-                defaultValue={value}
                 placeholder={placeholder}
                 rows="5"
                 {...rest}
