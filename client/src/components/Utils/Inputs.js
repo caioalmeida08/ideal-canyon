@@ -1,6 +1,6 @@
 import style from "./Inputs.module.scss"
 
-const InputText = ({ label, name, value, placeholder, width = "max", ...rest }) => {
+const InputText = ({ label, name, placeholder, width = "max", ...rest }) => {
     return (
         <div className={style.field} data-width={width}>
             <label className="text-demi" htmlFor={`input_${name}`}>{label}</label>
@@ -17,7 +17,7 @@ const InputText = ({ label, name, value, placeholder, width = "max", ...rest }) 
     )
 }
 
-const InputTextArea = ({ label, name, value, placeholder, width = "max", ...rest }) => {
+const InputTextArea = ({ label, name, placeholder, width = "max", ...rest }) => {
     return (
         <div className={style.field} data-width={width}>
             <label className="text-demi" htmlFor={`input_${name}`}>{label}</label>
