@@ -142,12 +142,7 @@
             height: var(--spacing-32);
 
             margin-top: var(--spacing-8);
-        }
-    }
 
-    &:first-of-type {
-        button {
-            transform: rotateZ(180deg);
         }
     }
 }

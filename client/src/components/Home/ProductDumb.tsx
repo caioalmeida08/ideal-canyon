@@ -25,6 +25,11 @@ type ProductProps = {
     handleOtherProducts: (e: any) => void;
 };
 
+enum Direction {
+    NEXT,
+    PREV
+}
+
 const ProductDumb = (props: ProductProps) => {
     const { scooterData, handleSideImage, handleSlider, handleOtherProducts } =
         { ...props };
@@ -200,9 +205,9 @@ const ProductDumb = (props: ProductProps) => {
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label="Ver informações da Canyon Comfort Scooter"
+                        aria-label={`Ver informações da ${scooterData.allModels[0]} Scooter`}
                     >
-                        <IconNextPrev />
+                    <IconNextPrev dir={Direction.NEXT}/>
                     </button>
                 </div>
                 <div
@@ -224,7 +229,7 @@ const ProductDumb = (props: ProductProps) => {
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label="Ver informações da Canyon Comfort Scooter"
+                        aria-label={`Ver informações da ${scooterData.allModels[1]} Scooter`}
                     >
                         <IconNextPrev />
                     </button>

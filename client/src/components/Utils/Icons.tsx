@@ -1,4 +1,4 @@
-import { FC, FunctionComponent } from "react";
+import { FunctionComponent } from "react";
 
 const IconHeart = () => {
     return (
@@ -34,6 +34,7 @@ enum Direction {
     NEXT,
     PREV
 }
+
 interface IconNextPrevProps {
     dir?: Direction;
 }
