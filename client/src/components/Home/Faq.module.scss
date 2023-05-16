@@ -7,16 +7,19 @@
     margin-top: var(--spacing-48);
     margin-left: var(--spacing-16);
 
+    // main doubts (static)
     ul:first-of-type {
         list-style-type: disc;
         grid-column: span 7;
     }
 
+    // right side doubts (dynamic dropdown)
     ul:last-of-type {
         grid-column: 9 / span 4;
 
         li {
             position: relative;
+            cursor: pointer;
 
             p {
                 height: 0;
