@@ -24,4 +24,12 @@ const IconClose = ({ onClick }) => {
     );
 };
 
-export { IconHeart, IconStar, IconClose };
+const IconNextPrev = () => {
+    return (
+        <svg width="48" height="49" viewBox="0 0 48 49" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="24" r="24" transform="matrix(-1 0 0 1 48 0)" fill="black" />
+            <path d="M26 36.4941L24.308 34.8018L33.404 25.6921H9.2V23.2917H33.404L24.308 14.1821L26 12.4897L38 24.4919L26 36.4941Z" fill="white" />
+        </svg>
+    )
+}
+export { IconHeart, IconStar, IconClose, IconNextPrev };

@@ -3,6 +3,7 @@ import { ButtonPrimary, ButtonSecondary } from "../Utils/Buttons";
 import ScooterDetails from "./ScooterDetails";
 
 import style from "./Product.module.scss";
+import { IconNextPrev } from "../Utils/Icons";
 
 type ScooterData = {
     scooter_model: string;
@@ -200,7 +201,9 @@ const ProductDumb = (props: ProductProps) => {
                     <button
                         tabIndex={-1}
                         aria-label="Ver informações da Canyon Comfort Scooter"
-                    ></button>
+                    >
+                        <IconNextPrev />
+                    </button>
                 </div>
                 <div
                     className={style.other_product}
@@ -222,7 +225,9 @@ const ProductDumb = (props: ProductProps) => {
                     <button
                         tabIndex={-1}
                         aria-label="Ver informações da Canyon Comfort Scooter"
-                    ></button>
+                    >
+                        <IconNextPrev />
+                    </button>
                 </div>
             </section>
         </>
