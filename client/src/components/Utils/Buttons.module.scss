@@ -21,7 +21,7 @@
 
     &:hover,
     &:focus {
-        outline: 3px solid var(--col-dark);
+        mix-blend-mode: difference;
     }
 }
 
@@ -44,4 +44,9 @@
     font-size: inherit;
     line-height: inherit;
     cursor: pointer;
+
+    &:hover,
+    &:focus {
+        mix-blend-mode: difference;
+    }
 }
