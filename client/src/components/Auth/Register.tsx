@@ -15,7 +15,7 @@ const Register: FunctionComponent<RegisterProps> = () => {
     return (
         <>
             <section
-                className={`${style.register} gap-h-32 section-margin-top`}
+                className={`${style.register} gap-h-32`}
             >
                 <h1 className="text-center text-main text-h2">Cadastrar</h1>
                 <form className="gap-h-24">
