@@ -2,7 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import Layout from "@/components/Layout/Layout";
+import Layout from "../components/Layout/Layout";
 import Navbar from "../components/Navbar/Navbar";
 import NavLink from "../components/Navbar/NavLink";
 import Hero from "../components/Home/Hero";
