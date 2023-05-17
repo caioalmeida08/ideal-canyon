@@ -14,27 +14,51 @@ const User = sequelize.define("user", {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [3, 32],
-            isAlpha: true,
-            notEmpty: true,
+            len: {
+                args: [3, 32],
+                msg: "O apelido do usuário deve ter entre 3 e 32 caracteres."
+            },
+            isAlpha: {
+                args: true,
+                msg: "O apelido do usuário deve conter apenas letras."
+            },
         }
     },
     user_full_name: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [3, 64],
-            notEmpty: true,
+            len: {
+                args: [3, 64],
+                msg: "O nome completo do usuário deve ter entre 3 e 64 caracteres."
+            },
+            notEmpty: {
+                args: true,
+                msg: "O nome completo do usuário não pode ser vazio."
+            },
         }
     },
     user_date_of_birth: {
         type: DataTypes.DATE,
         allowNull: false,
         validate: {
-            isDate: true,
-            isAfter: '1900-01-01',
-            isBefore: '2005-01-01',
-            notEmpty: true,
+            isDate: {
+                args: true,
+                msg: "A data de nascimento do usuário deve ser uma data válida."
+            },
+            isAfter: {
+                args: '1900-01-01',
+                msg: "A data de nascimento do usuário deve ser posterior a 01/01/1900."
+            },
+            isBefore: {
+                // Before 18 years 
+                args: new Date(new Date().setFullYear(new Date().getFullYear() - 18)).toISOString().split('T')[0],
+                msg: "A data de nascimento do usuário deve ser anterior a data atual. O usuário deve ter no mínimo 18 anos."
+            },
+            notEmpty: {
+                args: true,
+                msg: "A data de nascimento do usuário não pode ser vazia."
+            },
         }
     },
     user_cpf: {
@@ -42,9 +66,18 @@ const User = sequelize.define("user", {
         allowNull: false,
         unique: true,
         validate: {
-            isNumeric: true,
-            len: [11, 11],
-            notEmpty: true,
+            isNumeric: {
+                args: true,
+                msg: "O CPF do usuário deve conter apenas números."
+            },
+            len: {
+                args: [11, 11],
+                msg: "O CPF do usuário deve conter 11 dígitos."
+            },
+            notEmpty: {
+                args: true,
+                msg: "O CPF do usuário não pode ser vazio."
+            },
         }
     },
     user_email: {
@@ -52,17 +85,32 @@ const User = sequelize.define("user", {
         allowNull: false,
         unique: true,
         validate: {
-            isEmail: true,
-            len: [5, 64],
-            notEmpty: true,
+            isEmail: {
+                args: true,
+                msg: "O email do usuário deve ser um email válido."
+            },
+            len: {
+                args: [5, 64],
+                msg: "O email do usuário deve ter entre 5 e 64 caracteres."
+            },
+            notEmpty: {
+                args: true,
+                msg: "O email do usuário não pode ser vazio."
+            },
         },
     },
     user_password: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-            len: [8, 32],
-            notEmpty: true,
+            len: {
+                args: [8, 100],
+                msg: "A senha do usuário deve ter entre 8 e 100 caracteres."
+            },
+            notEmpty: {
+                args: true,
+                msg: "A senha do usuário não pode ser vazia."
+            },
         }
     },
     user_phone1: {
@@ -70,9 +118,18 @@ const User = sequelize.define("user", {
         allowNull: false,
         unique: true,
         validate: {
-            isNumeric: true,
-            len: [10, 11],
-            notEmpty: true,
+            isNumeric: {
+                args: true,
+                msg: "O telefone do usuário deve conter apenas números."
+            },
+            len: {
+                args: [10, 11],
+                msg: "O telefone do usuário deve conter entre 10 e 11 dígitos."
+            },
+            notEmpty: {
+                args: true,
+                msg: "O telefone do usuário não pode ser vazio."
+            },
         }
     },
     user_phone2: {
@@ -80,9 +137,18 @@ const User = sequelize.define("user", {
         allowNull: true,
         unique: true,
         validate: {
-            isNumeric: true,
-            len: [10, 11],
-            notEmpty: true,
+            isNumeric: {
+                args: true,
+                msg: "O telefone do usuário deve conter apenas números."
+            },
+            len: {
+                args: [10, 11],
+                msg: "O telefone do usuário deve conter entre 10 e 11 dígitos."
+            },
+            notEmpty: {
+                args: true,
+                msg: "O telefone do usuário não pode ser vazio."
+            },
         }
     },
 }, { sequelize });
