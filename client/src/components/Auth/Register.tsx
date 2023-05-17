@@ -1,3 +1,5 @@
+"use client"
+
 import { FunctionComponent } from "react";
 import {
     InputText,
@@ -8,8 +10,65 @@ import {
 
 import style from "./Register.module.scss";
 import { ButtonSubmit } from "../Utils/Buttons";
+import { error } from "console";
 
 interface RegisterProps {}
+
+const handleSubmit = async (e: any) => {
+    event.preventDefault();
+
+    // turn form data into json
+    const formData = new FormData(e.target);
+    const formDataObj = Object.fromEntries(formData.entries());
+
+    // check if passwords match
+    if (formDataObj.user_password !== formDataObj.user_password_confirm) {
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = 'As senhas não coincidem.';
+        errorDisplay.style.color = '#cc0000';
+        errorDisplay.style.display = "block"
+        return;
+    }
+
+    // check if emails match
+    if (formDataObj.user_email !== formDataObj.user_email_confirm) {
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = 'Os e-mails não coincidem.';
+        errorDisplay.style.color = '#cc0000';
+        errorDisplay.style.display = "block"
+        return;
+    }
+
+    // send form data to server
+    try {
+        const response = await fetch('/api/cadastrar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formDataObj),
+        })
+        const data = await response.json()
+
+        // throw error if response is not ok
+        if (!response.ok) {
+            throw new Error(data)
+        }
+
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = 'Cadastrado com sucesso! Você será redirecionado para a página de login.';
+        errorDisplay.style.color = 'green';
+        errorDisplay.style.display = "block"
+
+    } catch (error) {
+        // display error message
+        const errorDisplay = document.getElementById('error_display');
+        errorDisplay.innerHTML = error.message;
+        errorDisplay.style.color = '#cc0000';
+        errorDisplay.style.display = "block"
+
+    }
+}
 
 const Register: FunctionComponent<RegisterProps> = () => {
     return (
@@ -18,7 +77,7 @@ const Register: FunctionComponent<RegisterProps> = () => {
                 className={`${style.register} gap-h-32`}
             >
                 <h1 className="text-center text-main text-h2">Cadastrar</h1>
-                <form className="gap-h-24">
+                <form className="gap-h-24" onSubmit={handleSubmit}>
                     <InputText
                         label="Nome completo"
                         name="user_full_name"

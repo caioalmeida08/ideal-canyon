@@ -17,7 +17,7 @@ try {
 
 (async () => {
     await sequelize.sync({
-        // alter: true
+        alter: true
     });
 })();
 

@@ -8,7 +8,7 @@ import NavLink from "../components/Navbar/NavLink";
 import Hero from "../components/Home/Hero";
 import Review from "../components/Home/Review";
 import Benefits from "../components/Home/Benefits";
-import Product from "@/components/Home/Product";
+import Product from "../components/Home/Product";
 import MeetTheTeam from "../components/Home/MeetTheTeam";
 import FAQ from "../components/Home/Faq";
 import DoubtsForm from "../components/Home/DoubtsForm";

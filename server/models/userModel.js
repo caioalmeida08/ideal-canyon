@@ -12,7 +12,7 @@ const User = sequelize.define("user", {
     },
     user_nickname: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         validate: {
             len: {
                 args: [3, 32],
@@ -63,7 +63,7 @@ const User = sequelize.define("user", {
     },
     user_cpf: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         validate: {
             isNumeric: {
@@ -115,7 +115,7 @@ const User = sequelize.define("user", {
     },
     user_phone1: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: true,
         validate: {
             isNumeric: {

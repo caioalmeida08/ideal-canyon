@@ -2,24 +2,12 @@ const userModel = require('../models/userModel.js');
 const addressModel = require('../models/addressModel.js');
 
 const registerController = {
-    index(req, res) {
-        let data = {
-            title: 'Ideal Canyon',
-            styles: ['navbar_dark', 'register'],
-            navItems: [
-                { title: 'Modelos', url: '/' },
-                { title: 'Contatos', url: '/' },
-                { title: 'Sobre nós', url: '/sobre' }]
-        }
-
-        res.render('register.ejs', data);
-    },
-
     async create(req, res) {
         try {
             const response = await userModel.create(req.body)
             res.status(201).send(response)
         } catch (error) {
+            console.log(error)
             res.status(400).send(error.message)
         }
     },
