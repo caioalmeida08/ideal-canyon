@@ -1,0 +1,73 @@
+.field {
+    width: fit-content;
+
+    display: grid;
+    row-gap: var(--spacing-8);
+
+    * {
+        box-sizing: border-box;
+        &::placeholder {
+            font-family: "Futura PT", sans-serif;
+            font-size: 1.2em;
+        }
+    }
+}
+
+.field[data-width="max"] {
+    width: 100% !important;
+}
+
+// Input-text
+.text {
+    height: var(--spacing-32);
+    width: 100%;
+
+    background-color: transparent;
+
+    border: none;
+    border-bottom: 3px solid rgba(127, 127, 127);
+}
+
+.text_area {
+    width: 100%;
+
+    background-color: transparent;
+
+    border: 3px solid rgba(127, 127, 127);
+}
+
+.field:has(.checkbox) div {
+    display: flex;
+    align-items: center;
+    column-gap: var(--spacing-8);
+}
+
+.checkbox {
+    aspect-ratio: 1;
+    height: var(--spacing-16);
+    border: 3px solid var(--col-main);
+    margin: 0;
+    margin-top: 0.4em;
+    appearance: none;
+}
+
+.checkbox:checked {
+    background-color: var(--col-main);
+}
+
+.field:has(.date) {
+    label {
+        box-sizing: border-box;
+
+        font-weight: 500;
+    }
+}
+
+.date {
+    border: rgb(127, 127, 127) 3px solid;
+    font-family: "Futura PT";
+    font-size: 0.9em;
+    color: rgb(127, 127, 127);
+    height: var(--spacing-32);
+    padding-inline: var(--spacing-8);
+}

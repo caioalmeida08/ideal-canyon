@@ -1,0 +1,41 @@
+body:has(.modal[open]) {
+    height: 100vh;
+    overflow-y: hidden;
+    padding-right: 17px;
+}
+
+.modal {
+    max-width: 500px;
+
+    box-sizing: border-box;
+    border: 3px solid var(--col-main);
+    outline: var(--col-main);
+
+    padding-inline: var(--spacing-64);
+    padding-bottom: var(--spacing-64);
+
+    margin-inline: auto !important;
+
+    > * p {
+        margin-top: var(--spacing-8);
+    }
+
+    svg {
+        position: absolute;
+        top: var(--spacing-32);
+        right: var(--spacing-24);
+
+        aspect-ratio: 1;
+        width: var(--spacing-16);
+
+        cursor: pointer;
+
+        rect {
+            fill: rgb(127, 127, 127);
+        }
+    }
+
+    > div > :last-child p {
+        text-align: justify;
+    }
+}

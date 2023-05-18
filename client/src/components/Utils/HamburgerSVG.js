@@ -1,0 +1,12 @@
+const HamburgerSVG = () => {
+    return (
+        <svg width="32" height="28" viewBox="0 0 32 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="4" rx="2" fill="black" />
+            <rect y="12" width="32" height="4" rx="2" fill="black" />
+            <rect y="24" width="32" height="4" rx="2" fill="black" />
+        </svg>
+
+    );
+};
+
+export default HamburgerSVG;

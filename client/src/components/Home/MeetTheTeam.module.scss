@@ -1,0 +1,10 @@
+// Meet the team
+.meet a {
+    margin-inline: auto;
+}
+
+@media (width>=1024px) {
+    .meet a {
+        margin-inline: unset;
+    }
+}
