@@ -6,3 +6,6 @@ yarn-error.log
 # Arquivos e pastas gerados pelo Visual Studio Code
 .vscode/
 *.code-workspace
+
+# Arquivos gerados pelo TypeScript
+server/build/
