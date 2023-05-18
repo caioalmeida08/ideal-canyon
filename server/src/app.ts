@@ -5,19 +5,19 @@ import { Router, Request, Response } from 'express';
 // Network data
 import ipAddresses from './lib/networkinterfaces';
 
+// Import routers
+import { router as scooterRouter } from './routers/scooterRouter';
+
 // Server port
 const PORT = 5000;
 
 // Express app
 const app = express();
-const route = Router()
 
-app.use(express.json())
-route.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'hello world with Typescript' })
-})
+// Routers
+app.use('/scooter', scooterRouter);
 
-app.use(route)
+// List IP addresses
 app.listen(PORT, () => {
     console.clear();
     ipAddresses.forEach((ip) => {
