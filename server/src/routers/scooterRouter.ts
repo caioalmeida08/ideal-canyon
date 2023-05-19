@@ -2,17 +2,35 @@ import { Request, Response, Router } from "express";
 import {scooterController} from "../controllers/scooterController";
 
 const scooterRouter = Router();
+/**
+ * GET /scooter/
+ * Returns all scooters
+ */
+scooterRouter.get('/', scooterController.findAll);
 
-// router.get('/', scooterController.findAll);
-// router.get('/details', scooterController.findDetails);
-// router.post('/', scooterController.create);
-// router.put('/', scooterController.update);
-// router.delete('/', scooterController.delete);
+/** 
+ * GET /scooter/details
+ * Returns details for the scooter_model_short given in the request query
+ */
+scooterRouter.get('/details', scooterController.findDetails);
 
-// GET /scooter/details
-// Returns the details for the scooter_model_short in the request query
-// Example: http://localhost:5000/scooter/details?scooter_model_short=canyon-elite-scooter
-scooterRouter.post('/details', scooterController.findDetails);
+/**
+ * POST /scooter/
+ * Creates a scooter
+ */
+scooterRouter.post('/', scooterController.create);
+
+/** 
+ * PUT /scooter/
+ * Updates a scooter
+ */
+scooterRouter.put('/', scooterController.update);
+
+/**
+ * DELETE /scooter/
+ * Deletes a scooter
+ */
+// scooterRouter.delete('/', scooterController.delete);
 
 export default scooterRouter;
 

@@ -185,7 +185,7 @@ Scooter.init({
         }
     },
     scooter_dim_h: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -194,13 +194,13 @@ Scooter.init({
             notNull: {
                 msg: "Altura da scooter (m) não pode ser nula."
             },
-            isInt: {
-                msg: "Altura da scooter (m) deve ser um número inteiro."
+            isFloat: {
+                msg: "Altura da scooter (m) deve ser um número real. Ex: 1.5"
             },
         }
     },
     scooter_dim_w: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -209,13 +209,13 @@ Scooter.init({
             notNull: {
                 msg: "Largura da scooter (m) não pode ser nula."
             },
-            isInt: {
-                msg: "Largura da scooter (m) deve ser um número inteiro."
+            isFloat: {
+                msg: "Largura da scooter (m) deve ser um número real. Ex: 1.5"
             },
         }
     },
     scooter_dim_l: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -224,8 +224,8 @@ Scooter.init({
             notNull: {
                 msg: "Comprimento da scooter (m) não pode ser nulo."
             },
-            isInt: {
-                msg: "Comprimento da scooter (m) deve ser um número inteiro."
+            isFloat: {
+                msg: "Comprimento da scooter (m) deve ser um número real. Ex: 1.5"
             },
         }
     },
@@ -280,13 +280,21 @@ Scooter.init({
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "Tempo de carregamento (h) da scooter não pode ser vazio."
+                msg: "Tempo de carregamento (min) da scooter não pode ser vazio."
             },
             notNull: {
-                msg: "Tempo de carregamento (h) da scooter não pode ser nulo."
+                msg: "Tempo de carregamento (min) da scooter não pode ser nulo."
             },
             isInt: {
-                msg: "Tempo de carregamento (h) da scooter deve ser um número inteiro."
+                msg: "Tempo de carregamento (min) da scooter deve ser um número inteiro."
+            },
+            min: {
+                args: [1],
+                msg: "Tempo de carregamento (min) da scooter deve ser maior ou igual a 1."
+            },
+            max: {
+                args: [1440],
+                msg: "Tempo de carregamento (min) da scooter deve ser menor ou igual a 1440."
             },
         }
     },
@@ -306,7 +314,7 @@ Scooter.init({
         }
     },
     scooter_charging_voltage: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -315,8 +323,9 @@ Scooter.init({
             notNull: {
                 msg: "Tensão de carregamento (V) da scooter não pode ser nula."
             },
-            isInt: {
-                msg: "Tensão de carregamento (V) da scooter deve ser um número inteiro."
+            isIn: {
+                args: [["110", "220", "110/220"]],
+                msg: "Tensão de carregamento (V) da scooter deve ser 110 ou 220. Para ambos, use 110/220."
             },
         }
     },
@@ -377,6 +386,7 @@ Scooter.init({
     },
     scooter_is_active: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -389,6 +399,7 @@ Scooter.init({
     },
     scooter_is_sold: {
         type: DataTypes.BOOLEAN,
+        defaultValue: false,
         allowNull: false,
         validate: {
             notEmpty: {
