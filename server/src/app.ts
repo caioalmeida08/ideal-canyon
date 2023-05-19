@@ -1,27 +1,20 @@
-// Express imports
-import express from 'express'
-import { Router, Request, Response } from 'express';
+import express from "express";
+import scooterRouter from "./routers/scooterRouter";
 
-// Network data
-import ipAddresses from './lib/networkinterfaces';
+export class App{
+  public server: express.Application;
 
-// Import routers
-import { router as scooterRouter } from './routers/scooterRouter';
+  constructor(){
+    this.server = express();
+    this.middleware();
+    this.scooterRouter();
+  }
 
-// Server port
-const PORT = 5000;
+  private middleware(){
+    this.server.use(express.json());
+  }
 
-// Express app
-const app = express();
-
-// Routers
-app.use('/scooter', scooterRouter);
-
-// List IP addresses
-app.listen(PORT, () => {
-    // console.clear();
-    ipAddresses.forEach((ip) => {
-        console.log(`Servidor rodando em: http://${ip}:${PORT}`);
-    }
-    )
-})
+  private scooterRouter(){
+    this.server.use("/scooter", scooterRouter);
+  }
+}

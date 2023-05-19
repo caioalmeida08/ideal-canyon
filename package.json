@@ -12,7 +12,7 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "dev": "nodemon ./server/src/app.ts",
+    "dev": "nodemon ./server/src/index.ts",
     "build": "tsc"
   }
 }

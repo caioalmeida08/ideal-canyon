@@ -1,7 +1,7 @@
 import { Request, Response, Router } from "express";
-import { controller as scooterRouter } from "../controllers/scooterRouter";
+import {scooterController} from "../controllers/scooterController";
 
-const router = Router();
+const scooterRouter = Router();
 
 // router.get('/', scooterController.findAll);
 // router.get('/details', scooterController.findDetails);
@@ -12,8 +12,7 @@ const router = Router();
 // GET /scooter/details
 // Returns the details for the scooter_model_short in the request query
 // Example: http://localhost:5000/scooter/details?scooter_model_short=canyon-elite-scooter
-router.get('/details', (req: Request, res: Response) => {
-    res.send(scooterRouter.findDetails(req, res));
-})
+scooterRouter.post('/details', scooterController.findDetails);
 
-export { router };
+export default scooterRouter;
+
