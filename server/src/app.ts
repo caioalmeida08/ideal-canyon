@@ -19,7 +19,7 @@ app.use('/scooter', scooterRouter);
 
 // List IP addresses
 app.listen(PORT, () => {
-    console.clear();
+    // console.clear();
     ipAddresses.forEach((ip) => {
         console.log(`Servidor rodando em: http://${ip}:${PORT}`);
     }
