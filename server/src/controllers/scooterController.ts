@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 
 import Scooter from '../models/scooterModel';
 import sequelize from "../database/db";
-import { Model, QueryTypes } from "sequelize";
+import { QueryTypes } from "sequelize";
 
 type ReturnScooterDetails = {
     scooter_model_short?: string,
