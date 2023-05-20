@@ -394,7 +394,11 @@ Scooter.init({
             },
             notNull: {
                 msg: "Ativação da scooter (true/false) não pode ser nula."
-            }
+            },
+            isIn: {
+                args: [[true, false]],
+                msg: "Ativação da scooter (true/false) deve ser true ou false."
+            },
         }
     },
     scooter_is_sold: {
@@ -407,6 +411,10 @@ Scooter.init({
             },
             notNull: {
                 msg: "Venda da scooter (true/false) não pode ser nula."
+            },
+            isIn: {
+                args: [[true, false]],
+                msg: "Venda da scooter (true/false) deve ser true ou false."
             },
         }
     }

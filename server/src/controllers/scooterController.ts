@@ -54,7 +54,7 @@ class ScooterController {
      * Returns all scooters
      * Requires admin privileges
      */
-    public async findAll(req: Request, res: Response) {
+    async findAll(req: Request, res: Response) {
         try {
             const allScooters = await Scooter.findAll();
             res.status(200).json(allScooters);
@@ -66,7 +66,7 @@ class ScooterController {
     /**
      * Returns details for the scooter_model_short given in the request params
      */
-    public async findDetails(req: Request, res: Response) {
+    async findDetails(req: Request, res: Response) {
         try {
             // get useful attributes for the scooter_model_short given in the request params
             let scooterDetails: ReturnScooterDetails = await Scooter.findAll({
@@ -131,13 +131,13 @@ class ScooterController {
      * Returns all scooters that are active and not sold
      * Requires admin privileges
      */
-    public async create(req: Request, res: Response) {
+    async create(req: Request, res: Response) {
         try {
             await Scooter.create(req.body);
             res.status(200).json({message: "Scooter created"});
         } catch (error: any) {
             const errorMessages = error.errors.map(
-                (err: any) => ({message: `${err.message} Valor enviado: ${err.value}.`})
+                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
             );
             res.status(400).json({message: errorMessages});
         }
@@ -147,7 +147,7 @@ class ScooterController {
      * Updates the scooter with the scooter_id given in the request params
      * Requires admin privileges
     */
-    update(req: Request, res: Response) {
+    async update(req: Request, res: Response) {
         try {
             // check if the scooter_id given in the request params exists
             const scooter = Scooter.findOne({
@@ -177,16 +177,21 @@ class ScooterController {
             });
 
             // update the scooter with the scooter_id given in the request params
-            Scooter.update(updateScooter, {
+            await Scooter.update(updateScooter, {
                 where: {
                     scooter_id: req.params.scooter_id
                 },
                 limit: 1,
+                validate: true
             });
 
             res.status(200).json({message: "Scooter updated"});
-        } catch (error) {
-            res.status(400).json({message: error});
+        } catch (error: any) {
+            // always returns an array of errors
+            const errorMessages = error.errors.map(
+                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
+            );
+            res.status(400).json({message: errorMessages});
         }
             
     }
@@ -195,7 +200,7 @@ class ScooterController {
      * Deletes the scooter with the scooter_id given in the request params
      * Requires admin privileges
      */
-    public async delete(req: Request, res: Response) {
+    async delete(req: Request, res: Response) {
         try {
             // check if the scooter_id given in the request params exists
             const scooter = Scooter.findOne({
@@ -218,8 +223,12 @@ class ScooterController {
             });
 
             res.status(200).json({message: "Scooter deleted"});
-        } catch (error) {
-            res.status(400).json({message: error});
+        } catch (error: any) {
+            // always returns a single error message as an array
+            const errorMessages = error.errors.map(
+                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
+            );
+            res.status(400).json({message: errorMessages});
         }
     }
 }
