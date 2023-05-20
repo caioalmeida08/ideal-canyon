@@ -4,27 +4,27 @@ import Scooter from '../models/scooterModel';
 import sequelize from "../database/db";
 import { QueryTypes } from "sequelize";
 
-interface returnScooterDetails {
-    scooter_model_short: string,
-    scooter_model: string,
-    scooter_year: number,
-    scooter_max_speed: number,
-    scooter_max_load: number,
-    scooter_weight: number,
-    scooter_dim_h: number,
-    scooter_dim_w: number,
-    scooter_dim_l: number,
-    scooter_battery_type: string,
-    scooter_battery_capacity: number,
-    scooter_battery_range: number,
-    scooter_charging_time: number,
-    scooter_charging_power: number,
-    scooter_charging_voltage: string,
-    scooter_charging_output: number,
-    scooter_description: string,
-    scooter_price: number,
-    scooter_all_colors: string[] | null,
-    scooter_other_models: [string, string] | null
+type returnScooterDetails = {
+    scooter_model_short?: string,
+    scooter_model?: string,
+    scooter_year?: number,
+    scooter_max_speed?: number,
+    scooter_max_load?: number,
+    scooter_weight?: number,
+    scooter_dim_h?: number,
+    scooter_dim_w?: number,
+    scooter_dim_l?: number,
+    scooter_battery_type?: string,
+    scooter_battery_capacity?: number,
+    scooter_battery_range?: number,
+    scooter_charging_time?: number,
+    scooter_charging_power?: number,
+    scooter_charging_voltage?: string,
+    scooter_charging_output?: number,
+    scooter_description?: string,
+    scooter_price?: number,
+    scooter_all_colors?: string[] | null,
+    scooter_other_models?: [string, string] | null
 }
 
 class ScooterController {
@@ -46,7 +46,7 @@ class ScooterController {
     public async findDetails(req: Request, res: Response) {
         try {
             // get useful attributes for the scooter_model_short given in the request params
-            let scooterDetails = await Scooter.findAll({
+            let scooterDetails: returnScooterDetails = await Scooter.findAll({
                 attributes: { exclude: ['scooter_id', 'scooter_is_active', 'scooter_is_sold', 'createdAt', 'updatedAt'] },
                 where: {
                     scooter_model_short: req.params.scooter_model_short as string,
@@ -54,13 +54,14 @@ class ScooterController {
                     scooter_is_sold: false,  
                 },
                 limit: 1
-            }) as any;
+            }) as unknown as returnScooterDetails;
 
             // if no scooter was found, throw an error
-            if (scooterDetails.length === 0) throw new Error(`Nenhuma scooter do modelo especificado foi encontrada. Modelo especificado: ${req.params.scooter_model_short}`).message;
+            // if nothing is found, scooterDetail is an empty array
+            if ((scooterDetails as returnScooterDetails[]).length === 0) throw new Error(`Nenhuma scooter do modelo especificado foi encontrada. Modelo especificado: ${req.params.scooter_model_short}`).message;
 
-            // cast the scooterDetails object to the returnScooterDetails interface
-            scooterDetails = scooterDetails[0] as returnScooterDetails;
+            // convert the scooterDetails object array to a single object
+            scooterDetails = (scooterDetails as returnScooterDetails[])[0] as returnScooterDetails;
 
             // get all available colors for the scooter_model_short given in the request query
             let scooterAllColors = await sequelize.query(
@@ -75,7 +76,7 @@ class ScooterController {
             scooterAllColors.sort();
 
             // append the colors to the scooterDetails object
-            scooterDetails.dataValues.scooter_all_colors = scooterAllColors;
+            scooterDetails.scooter_all_colors = scooterAllColors as string[];
 
             // get the previous and the next scooter_model_short from
             // first get all scooter_model_shorts that are active and not sold
@@ -95,7 +96,7 @@ class ScooterController {
             const nextScooter = previousAndNextScooter[currentScooterIndex + 1] || previousAndNextScooter[0];
 
             // append the previous and the next scooter_model_short to the scooterDetails object
-            scooterDetails.dataValues.scooter_other_models = [previousScooter, nextScooter];
+            scooterDetails.scooter_other_models = [previousScooter as string, nextScooter as string];
 
             res.status(200).json(scooterDetails);
         } catch (error) {
