@@ -9,7 +9,7 @@ const scooterRouter = Router();
 scooterRouter.get('/', scooterController.findAll);
 
 /** 
- * GET /scooter/details
+ * GET /scooter/:scooter_model_short
  * Returns details for the scooter_model_short given in the request query
  */
 scooterRouter.get('/:scooter_model_short', scooterController.findDetails);
@@ -21,10 +21,10 @@ scooterRouter.get('/:scooter_model_short', scooterController.findDetails);
 scooterRouter.post('/', scooterController.create);
 
 /** 
- * PUT /scooter/
+ * PUT /scooter/:scooter_id
  * Updates a scooter
  */
-scooterRouter.put('/', scooterController.update);
+scooterRouter.put('/:scooter_id', scooterController.update);
 
 /**
  * DELETE /scooter/

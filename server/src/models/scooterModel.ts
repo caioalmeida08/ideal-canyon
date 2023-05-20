@@ -19,7 +19,7 @@ class Scooter extends Model<InferAttributes<Scooter>, InferCreationAttributes<Sc
     declare scooter_battery_range: number;
     declare scooter_charging_time: number;
     declare scooter_charging_power: number;
-    declare scooter_charging_voltage: number;
+    declare scooter_charging_voltage: string;
     declare scooter_charging_output: number;
     declare scooter_description: string;
     declare scooter_price: number;
