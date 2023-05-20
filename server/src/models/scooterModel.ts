@@ -355,8 +355,8 @@ Scooter.init({
                 msg: "Descrição da scooter não pode ser nula."
             },
             len: {
-                args: [1, 1000],
-                msg: "Descrição da scooter deve ter entre 1 e 1000 caracteres."
+                args: [1, 3000],
+                msg: "Descrição da scooter deve ter entre 1 e 3000 caracteres."
             },
         }
     },

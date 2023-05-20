@@ -12,7 +12,7 @@ scooterRouter.get('/', scooterController.findAll);
  * GET /scooter/details
  * Returns details for the scooter_model_short given in the request query
  */
-scooterRouter.get('/details', scooterController.findDetails);
+scooterRouter.get('/:scooter_model_short', scooterController.findDetails);
 
 /**
  * POST /scooter/
