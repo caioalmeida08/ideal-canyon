@@ -191,6 +191,37 @@ class ScooterController {
             
     }
 
+    /**
+     * Deletes the scooter with the scooter_id given in the request params
+     * Requires admin privileges
+     */
+    public async delete(req: Request, res: Response) {
+        try {
+            // check if the scooter_id given in the request params exists
+            const scooter = Scooter.findOne({
+                where: {
+                    scooter_id: req.params.scooter_id
+                }
+            });
+
+            // if the scooter_id given in the request params doesn't exist, throw an error
+            if (!scooter) throw new Error(`Nenhuma scooter com o ID especificado foi encontrada. ID especificado: ${req.params.scooter_id}`).message;
+
+            // turn scooter_is_active to false
+            await Scooter.update({
+                scooter_is_active: false
+            }, {
+                where: {
+                    scooter_id: req.params.scooter_id
+                },
+                limit: 1,
+            });
+
+            res.status(200).json({message: "Scooter deleted"});
+        } catch (error) {
+            res.status(400).json({message: error});
+        }
+    }
 }
 
 export const scooterController = new ScooterController();
