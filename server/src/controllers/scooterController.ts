@@ -5,6 +5,7 @@ import sequelize from "../database/db";
 import { QueryTypes } from "sequelize";
 import {validate} from "uuid";
 import CustomValidationError from "../lib/customValidationError";
+import handleValidationError from "../lib/handleValidationError";
 
 type ReturnScooterDetails = {
     scooter_model_short?: string,
@@ -124,8 +125,8 @@ class ScooterController {
             scooterDetails.scooter_other_models = [previousScooter as string, nextScooter as string];
 
             res.status(200).json(scooterDetails);
-        } catch (error) {
-            res.status(400).json({message: error});
+        } catch (error: any) {
+            handleValidationError(error, res);
         }
     }
 
@@ -138,10 +139,7 @@ class ScooterController {
             await Scooter.create(req.body);
             res.status(200).json({message: "Scooter created"});
         } catch (error: any) {
-            const errorMessages = error.errors.map(
-                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
-            );
-            res.status(400).json({message: errorMessages});
+            handleValidationError(error, res);
         }
     }
 
@@ -155,7 +153,7 @@ class ScooterController {
             if (!validate(req.params.scooter_id)) throw new CustomValidationError("O ID da scooter não é válido.", req.params.scooter_id);
 
             // check if the scooter_id given in the request params exists
-            const scooter = Scooter.findOne({
+            const scooter = await Scooter.findOne({
                 where: {
                     scooter_id: req.params.scooter_id
                 }
@@ -193,13 +191,8 @@ class ScooterController {
 
             res.status(200).json({message: "Scooter updated"});
         } catch (error: any) {
-            // always returns an array of errors
-            const errorMessages = error.errors.map(
-                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
-            );
-            res.status(400).json({message: errorMessages});
-        }
-            
+            handleValidationError(error, res);
+        }   
     }
 
     /**
@@ -208,12 +201,16 @@ class ScooterController {
      */
     async delete(req: Request, res: Response) {
         try {
+            // check if the scooter_id given in the request params is UUIDv4
+            if (!validate(req.params.scooter_id)) throw new CustomValidationError("O ID da scooter não é válido.", req.params.scooter_id);
+
             // check if the scooter_id given in the request params exists
-            const scooter = Scooter.findOne({
+            const scooter = await Scooter.findOne({
                 where: {
                     scooter_id: req.params.scooter_id
                 }
             });
+
 
             // if the scooter_id given in the request params doesn't exist, throw an error
             if (!scooter) throw new CustomValidationError("Nenhuma scooter com o ID especificado foi encontrada.", req.params.scooter_id);
@@ -230,11 +227,7 @@ class ScooterController {
 
             res.status(200).json({message: "Scooter deleted"});
         } catch (error: any) {
-            // always returns a single error message as an array
-            const errorMessages = error.errors.map(
-                (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
-            );
-            res.status(400).json({message: errorMessages});
+            handleValidationError(error, res);
         }
     }
 }
