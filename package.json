@@ -2,6 +2,7 @@
   "devDependencies": {
     "@types/express": "^4.17.17",
     "@types/node": "^20.2.0",
+    "@types/uuid": "^9.0.1",
     "concurrently": "^8.0.1",
     "express": "^4.18.2",
     "nodemon": "^2.0.22",
@@ -14,5 +15,9 @@
   "scripts": {
     "dev": "nodemon ./server/src/index.ts",
     "build": "tsc"
+  },
+  "dependencies": {
+    "uuid": "^9.0.0",
+    "uuid-validate": "^0.0.3"
   }
 }

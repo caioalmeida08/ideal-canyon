@@ -3,6 +3,8 @@ import { Request, Response } from "express";
 import Scooter from '../models/scooterModel';
 import sequelize from "../database/db";
 import { QueryTypes } from "sequelize";
+import {validate} from "uuid";
+import CustomValidationError from "../lib/customValidationError";
 
 type ReturnScooterDetails = {
     scooter_model_short?: string,
@@ -81,7 +83,7 @@ class ScooterController {
 
             // if no scooter was found, throw an error
             // if nothing is found, scooterDetail is an empty array
-            if ((scooterDetails as ReturnScooterDetails[]).length === 0) throw new Error(`Nenhuma scooter do modelo especificado foi encontrada. Modelo especificado: ${req.params.scooter_model_short}`).message;
+            if ((scooterDetails as ReturnScooterDetails[]).length === 0) throw new CustomValidationError("O modelo de scooter especificado não existe.", req.params.scooter_model_short);
 
             // convert the scooterDetails object array to a single object
             scooterDetails = (scooterDetails as ReturnScooterDetails[])[0] as ReturnScooterDetails;
@@ -149,6 +151,9 @@ class ScooterController {
     */
     async update(req: Request, res: Response) {
         try {
+            // check if the scooter_id given in the request params is UUIDv4
+            if (!validate(req.params.scooter_id)) throw new CustomValidationError("O ID da scooter não é válido.", req.params.scooter_id);
+
             // check if the scooter_id given in the request params exists
             const scooter = Scooter.findOne({
                 where: {
@@ -157,23 +162,24 @@ class ScooterController {
             });
 
             // if the scooter_id given in the request params doesn't exist, throw an error
-            if (!scooter) throw new Error(`Nenhuma scooter com o ID especificado foi encontrada. ID especificado: ${req.params.scooter_id}`).message;
+            if (!scooter) throw new CustomValidationError("O ID da scooter não existe.", req.params.scooter_id);
 
             // block changes in the imutable attributes
             // imutable attributes: scooter_id, updatedAt
-            if (req.body.scooter_id) throw new Error("O atributo scooter_id não pode ser alterado.").message;
-            if (req.body.updatedAt) throw new Error("O atributo updatedAt não pode ser alterado manualmente.").message;
+            if (req.body.scooter_id) throw new CustomValidationError("O atributo scooter_id não pode ser alterado manualmente.", req.body.scooter_id);
+
+            if (req.body.updatedAt) throw new CustomValidationError("O atributo updatedAt não pode ser alterado manualmente.", req.body.updatedAt);
 
             // cast the request body to updateScooter
             const updateScooter: UpdateScooter = req.body;
 
             // check if at least one attribute was sent
-            if (Object.keys(updateScooter).length === 0) throw new Error("Nenhum atributo foi enviado.").message;
+            if (Object.keys(updateScooter).length === 0) throw new CustomValidationError("Nenhum atributo foi enviado.");
 
             // check if every parameter sent is valid
             Object.keys(updateScooter).forEach((attribute: string) => {
                 const scooterAttributes = Object.keys(Scooter.getAttributes());
-                if (!scooterAttributes.includes(attribute)) throw new Error(`O atributo ${attribute} não existe.`).message;
+                if (!scooterAttributes.includes(attribute)) throw new CustomValidationError(`O atributo ${attribute} não existe.`);
             });
 
             // update the scooter with the scooter_id given in the request params
@@ -210,7 +216,7 @@ class ScooterController {
             });
 
             // if the scooter_id given in the request params doesn't exist, throw an error
-            if (!scooter) throw new Error(`Nenhuma scooter com o ID especificado foi encontrada. ID especificado: ${req.params.scooter_id}`).message;
+            if (!scooter) throw new CustomValidationError("Nenhuma scooter com o ID especificado foi encontrada.", req.params.scooter_id);
 
             // turn scooter_is_active to false
             await Scooter.update({
