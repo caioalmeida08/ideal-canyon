@@ -69,7 +69,7 @@ class ScooterController {
     /**
      * Returns details for the scooter_model_short given in the request params
      */
-    async findDetails(req: Request, res: Response) {
+    async findOne(req: Request, res: Response) {
         try {
             // get useful attributes for the scooter_model_short given in the request params
             let scooterDetails: ReturnScooterDetails = await Scooter.findAll({
