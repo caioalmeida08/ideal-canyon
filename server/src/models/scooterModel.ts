@@ -1,4 +1,4 @@
-import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes, Sequelize, UUIDV4 } from 'sequelize';
+import { Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4 } from 'sequelize';
 
 import sequelize from '../database/db';
 
