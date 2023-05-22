@@ -76,6 +76,9 @@ class ContactController {
 
     async update(req: Request, res: Response){
         try {
+            // validate the request params
+            validateRequestUUID(req)
+            
             // validate the request body
             validateRequestBody(Contact, req);
 
@@ -95,7 +98,7 @@ class ContactController {
                 where: {
                     contact_id: req.params.contact_id
                 },
-                limit: 1
+                limit: 1,
             });
 
             res.status(200).json({message: "Contact updated"});
@@ -106,7 +109,31 @@ class ContactController {
 
     async delete(req: Request, res: Response){
         try {
-            throw new CustomValidationError("Não implementado. Delete.")
+            // validate the request params
+            validateRequestUUID(req)
+
+            // check if the contact exists
+            const contact = await Contact.findOne({
+                where: {
+                    contact_id: req.params.contact_id
+                },
+                limit: 1
+            });
+
+            // if the contact_id given in the request params doesn't exist, throw an error
+            if (!contact) throw new CustomValidationError("Nenhum contato com o ID especificado foi encontrado.", req.params.contact_id);
+
+            // turn contact_is_active to false
+            await Contact.update({
+                contact_is_active: false
+            }, {
+                where: {
+                    contact_id: req.params.contact_id
+                },
+                limit: 1
+            });
+
+            res.status(200).json({message: "Contact deleted"});
         } catch (error: any) {
             handleValidationError(error, res)
         }
