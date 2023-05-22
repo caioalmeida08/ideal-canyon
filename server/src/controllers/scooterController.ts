@@ -55,6 +55,7 @@ type UpdateScooter = {
 class ScooterController {
     /**
      * Returns all scooters
+     * 
      * Requires admin privileges
      */
     async findAll(req: Request, res: Response) {
@@ -132,6 +133,7 @@ class ScooterController {
 
     /**
      * Returns all scooters that are active and not sold
+     * 
      * Requires admin privileges
      */
     async create(req: Request, res: Response) {
@@ -145,6 +147,7 @@ class ScooterController {
 
     /**
      * Updates the scooter with the scooter_id given in the request params
+     * 
      * Requires admin privileges
     */
     async update(req: Request, res: Response) {
@@ -197,6 +200,7 @@ class ScooterController {
 
     /**
      * Deletes the scooter with the scooter_id given in the request params
+     * 
      * Requires admin privileges
      */
     async delete(req: Request, res: Response) {
