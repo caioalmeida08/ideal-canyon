@@ -9,6 +9,7 @@ import CustomValidationError from "./customValidationError";
  * 
  * @param model Model to be validated (Class instance)
  * @param req Request object
+ * @throws CustomValidationError
  */
 const validateRequestBody = (Model: any, req: Request) => {
     try {
