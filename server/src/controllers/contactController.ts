@@ -6,9 +6,16 @@ import handleValidationError from "../lib/handleValidationError";
 
 class ContactController {
 
+    /**
+     * Returns all contacts
+     * 
+     * Requires admin privileges
+     */
     async findAll(req: Request, res: Response){
         try {
-            throw new CustomValidationError("Não implementado. FindAll.")
+
+            const contacts = await Contact.findAll();
+            res.status(200).json(contacts);
         } catch (error: any) {
             handleValidationError(error, res)
         }
