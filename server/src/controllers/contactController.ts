@@ -52,7 +52,21 @@ class ContactController {
 
     async create(req: Request, res: Response){
         try {
-            throw new CustomValidationError("Não implementado. Create.")
+            // check if every parameter sent exists
+            const requiredAttributes = Object.keys(Contact.getAttributes());
+            requiredAttributes.forEach((attribute: string) => {
+                // skip the contact_id attribute, createdAt and updatedAt
+                if (attribute === "contact_id" || attribute === "createdAt" || attribute === "updatedAt") {
+                    throw new CustomValidationError(`O atributo ${attribute} não pode ser definido manualmente.`);
+                };
+
+                if (!req.body[attribute]) throw new CustomValidationError(`O atributo ${attribute} não pode estar vazio (ou não existe).`);
+            });
+
+            // create the contact
+            await Contact.create(req.body);
+
+            res.status(201).json({message: "Contact created"});
         } catch (error: any) {
             handleValidationError(error, res)
         }
