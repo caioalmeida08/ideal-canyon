@@ -12,7 +12,7 @@ const handleValidationError = (error: CustomValidationError | ValidationError, r
     const errorMessages = error.errors.map(
         (err: any) => (`${err.message} Valor enviado: ${err.value}.`)
     );
-    return res.status(400).json({message: errorMessages});
+    res.status(400).json({message: errorMessages});
 }
 
 export default handleValidationError;
