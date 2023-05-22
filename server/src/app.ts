@@ -1,5 +1,6 @@
 import express from "express";
 import scooterRouter from "./routers/scooterRouter";
+import contactRouter from "./routers/contactRouter";
 
 export class App{
   public server: express.Application;
@@ -7,7 +8,7 @@ export class App{
   constructor(){
     this.server = express();
     this.middleware();
-    this.scooterRouter();
+    this.routers();
   }
 
   private middleware(){
@@ -15,7 +16,8 @@ export class App{
     this.server.use(express.urlencoded({extended: true}));
   }
 
-  private scooterRouter(){
+  private routers(){
     this.server.use("/scooter", scooterRouter);
+    this.server.use("/contact", contactRouter);
   }
 }
