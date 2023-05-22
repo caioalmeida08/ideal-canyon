@@ -49,25 +49,6 @@ Contact.init({
             },
         },
     },
-    contact_message: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-            notEmpty: {
-                msg: "A mensagem não pode ser vazia.",
-            },
-            notNull: {
-                msg: "A mensagem não pode ser nula.",
-            },
-            len: {
-                args: [3, 1000],
-                msg: "A mensagem deve ter entre 3 e 1000 caracteres.",
-            },
-            isAlphanumeric: {
-                msg: "A mensagem deve conter apenas letras e números.",
-            },
-        },
-    },
     contact_subject: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -82,13 +63,26 @@ Contact.init({
                 args: [3, 255],
                 msg: "O assunto deve ter entre 3 e 255 caracteres.",
             },
-            isAlphanumeric: {
-                msg: "O assunto deve conter apenas letras e números.",
+        },
+    },
+    contact_message: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "A mensagem não pode ser vazia.",
+            },
+            notNull: {
+                msg: "A mensagem não pode ser nula.",
+            },
+            len: {
+                args: [3, 1000],
+                msg: "A mensagem deve ter entre 3 e 1000 caracteres.",
             },
         },
     },
     contact_agrees_with_terms: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: {
@@ -99,7 +93,7 @@ Contact.init({
             },
             isIn: {
                 args: [["on"]],
-                msg: "Você deve confirmar que concorda com os termos de uso.",
+                msg: 'Você deve confirmar que concorda com os termos de uso.',
             },
         },
     },
