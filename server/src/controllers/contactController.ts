@@ -3,7 +3,8 @@ import { Request, Response } from "express";
 import Contact from '../models/contactModel';
 import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
-import { validate } from "uuid";
+import validateRequestBody from "../lib/validateRequestBody";
+import validateRequestUUID from "../lib/validateRequestUUID";
 
 class ContactController {
 
@@ -14,8 +15,8 @@ class ContactController {
      */
     async findAll(req: Request, res: Response){
         try {
-
             const contacts = await Contact.findAll();
+
             res.status(200).json(contacts);
         } catch (error: any) {
             handleValidationError(error, res)
@@ -24,21 +25,30 @@ class ContactController {
 
     /**
      * Returns a single contact
+     * 
+     * Requires admin privileges
      */
     async findOne(req: Request, res: Response){
         try {
-            // check if contact_id was sent
-            if (!req.params.contact_id) throw new CustomValidationError("O ID do contato não pode estar vazio.");
-
-            // check if the contact_id given in the request params is UUIDv4
-            if (!validate(req.params.contact_id)) throw new CustomValidationError("O ID do contato não é válido.", req.params.contact_id);
+            // validate the request params
+            validateRequestUUID(req)
             
             // do the query
             const contact = await Contact.findOne({
                 where: {
                     contact_id: req.params.contact_id
                 },
-                limit: 1
+                limit: 1,
+                attributes:
+                {
+                    exclude: [
+                    "contact_agrees_with_terms",
+                    "contact_is_active",
+                    "contact_is_solved",
+                    "createdAt",
+                    "updatedAt"
+                ]
+                }
             });
 
             // if the contact_id given in the request params doesn't exist, throw an error
@@ -52,16 +62,8 @@ class ContactController {
 
     async create(req: Request, res: Response){
         try {
-            // check if every parameter sent exists
-            const requiredAttributes = Object.keys(Contact.getAttributes());
-            requiredAttributes.forEach((attribute: string) => {
-                // skip the contact_id attribute, createdAt and updatedAt
-                if (attribute === "contact_id" || attribute === "createdAt" || attribute === "updatedAt") {
-                    throw new CustomValidationError(`O atributo ${attribute} não pode ser definido manualmente.`);
-                };
-
-                if (!req.body[attribute]) throw new CustomValidationError(`O atributo ${attribute} não pode estar vazio (ou não existe).`);
-            });
+            // validate the request body
+            validateRequestBody(Contact, req);
 
             // create the contact
             await Contact.create(req.body);
@@ -74,7 +76,29 @@ class ContactController {
 
     async update(req: Request, res: Response){
         try {
-            throw new CustomValidationError("Não implementado. Update.")
+            // validate the request body
+            validateRequestBody(Contact, req);
+
+            // check if the contact exists
+            const contact = await Contact.findOne({
+                where: {
+                    contact_id: req.params.contact_id
+                },
+                limit: 1
+            });
+
+            // if the contact_id given in the request params doesn't exist, throw an error
+            if (!contact) throw new CustomValidationError("Nenhum contato com o ID especificado foi encontrado.", req.params.contact_id);
+
+            // update the contact
+            await Contact.update(req.body, {
+                where: {
+                    contact_id: req.params.contact_id
+                },
+                limit: 1
+            });
+
+            res.status(200).json({message: "Contact updated"});
         } catch (error: any) {
             handleValidationError(error, res)
         }

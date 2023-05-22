@@ -8,6 +8,8 @@ class Contact extends Model<InferAttributes<Contact>, InferCreationAttributes<Co
     declare contact_subject: string;
     declare contact_message: string;
     declare contact_agrees_with_terms: string;
+    declare contact_is_active: boolean;
+    declare contact_is_solved: boolean;
 }
 
 Contact.init({
@@ -94,6 +96,40 @@ Contact.init({
             isIn: {
                 args: [["on"]],
                 msg: 'Você deve confirmar que concorda com os termos de uso.',
+            },
+        },
+    },
+    contact_is_active: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "O status de ativação (true/false) não pode ser vazio.",
+            },
+            notNull: {
+                msg: "O status de ativação (true/false) não pode ser nulo.",
+            },
+            isIn: {
+                args: [[true, false]],
+                msg: 'O status de ativação (true/false) deve ser um valor booleano.',
+            },
+        },
+    },
+    contact_is_solved: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+        validate: {
+            notEmpty: {
+                msg: "O status de resolução (true/false) não pode ser vazio.",
+            },
+            notNull: {
+                msg: "O status de resolução (true/false) não pode ser nulo.",
+            },
+            isIn: {
+                args: [[true, false]],
+                msg: 'O status de resolução (true/false) deve ser um valor booleano.',
             },
         },
     },
