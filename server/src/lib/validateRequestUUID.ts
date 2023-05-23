@@ -11,10 +11,10 @@ import { validate } from "uuid";
 const validateRequestUUID = (req: Request) => {
     try {
         // check if contact_id was sent
-        if (!req.params.contact_id) throw new CustomValidationError("O ID do contato não pode estar vazio.");
+        if (!req.params.contact_id) throw new CustomValidationError("O ID no pode estar vazio.");
 
         // check if the contact_id given in the request params is UUIDv4
-        if (!validate(req.params.contact_id)) throw new CustomValidationError("O ID do contato não é válido.", req.params.contact_id);
+        if (!validate(req.params.contact_id)) throw new CustomValidationError("O ID não é válido.", req.params.contact_id);
     } catch (error) {
         throw error;
     }
