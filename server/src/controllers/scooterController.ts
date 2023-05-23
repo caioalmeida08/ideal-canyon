@@ -6,6 +6,7 @@ import { QueryTypes } from "sequelize";
 import {validate} from "uuid";
 import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
+import validateRequestBody from "../lib/validateRequestBody";
 
 const validateRequestScooterModelShort = async (req: Request) => {
     try {
@@ -115,7 +116,12 @@ class ScooterController {
      */
     async create(req: Request, res: Response) {
         try {
+            // validate the request body
+            validateRequestBody(Scooter, req)
+
+            // create the scooter
             await Scooter.create(req.body);
+            
             res.status(200).json({message: "Scooter created"});
         } catch (error: any) {
             handleValidationError(error, res);
