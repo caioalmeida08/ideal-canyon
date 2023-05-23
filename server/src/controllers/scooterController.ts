@@ -7,6 +7,7 @@ import {validate} from "uuid";
 import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
 import validateRequestBody from "../lib/validateRequestBody";
+import validateRequestUUID from "../lib/validateRequestUUID";
 
 const validateRequestScooterModelShort = async (req: Request) => {
     try {
@@ -121,7 +122,7 @@ class ScooterController {
 
             // create the scooter
             await Scooter.create(req.body);
-            
+
             res.status(200).json({message: "Scooter created"});
         } catch (error: any) {
             handleValidationError(error, res);
@@ -135,8 +136,11 @@ class ScooterController {
     */
     async update(req: Request, res: Response) {
         try {
-            // check if the scooter_id given in the request params is UUIDv4
-            if (!validate(req.params.scooter_id)) throw new CustomValidationError("O ID da scooter não é válido.", req.params.scooter_id);
+            // validate the request uuid
+            validateRequestUUID(Scooter, req);
+
+            // validate the request body
+            validateRequestBody(Scooter, req);
 
             // check if the scooter_id given in the request params exists
             const scooter = await Scooter.findOne({
