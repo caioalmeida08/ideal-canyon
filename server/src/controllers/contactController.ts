@@ -31,7 +31,7 @@ class ContactController {
     async findOne(req: Request, res: Response){
         try {
             // validate the request params
-            validateRequestUUID(req)
+            validateRequestUUID(Contact, req)
             
             // do the query
             const contact = await Contact.findOne({
@@ -77,7 +77,7 @@ class ContactController {
     async update(req: Request, res: Response){
         try {
             // validate the request params
-            validateRequestUUID(req)
+            validateRequestUUID(Contact, req)
             
             // validate the request body
             validateRequestBody(Contact, req);
@@ -110,7 +110,7 @@ class ContactController {
     async delete(req: Request, res: Response){
         try {
             // validate the request params
-            validateRequestUUID(req)
+            validateRequestUUID(Contact, req)
 
             // check if the contact exists
             const contact = await Contact.findOne({
