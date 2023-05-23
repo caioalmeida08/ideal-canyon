@@ -167,19 +167,11 @@ class ScooterController {
      */
     async delete(req: Request, res: Response) {
         try {
-            // check if the scooter_id given in the request params is UUIDv4
-            if (!validate(req.params.scooter_id)) throw new CustomValidationError("O ID da scooter não é válido.", req.params.scooter_id);
+            // Validate the request uuid
+            validateRequestUUID(Scooter, req);
 
-            // check if the scooter_id given in the request params exists
-            const scooter = await Scooter.findOne({
-                where: {
-                    scooter_id: req.params.scooter_id
-                }
-            });
-
-
-            // if the scooter_id given in the request params doesn't exist, throw an error
-            if (!scooter) throw new CustomValidationError("Nenhuma scooter com o ID especificado foi encontrada.", req.params.scooter_id);
+            // validate if at least one instance of the scooter_model_short exists
+            await validateIfOneExists(Scooter, req);
 
             // turn scooter_is_active to false
             await Scooter.update({
