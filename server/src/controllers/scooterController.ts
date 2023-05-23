@@ -81,14 +81,24 @@ class ScooterController {
             
             // get the previous and the next scooter_model_short
             // first get all scooter_model_shorts that are active and not sold
+            let allScooterModelShorts = await sequelize.query(
+                `SELECT DISTINCT scooter_model_short FROM Scooter WHERE scooter_is_active = true AND scooter_is_sold = false`,
+                {
+                type: QueryTypes.SELECT
+            })
 
-            // convert the previousAndNextScooter array to an array of strings
+            // convert the allScooterModelShorts array to an array of strings
+            allScooterModelShorts = allScooterModelShorts.map((scooter: any) => scooter.scooter_model_short);
 
             // get the index of the current scooter_model_short
+            const currentScooterModelIndex = allScooterModelShorts.indexOf(scooterModelShort as Object);
 
             // get the previous and the next scooter_model_short
+            const previousScooterModel = allScooterModelShorts[currentScooterModelIndex - 1] || allScooterModelShorts[allScooterModelShorts.length - 1];
+            const nextScooterModel = allScooterModelShorts[currentScooterModelIndex + 1] || allScooterModelShorts[0];
 
             // append the previous and the next scooter_model_short to the returnScooter object
+            returnScooter.dataValues.other_scooter_models = [previousScooterModel, nextScooterModel]
 
             // return the scooter details
             res.status(200).json(returnScooter);
