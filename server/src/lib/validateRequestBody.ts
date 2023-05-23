@@ -7,7 +7,7 @@ import CustomValidationError from "./customValidationError";
  * Deletes the fields that should not be manually created/updated
  * (model primary key, createdAt and updatedAt)
  * 
- * @param model Model to be validated (Class instance)
+ * @param Model Model to be validated (Class instance)
  * @param req Request object
  * @throws CustomValidationError
  */
