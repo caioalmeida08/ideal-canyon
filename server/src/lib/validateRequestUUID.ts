@@ -5,7 +5,7 @@ import { validate } from "uuid";
 /**
  * Validates if the request params is valid
  * 
- * @param Mode Model to be validated (Class instance)
+ * @param Model Model to be validated (Class instance)
  * @param req Request object
  * @throws CustomValidationError
  */
