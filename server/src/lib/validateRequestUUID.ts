@@ -5,16 +5,20 @@ import { validate } from "uuid";
 /**
  * Validates if the request params is valid
  * 
+ * @param Mode Model to be validated (Class instance)
  * @param req Request object
  * @throws CustomValidationError
  */
-const validateRequestUUID = (req: Request) => {
+const validateRequestUUID = (Model: any, req: Request) => {
     try {
-        // check if contact_id was sent
-        if (!req.params.contact_id) throw new CustomValidationError("O ID no pode estar vazio.");
+        // get the primary key of the model
+        const primaryKey = Model.primaryKeyAttribute;
 
-        // check if the contact_id given in the request params is UUIDv4
-        if (!validate(req.params.contact_id)) throw new CustomValidationError("O ID não é válido.", req.params.contact_id);
+        // check if uuid was sent
+        if (!req.params[primaryKey]) throw new CustomValidationError(`O ID de ${Model.name} no pode estar vazio.`);
+
+        // check if the uuid given in the request params is UUIDv4
+        if (!validate(req.params[primaryKey])) throw new CustomValidationError(`O ID de ${Model.name} não é válido.`, req.params[primaryKey]);
     } catch (error) {
         throw error;
     }
