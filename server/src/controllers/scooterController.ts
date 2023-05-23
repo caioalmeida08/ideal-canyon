@@ -8,6 +8,7 @@ import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
 import validateRequestBody from "../lib/validateRequestBody";
 import validateRequestUUID from "../lib/validateRequestUUID";
+import validateIfOneExists from "../lib/validateIfOneExists";
 
 const validateRequestScooterModelShort = async (req: Request) => {
     try {
@@ -142,41 +143,15 @@ class ScooterController {
             // validate the request body
             validateRequestBody(Scooter, req);
 
-            // check if the scooter_id given in the request params exists
-            const scooter = await Scooter.findOne({
-                where: {
-                    scooter_id: req.params.scooter_id
-                }
-            });
-
-            // if the scooter_id given in the request params doesn't exist, throw an error
-            if (!scooter) throw new CustomValidationError("O ID da scooter não existe.", req.params.scooter_id);
-
-            // block changes in the imutable attributes
-            // imutable attributes: scooter_id, updatedAt
-            if (req.body.scooter_id) throw new CustomValidationError("O atributo scooter_id não pode ser alterado manualmente.", req.body.scooter_id);
-
-            if (req.body.updatedAt) throw new CustomValidationError("O atributo updatedAt não pode ser alterado manualmente.", req.body.updatedAt);
-
-            // cast the request body to updateScooter
-            const updateScooter = req.body;
-
-            // check if at least one attribute was sent
-            if (Object.keys(updateScooter).length === 0) throw new CustomValidationError("Nenhum atributo foi enviado.");
-
-            // check if every parameter sent is valid
-            Object.keys(updateScooter).forEach((attribute: string) => {
-                const scooterAttributes = Object.keys(Scooter.getAttributes());
-                if (!scooterAttributes.includes(attribute)) throw new CustomValidationError(`O atributo ${attribute} não existe.`);
-            });
+            // validate if at least one instance of the scooter_model_short exists
+            await validateIfOneExists(Scooter, req);
 
             // update the scooter with the scooter_id given in the request params
-            await Scooter.update(updateScooter, {
+            await Scooter.update(req.body, {
                 where: {
                     scooter_id: req.params.scooter_id
                 },
                 limit: 1,
-                validate: true
             });
 
             res.status(200).json({message: "Scooter updated"});
