@@ -5,6 +5,7 @@ import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
 import validateRequestBody from "../lib/validateRequestBody";
 import validateRequestUUID from "../lib/validateRequestUUID";
+import validateIfOneExists from "../lib/validateIfOneExists";
 
 class ContactController {
 
@@ -82,17 +83,9 @@ class ContactController {
             // validate the request body
             validateRequestBody(Contact, req);
 
-            // check if the contact exists
-            const contact = await Contact.findOne({
-                where: {
-                    contact_id: req.params.contact_id
-                },
-                limit: 1
-            });
-
-            // if the contact_id given in the request params doesn't exist, throw an error
-            if (!contact) throw new CustomValidationError("Nenhum contato com o ID especificado foi encontrado.", req.params.contact_id);
-
+            // validate if at least one instance of the contact_model_short exists
+            await validateIfOneExists(Contact, req);
+            
             // update the contact
             await Contact.update(req.body, {
                 where: {
@@ -112,16 +105,8 @@ class ContactController {
             // validate the request params
             validateRequestUUID(Contact, req)
 
-            // check if the contact exists
-            const contact = await Contact.findOne({
-                where: {
-                    contact_id: req.params.contact_id
-                },
-                limit: 1
-            });
-
-            // if the contact_id given in the request params doesn't exist, throw an error
-            if (!contact) throw new CustomValidationError("Nenhum contato com o ID especificado foi encontrado.", req.params.contact_id);
+            // validate if at least one instance of the contact_model_short exists
+            await validateIfOneExists(Contact, req);
 
             // turn contact_is_active to false
             await Contact.update({
