@@ -35,11 +35,7 @@ class ContactController {
             validateRequestUUID(Contact, req)
             
             // do the query
-            const contact = await Contact.findOne({
-                where: {
-                    contact_id: req.params.contact_id
-                },
-                limit: 1,
+            const contact = await Contact.findByPk(req.params.contact_id, {
                 attributes:
                 {
                     exclude: [
