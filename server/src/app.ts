@@ -1,6 +1,7 @@
 import express from "express";
 import scooterRouter from "./routers/scooterRouter";
 import contactRouter from "./routers/contactRouter";
+import addressRouter from "./routers/addressRouter";
 
 export class App{
   public server: express.Application;
@@ -19,5 +20,6 @@ export class App{
   private routers(){
     this.server.use("/scooter", scooterRouter);
     this.server.use("/contact", contactRouter);
+    this.server.use("/address", addressRouter);
   }
 }

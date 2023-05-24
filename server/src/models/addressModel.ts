@@ -1,4 +1,5 @@
-import { Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4 } from "sequelize";
+import { Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4, ForeignKey, NonAttribute } from "sequelize";
+import User from "./userModel";
 
 import sequelize from "../database/db";
 
@@ -12,7 +13,8 @@ class Address extends Model<InferAttributes<Model>, InferCreationAttributes<Mode
     declare address_state: string;
     declare address_country: string;
     declare address_zip_code: number;
-    declare address_owner_id: string;
+    declare address_owner?: NonAttribute<User>;
+    declare address_owner_id: ForeignKey<User["user_id"]>;
     declare address_destinatary_name: string;
     declare address_destinatary_date_of_birth: Date;
     declare address_destinatary_cpf: number;
@@ -178,22 +180,6 @@ Address.init({
             }
         }
     },
-    address_owner_id: {
-        type: DataTypes.UUID,
-        allowNull: false,
-        validate:{
-            notEmpty:{
-                msg: "O ID do dono do endereço não pode ser vazio."
-            },
-            notNull:{
-                msg: "O ID do dono do endereço não pode ser nulo."
-            },
-            isUUID:{
-                args: 4,
-                msg: "O ID do dono do endereço deve ser um UUID válido."
-            },
-        }
-    },
     address_destinatary_name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -277,3 +263,5 @@ Address.init({
         }
     },
 }, { sequelize })
+
+export default Address;

@@ -1,6 +1,7 @@
 import {Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4, ValidationError} from "sequelize"
 
 import sequelize from "../database/db"
+import Address from "./addressModel";
 
 class User extends Model<InferAttributes<User>, InferCreationAttributes<User>>{
     declare user_id: string;
@@ -215,3 +216,9 @@ User.init({
 }, {
     sequelize
 })
+
+User.hasMany(Address, {
+    foreignKey: "address_user_id",
+})
+
+export default User;
