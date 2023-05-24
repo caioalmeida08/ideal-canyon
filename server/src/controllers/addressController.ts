@@ -3,9 +3,9 @@ import { Request, Response } from "express"
 import Address from "../models/addressModel"
 import validateRequestUUID from "../lib/validateRequestUUID";
 import handleValidationError from "../lib/handleValidationError";
-import { validate } from "uuid";
 import validateRequestBody from "../lib/validateRequestBody";
 import CustomValidationError from "../lib/customValidationError";
+import validateIfOneExists from "../lib/validateIfOneExists";
 
 class AddressController {
     /**
@@ -81,7 +81,29 @@ class AddressController {
      * 
      * requires admin privileges
      */
+    async update(req: Request, res: Response){
+        try {
+            // validate the request params
+            validateRequestUUID(Address, req)
+            
+            // validate the request body
+            validateRequestBody(Address, req);
 
+            // validate if at least one instance of the Address_model_short exists
+            await validateIfOneExists(Address, req);
+            
+            // update the Address
+            Address.update(req.body, {
+                where:{
+                    address_id: req.params.address_id
+                }
+            })
+
+            res.status(200).json({message: "Address updated"});
+        } catch (error: any) {
+            handleValidationError(error, res)
+        }
+    }
 }
 
 export default new AddressController();

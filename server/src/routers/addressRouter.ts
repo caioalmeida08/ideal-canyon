@@ -31,4 +31,13 @@ addressRouter.get("/:address_id", addressController.findOne);
 addressRouter.post("/", addressController.create)
 
 
+/**
+ * PUT /addresses/:address_id
+ * 
+ * updates an existing address
+ * 
+ * requires admin privileges
+ */
+addressRouter.put("/:address_id", addressController.update)
+
 export default addressRouter;
