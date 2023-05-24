@@ -135,8 +135,4 @@ Contact.init({
     },
 }, { sequelize });
 
-(async () => {
-    await sequelize.sync();
-})();
-
 export default Contact;

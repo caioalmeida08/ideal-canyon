@@ -3,7 +3,7 @@ import User from "./userModel";
 
 import sequelize from "../database/db";
 
-class Address extends Model<InferAttributes<Model>, InferCreationAttributes<Model>>{
+class Address extends Model<InferAttributes<Address>, InferCreationAttributes<Address>>{
     declare address_id: string;
     declare address_street: string;
     declare address_number: number;
@@ -71,11 +71,11 @@ Address.init({
                 msg: "O número não pode ser nulo."
             },
             min: {
-                args: 1,
+                args: [1],
                 msg: "O número deve ser maior que 0."
             },
             max: {
-                args: 999999,
+                args: [999999],
                 msg: "O número deve ser menor que 999999."
             },
             isInt: {
@@ -211,6 +211,7 @@ Address.init({
                 msg: "A data de nascimento do destinatário não pode ser nula."
             },
             isDate:{
+                args: true,
                 msg: "A data de nascimento do destinatário deve ser uma data válida."
             },
             isBefore:{
