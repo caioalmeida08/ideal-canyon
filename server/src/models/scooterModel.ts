@@ -420,11 +420,6 @@ Scooter.init({
     }
 }, {
     sequelize,
-    freezeTableName: true,
 });
-
-(async () => {
-    await sequelize.sync();
-})();
 
 export default Scooter;

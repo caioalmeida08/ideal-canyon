@@ -19,6 +19,7 @@ User.init({
     user_id: {
         type: DataTypes.UUID,
         defaultValue: UUIDV4,
+        primaryKey: true,
         allowNull: false,
         validate: {
             isNull: {
@@ -218,7 +219,14 @@ User.init({
 })
 
 User.hasMany(Address, {
+    sourceKey: "user_id",
     foreignKey: "address_user_id",
-})
+    as: "user_addresses"
+});
+
+Address.belongsTo(User, { 
+    targetKey: 'user_id',
+    foreignKey: 'address_user_id'
+});
 
 export default User;

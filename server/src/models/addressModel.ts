@@ -262,6 +262,6 @@ Address.init({
             }
         }
     },
-}, { sequelize })
+}, { sequelize });
 
 export default Address;
