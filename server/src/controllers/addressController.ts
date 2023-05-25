@@ -34,7 +34,7 @@ class AddressController {
             validateRequestUUID(Address, req);
 
             // make the query
-            const address = await Address.findByPk(req.params.id,  {
+            const address = await Address.findByPk(req.params.address_id,  {
                 attributes: {
                     exclude: [
                         "address_id",
@@ -102,6 +102,32 @@ class AddressController {
             res.status(200).json({message: "Address updated"});
         } catch (error: any) {
             handleValidationError(error, res)
+        }
+    }
+
+    /**
+    * Updates an existing address
+    * 
+    * requires admin privileges
+    */
+    async delete(req: Request, res: Response){
+        try {
+            // validate if uuid is valid
+            validateRequestUUID(Address, req);
+    
+            // validate if one exists
+            await validateIfOneExists(Address, req);
+    
+            // destroy the instance
+            Address.destroy({
+                where: {
+                    address_id: req.params.address_id
+                }
+            })
+
+            res.status(200).send("Address deleted")
+        } catch (error: any) {
+            handleValidationError(error, res);
         }
     }
 }

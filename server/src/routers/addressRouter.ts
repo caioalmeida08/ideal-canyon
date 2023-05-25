@@ -40,4 +40,13 @@ addressRouter.post("/", addressController.create)
  */
 addressRouter.put("/:address_id", addressController.update)
 
+
+/**
+ * DELETE /addresses/:address_id
+ * 
+ * updates an existing address
+ * 
+ * requires admin privileges
+ */
+addressRouter.delete("/:address_id", addressController.delete)
 export default addressRouter;
