@@ -1,4 +1,4 @@
-import {Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4, ValidationError} from "sequelize"
+import {Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4} from "sequelize"
 
 import sequelize from "../database/db"
 import Address from "./addressModel";
@@ -90,11 +90,11 @@ User.init({
         type: DataTypes.DATE,
         allowNull: false,
         validate:{
-            isNull: {
-                msg: "A data de nascimento do usuário não pode ser nula."
-            },
             isEmpty: {
                 msg: "A data de nascimento do usuário não pode ser vazia."
+            },
+            isNull: {
+                msg: "A data de nascimento do usuário não pode ser nula."
             },
             isDate: {
                 args: true,
