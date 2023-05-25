@@ -14,7 +14,7 @@ class Contact extends Model<InferAttributes<Contact>, InferCreationAttributes<Co
 
 Contact.init({
     contact_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.UUIDV4,
         defaultValue: UUIDV4,
         allowNull: false,
         primaryKey: true,

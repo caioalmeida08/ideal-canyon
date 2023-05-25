@@ -23,7 +23,7 @@ class Address extends Model<InferAttributes<Address>, InferCreationAttributes<Ad
 
 Address.init({
     address_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.UUIDV4,
         defaultValue: UUIDV4,
         allowNull: false,
         primaryKey: true,
