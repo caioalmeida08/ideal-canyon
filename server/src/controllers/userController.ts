@@ -37,6 +37,7 @@ class UserController {
                 attributes: {
                     exclude: [
                         "user_id",
+                        "user_password",
                         "createdAt",
                         "updatedAt"
                     ]
@@ -63,12 +64,15 @@ class UserController {
             // validate the request body
             validateRequestBody(User, req);
 
+            // password will be hashed by sequelize prior to going to database
+
             // make the query
             await User.create(req.body)
 
             // send the response
             res.status(201).send("User created")
         } catch (error: any) {
+            console.log(error)
             handleValidationError(error, res);
         }
     }

@@ -1,4 +1,5 @@
 import {Model, InferAttributes, InferCreationAttributes, DataTypes, UUIDV4} from "sequelize"
+import bcrypt from "bcrypt";
 
 import sequelize from "../database/db"
 import Address from "./addressModel";
@@ -8,7 +9,7 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>>{
     declare user_nickname: string;
     declare user_full_name: string;
     declare user_date_of_birth: string;
-    declare user_cpf: number;
+    declare user_cpf: string;
     declare user_email: string;
     declare user_password: string;
     declare user_phone_1: number;
@@ -17,15 +18,15 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>>{
 
 User.init({
     user_id: {
-        type: DataTypes.UUID,
+        type: DataTypes.UUIDV4,
         defaultValue: UUIDV4,
         primaryKey: true,
         allowNull: false,
         validate: {
-            isNull: {
+            notEmpty: {
                 msg: "O ID do usuário não pode ser nulo."
             },
-            isEmpty: {
+            notNull: {
                 msg: "O ID do usuário não pode ser vazio."
             },
             isUUID:{
@@ -54,7 +55,7 @@ User.init({
             this.setDataValue("user_nickname", value as string)
         },
         validate:{
-            isEmpty: {
+            notEmpty: {
                 msg: "O apelido do usuário não pode ser vazio."
             },
             len: {
@@ -70,10 +71,10 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            isEmpty: {
+            notEmpty: {
                 msg: "O nome completo do usuário não pode ser vazio."
             },
-            isNull: {
+            notNull: {
                 msg: "O nome completo do usuário não pode ser nulo."
             },
             len: {
@@ -90,10 +91,10 @@ User.init({
         type: DataTypes.DATE,
         allowNull: false,
         validate:{
-            isEmpty: {
+            notEmpty: {
                 msg: "A data de nascimento do usuário não pode ser vazia."
             },
-            isNull: {
+            notNull: {
                 msg: "A data de nascimento do usuário não pode ser nula."
             },
             isDate: {
@@ -112,13 +113,13 @@ User.init({
         }
     },
     user_cpf: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            isNull: {
+            notNull: {
                 msg: "O CPF do usuário não pode ser nulo."
             },
-            isEmpty: {
+            notEmpty: {
                 msg: "O CPF do usuário não pode ser vazio."
             },
             isNumeric: {
@@ -134,10 +135,10 @@ User.init({
         type: DataTypes.STRING,
         allowNull: false,
         validate:{
-            isNull: {
+            notNull: {
                 msg: "O e-mail do usuário não pode ser nulo."
             },
-            isEmpty: {
+            notEmpty: {
                 msg: "O e-mail do usuário não pode ser vazio."
             },
             isEmail: {
@@ -153,11 +154,16 @@ User.init({
     user_password: {
         type: DataTypes.STRING,
         allowNull: false,
+        set(value: string){
+            // hash password prior to saving it in database
+            value = bcrypt.hashSync(value, 10)
+            this.setDataValue("user_password", value as string)
+        },
         validate:{
-            isNull: {
+            notNull: {
                 msg: "A senha do usuário não pode ser nula."
             },
-            isEmpty: {
+            notEmpty: {
                 msg: "A senha do usuário não pode ser vazia."
             },
             len: {
@@ -168,51 +174,9 @@ User.init({
     },
     user_phone_1: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate:{
-            isNull: {
-                msg: "O telefone 1 do usuário não pode ser nulo."
-            },
-            isEmpty: {
-                msg: "O telefone 1 do usuário não pode ser vazio."
-            },
-            len: {
-                args: [10, 11],
-                msg: "O telefone 1 do usuário deve ter de 10 a 11 caractéres de comprimento."
-            },
-            isNumeric: {
-                msg: "O telefone 1 do usuário deve conter apenas números."
-            },
-            isEqualToPhone2(value: number){
-                if (this.user_phone_2 == value) {
-                    throw new Error("O telefone 1 do usuário não pode ser igual ao telefone 2.")
-                }
-            }
-        }
     },
     user_phone_2: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        validate:{
-            isNull: {
-                msg: "O telefone 2 do usuário não pode ser nulo."
-            },
-            isEmpty: {
-                msg: "O telefone 2 do usuário não pode ser vazio."
-            },
-            len: {
-                args: [10, 11],
-                msg: "O telefone 2 do usuário deve ter de 10 a 11 caractéres de comprimento."
-            },
-            isNumeric: {
-                msg: "O telefone 2 do usuário deve conter apenas números."
-            },
-            isEqualToPhone1(value: number){
-                if (this.user_phone_1 == value) {
-                    throw new Error("O telefone 2 do usuário não pode ser igual ao telefone 1.")
-                }
-            }
-        }
     }
 }, {
     sequelize

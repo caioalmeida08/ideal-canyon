@@ -17,7 +17,8 @@
     "build": "tsc"
   },
   "dependencies": {
-    "uuid": "^9.0.0",
-    "uuid-validate": "^0.0.3"
+    "@types/bcrypt": "^5.0.0",
+    "bcrypt": "^5.1.0",
+    "uuid": "^9.0.0"
   }
 }
