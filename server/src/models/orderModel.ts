@@ -93,3 +93,5 @@ Order.init({
         }
     }
 },{sequelize})
+
+export default Order;
