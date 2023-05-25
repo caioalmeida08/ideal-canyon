@@ -12,6 +12,8 @@ class Order extends Model<InferAttributes<Order>, InferCreationAttributes<Order>
     declare order_payment_method: string;
     declare order_card_number: string;
     declare order_installments: number;
+    declare order_is_active: boolean;
+    declare order_is_finished: boolean;
 }
 
 Order.init({
@@ -89,6 +91,38 @@ Order.init({
             max: {
                 args: [1],
                 msg: "O número de parcelas não pode ser maior que 24."
+            }
+        }
+    },
+    order_is_active: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: true,
+        validate: {
+            isNull: {
+                msg: "O status da venda (true/false) não pode ser nulo."
+            },
+            isEmpty: {
+                msg: "O status da venda (true/false) não pode ser vazio."
+            },
+            isBoolean: {
+                msg: "O status da venda (true/false) não atende ao formato esperado."
+            }
+        }
+    },
+    order_is_finished: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+        validate: {
+            isNull: {
+                msg: "O status de finalização da venda (true/false) não pode ser nulo."
+            },
+            isEmpty: {
+                msg: "O status de finalização da venda (true/false) não pode ser vazio."
+            },
+            isBoolean: {
+                msg: "O status de finalização da venda (true/false) não atende ao formato esperado."
             }
         }
     }
