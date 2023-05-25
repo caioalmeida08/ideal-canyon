@@ -3,6 +3,7 @@ import scooterRouter from "./routers/scooterRouter";
 import contactRouter from "./routers/contactRouter";
 import addressRouter from "./routers/addressRouter";
 import userRouter from "./routers/userRouter";
+import orderRouter from "./routers/orderRouter";
 
 export class App{
   public server: express.Application;
@@ -22,6 +23,7 @@ export class App{
     this.server.use("/scooter", scooterRouter);
     this.server.use("/contact", contactRouter);
     this.server.use("/address", addressRouter);
-    this.server.use("/user", userRouter)
+    this.server.use("/user", userRouter);
+    this.server.use("/order", orderRouter);
   }
 }
