@@ -1,5 +1,6 @@
 .register {
     margin-inline: var(--spacing-24);
+    margin-top: var(--spacing-32);
 
     form {
         border-radius: var(--spacing-8);
@@ -12,12 +13,12 @@
 
         // Extra margin top for the first email field
         > div:has(input[name="user_email"]) {
-            margin-top: var(--spacing-48);
+            margin-top: var(--spacing-64);
         }
 
         // Extra margin top for the first password field
         > div:has(input[name="user_password"]) {
-            margin-top: var(--spacing-48);
+            margin-top: var(--spacing-64);
         }
 
         button {
