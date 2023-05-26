@@ -13,9 +13,9 @@ type ScooterData = {
     scooter_charging_time: number;
     scooter_description: string;
     scooter_price: number;
-    allModels: string[];
-    allModelsShort: string[];
-    imgs: string[];
+    other_scooter_models: string[];
+    other_scooter_models_short: string[];
+    scooter_imgs: string[];
 };
 
 type ProductProps = {
@@ -54,7 +54,7 @@ const ProductDumb = (props: ProductProps) => {
                         className={`${style.main_image}`}
                     />
                     <div className={style.left_images}>
-                        {scooterData.imgs.slice(0, 3).map((img, index) => {
+                        {scooterData.scooter_imgs.slice(0, 3).map((img, index) => {
                             return (
                                 <Image
                                     key={index}
@@ -70,7 +70,7 @@ const ProductDumb = (props: ProductProps) => {
                         })}
                     </div>
                     <div className={style.right_images}>
-                        {scooterData.imgs.slice(3, 6).map((img, index) => {
+                        {scooterData.scooter_imgs.slice(3, 6).map((img, index) => {
                             return (
                                 <Image
                                     key={index}
@@ -86,7 +86,7 @@ const ProductDumb = (props: ProductProps) => {
                         })}
                     </div>
                     <div className={style.image_slider} id="image_slider">
-                        {scooterData.imgs.map((img, index) => {
+                        {scooterData.scooter_imgs.map((img, index) => {
                             if (index == 0) {
                                 return (
                                     <div
@@ -190,22 +190,22 @@ const ProductDumb = (props: ProductProps) => {
                     className={style.other_product}
                     onClick={handleOtherProducts}
                     onKeyDown={handleOtherProducts}
-                    data-model={scooterData.allModelsShort[0]}
+                    data-model={scooterData.other_scooter_models_short[0]}
                     tabIndex={0}
                 >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.allModelsShort[0]}1.png`}
+                        src={`/api/img/scooters/${scooterData.other_scooter_models_short[0]}1.png`}
                         aria-hidden="true"
                         alt=""
                     />
                     <h2 className="text-capitalize">
-                        {scooterData.allModels[0]}
+                        {scooterData.other_scooter_models[0]}
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label={`Ver informações da ${scooterData.allModels[0]} Scooter`}
+                        aria-label={`Ver informações da ${scooterData.other_scooter_models[0]} Scooter`}
                     >
                     <IconNextPrev dir={Direction.NEXT}/>
                     </button>
@@ -214,22 +214,22 @@ const ProductDumb = (props: ProductProps) => {
                     className={style.other_product}
                     onClick={handleOtherProducts}
                     onKeyDown={handleOtherProducts}
-                    data-model={scooterData.allModelsShort[1]}
+                    data-model={scooterData.other_scooter_models_short[1]}
                     tabIndex={0}
                 >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.allModelsShort[1]}1.png`}
+                        src={`/api/img/scooters/${scooterData.other_scooter_models_short[1]}1.png`}
                         aria-hidden="true"
                         alt=""
                     />
                     <h2 className="text-capitalize">
-                        {scooterData.allModels[1]}
+                        {scooterData.other_scooter_models[1]}
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label={`Ver informações da ${scooterData.allModels[1]} Scooter`}
+                        aria-label={`Ver informações da ${scooterData.other_scooter_models[1]} Scooter`}
                     >
                         <IconNextPrev />
                     </button>

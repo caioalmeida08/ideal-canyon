@@ -24,7 +24,7 @@ const ScooterDetails = (data) => {
 
                             <div className="field">
                                 <h5 className='text-demi'>Cores disponíveis</h5>
-                                <p>{data.allColors.join(", ")}</p>
+                                <p>{data.scooter_all_colors.join(", ")}</p>
                             </div>
 
                         </div>

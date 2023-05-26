@@ -19,9 +19,9 @@ type ScooterData = {
     scooter_charging_time: number;
     scooter_description: string;
     scooter_price: number;
-    allModels: string[];
-    allModelsShort: string[];
-    imgs: string[];
+    other_scooter_models: string[];
+    other_scooter_models_short: string[];
+    scooter_imgs: string[];
 };
 
 const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
@@ -62,7 +62,7 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                 let nextSliderIndex = activeSliderIndex + 1;
 
                 // Check if next slider is within bounds and set it accordingly
-                if (nextSliderIndex > scooterData.imgs.length - 1) {
+                if (nextSliderIndex > scooterData.scooter_imgs.length - 1) {
                     nextSliderIndex = 0;
                 }
 
@@ -85,12 +85,12 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                 // Change the src of the main image to the one corresponding to the nextSliderIndex
                 mainImage?.setAttribute(
                     "src",
-                    `/api/img/scooters/${scooterData.imgs[nextSliderIndex]}`
+                    `/api/img/scooters/${scooterData.scooter_imgs[nextSliderIndex]}`
                 );
 
                 mainImage?.setAttribute(
                     "srcset",
-                    `/api/img/scooters/${scooterData.imgs[nextSliderIndex]}`
+                    `/api/img/scooters/${scooterData.scooter_imgs[nextSliderIndex]}`
                 );
             }
         },
@@ -120,7 +120,7 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
 
                 // Check if prev slider is within bounds and set it accordingly
                 if (prevSliderIndex < 0) {
-                    prevSliderIndex = scooterData.imgs.length - 1;
+                    prevSliderIndex = scooterData.scooter_imgs.length - 1;
                 }
 
                 // Get prev slider element
@@ -142,12 +142,12 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
                 // Change the src of the main image to the one corresponding to the prevSliderIndex
                 mainImage?.setAttribute(
                     "src",
-                    `/api/img/scooters/${scooterData.imgs[prevSliderIndex]}`
+                    `/api/img/scooters/${scooterData.scooter_imgs[prevSliderIndex]}`
                 );
 
                 mainImage?.setAttribute(
                     "srcset",
-                    `/api/img/scooters/${scooterData.imgs[prevSliderIndex]}`
+                    `/api/img/scooters/${scooterData.scooter_imgs[prevSliderIndex]}`
                 );
             }
         },
