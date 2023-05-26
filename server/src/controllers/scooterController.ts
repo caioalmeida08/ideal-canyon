@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import Scooter from '../models/scooterModel';
 import sequelize from "../database/db";
 import { QueryTypes } from "sequelize";
-import {validate} from "uuid";
+
 import CustomValidationError from "../lib/customValidationError";
 import handleValidationError from "../lib/handleValidationError";
 import validateRequestBody from "../lib/validateRequestBody";
@@ -74,7 +74,7 @@ class ScooterController {
 
             // get all possible colors for the scooter
             const allColors = await sequelize.query(
-                `SELECT DISTINCT scooter_color FROM Scooter WHERE scooter_model_short = '${scooterModelShort}' AND scooter_is_active = true AND scooter_is_sold = false`,
+                `SELECT DISTINCT scooter_color FROM Scooters WHERE scooter_model_short = '${scooterModelShort}' AND scooter_is_active = true AND scooter_is_sold = false`,
                 {
                 type: QueryTypes.SELECT
             })
@@ -85,7 +85,7 @@ class ScooterController {
             // get the previous and the next scooter_model_short
             // first get all scooter_model_shorts that are active and not sold
             let allScooterModelShorts = await sequelize.query(
-                `SELECT DISTINCT scooter_model_short FROM Scooter WHERE scooter_is_active = true AND scooter_is_sold = false`,
+                `SELECT DISTINCT scooter_model_short FROM ${Scooter.tableName} WHERE scooter_is_active = true AND scooter_is_sold = false`,
                 {
                 type: QueryTypes.SELECT
             })
@@ -102,6 +102,7 @@ class ScooterController {
 
             // append the previous and the next scooter_model_short to the returnScooter object
             returnScooter.dataValues.other_scooter_models = [previousScooterModel, nextScooterModel]
+
 
             // return the scooter details
             res.status(200).json(returnScooter);
