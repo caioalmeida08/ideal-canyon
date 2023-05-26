@@ -9,6 +9,8 @@ import handleValidationError from "../lib/handleValidationError";
 import validateRequestBody from "../lib/validateRequestBody";
 import validateRequestUUID from "../lib/validateRequestUUID";
 import validateIfOneExists from "../lib/validateIfOneExists";
+import path from "path";
+import fs from "fs";
 
 const validateRequestScooterModelShort = async (req: Request) => {
     try {
@@ -68,7 +70,7 @@ class ScooterController {
                     scooter_is_sold: false
                 },
                 attributes: {
-                    exclude: ["scooter_id", "scooter_model_short", "scooter_is_active", "scooter_is_sold", "createdAt", "updatedAt"]
+                    exclude: ["scooter_id", "scooter_is_active", "scooter_is_sold", "createdAt", "updatedAt"]
                 }
             });
 
@@ -97,12 +99,45 @@ class ScooterController {
             const currentScooterModelIndex = allScooterModelShorts.indexOf(scooterModelShort as Object);
 
             // get the previous and the next scooter_model_short
-            const previousScooterModel = allScooterModelShorts[currentScooterModelIndex - 1] || allScooterModelShorts[allScooterModelShorts.length - 1];
-            const nextScooterModel = allScooterModelShorts[currentScooterModelIndex + 1] || allScooterModelShorts[0];
+            const previousScooterModelShort = allScooterModelShorts[currentScooterModelIndex - 1] || allScooterModelShorts[allScooterModelShorts.length - 1];
+            const nextScooterModelShort = allScooterModelShorts[currentScooterModelIndex + 1] || allScooterModelShorts[0];
 
             // append the previous and the next scooter_model_short to the returnScooter object
-            returnScooter.dataValues.other_scooter_models = [previousScooterModel, nextScooterModel]
+            returnScooter.dataValues.other_scooter_models_short = [previousScooterModelShort, nextScooterModelShort]
 
+            // use the previous and next scooter_model_short to get the scooter_model
+            const previousScooterModel = await Scooter.findOne({
+                where: {
+                    scooter_model_short: previousScooterModelShort,
+                    scooter_is_active: true,
+                    scooter_is_sold: false
+                },
+            });
+
+            const nextScooterModel = await Scooter.findOne({
+                where: {
+                    scooter_model_short: nextScooterModelShort,
+                    scooter_is_active: true,
+                    scooter_is_sold: false
+                },
+            });
+
+            // attach the scooter_model to the returnScooter object
+            returnScooter.dataValues.other_scooter_models = [previousScooterModel?.scooter_model, nextScooterModel?.scooter_model]
+
+            // gets the images of the scooter
+            const publicPath = path.join(__dirname, '..', 'public/img/scooters/');
+            const files = fs.readdirSync(publicPath);
+            let imgs = [];
+            for (const file of files) {
+                // check if file is one of the images of the scooter
+                if (file.includes(scooterModelShort)) {
+                    imgs.push(file)
+                }
+            }
+
+            // attach the images to the returnScooter object
+            returnScooter.dataValues.scooter_imgs = imgs;
 
             // return the scooter details
             res.status(200).json(returnScooter);
