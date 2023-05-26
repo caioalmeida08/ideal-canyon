@@ -185,7 +185,7 @@ const Product: FC<ProductProps> = ({ modelShortProp }: ProductProps) => {
         queryKey: [modelShort],
         queryFn: async () => {
             const data = await axios.get(
-                `/api/scooter/details?modelShort=${modelShort}`
+                `/api/scooter/${modelShort}`
             );
             return data;
         },
