@@ -13,7 +13,9 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "dev": "nodemon ./server/src/index.ts",
+    "node": "nodemon ./server/src/index.ts",
+    "dev": "npx nodemon",
+    "full": "concurrently \"npm run dev\" \"cd ../client && npm run dev\"",
     "build": "tsc"
   },
   "dependencies": {
