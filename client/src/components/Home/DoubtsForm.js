@@ -1,11 +1,11 @@
 import style from './DoubtsForm.module.scss';
-import { ButtonSubmit } from "@/components/Utils/Buttons";
+import { ButtonSubmit } from "../Utils/Buttons";
 import {
     InputCheckbox,
     InputEmail,
     InputText,
     InputTextArea,
-} from "@/components/Utils/Inputs";
+} from "../Utils/Inputs";
 
 const handleSubmit = async (e) => {
     e.preventDefault();

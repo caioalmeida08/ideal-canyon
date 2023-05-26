@@ -1,4 +1,4 @@
-import { IconHeart, IconStar } from "@/components/Utils/Icons";
+import { IconHeart, IconStar } from "../Utils/Icons";
 
 import style from "./Review.module.scss";
 

@@ -1,6 +1,6 @@
-import VelocimeterIcon from "@/assets/img/icons/icon_velocimeter.png";
-import CheapIcon from "@/assets/img/icons/icon_cheap.png";
-import ShieldIcon from "@/assets/img/icons/icon_shield.png";
+import VelocimeterIcon from "../../assets/img/icons/icon_velocimeter.png";
+import CheapIcon from "../../assets/img/icons/icon_cheap.png";
+import ShieldIcon from "../../assets/img/icons/icon_shield.png";
 
 import style from "./Benefits.module.scss"
 

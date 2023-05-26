@@ -1,4 +1,4 @@
-import { ButtonPrimary } from "@/components/Utils/Buttons";
+import { ButtonPrimary } from "../Utils/Buttons";
 import Image from "next/image";
 
 import style from "./MeetTheTeam.module.scss"
