@@ -11,7 +11,6 @@ import Product from "../../components/Home/Product";
 import MeetTheTeam from "../../components/Home/MeetTheTeam";
 import FAQ from "../../components/Home/Faq";
 import DoubtsForm from "../../components/Home/DoubtsForm";
-import Footer from "../../components/Footer/Footer";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +29,6 @@ export default function Home() {
       <MeetTheTeam />
       <FAQ />
       <DoubtsForm />
-      <Footer />
     </QueryClientProvider>
   );
 }
