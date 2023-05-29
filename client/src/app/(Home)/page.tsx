@@ -2,6 +2,7 @@
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
+<<<<<<< HEAD
 import Navbar from "@/components/Navbar/Navbar";
 import NavLink from "@/components/Navbar/NavLink";
 import Hero from "@/components/Home/Hero";
@@ -11,6 +12,18 @@ import Product from "@/components/Home/Product";
 import MeetTheTeam from "@/components/Home/MeetTheTeam";
 import FAQ from "@/components/Home/Faq";
 import DoubtsForm from "@/components/Home/DoubtsForm";
+=======
+import Navbar from "../../components/Navbar/Navbar";
+import NavLink from "../../components/Navbar/NavLink";
+import Hero from "../../components/Home/Hero";
+import Review from "../../components/Home/Review";
+import Benefits from "../../components/Home/Benefits";
+import Product from "../../components/Home/Product";
+import MeetTheTeam from "../../components/Home/MeetTheTeam";
+import FAQ from "../../components/Home/Faq";
+import DoubtsForm from "../../components/Home/DoubtsForm";
+import Footer from "../../components/Footer/Footer";
+>>>>>>> 6f6ccd9 (fix: moved Home page inside (Home))
 
 const queryClient = new QueryClient();
 
