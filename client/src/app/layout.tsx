@@ -1,12 +1,9 @@
-import "../styles/utils.scss"
-
-import Footer from "../components/Footer/Footer";
-import Layout from "../components/Layout/Layout";
+import Layout from "../components/Layout/Layout"
 
 export const metadata = {
-  title: "Ideal Canyon",
-  description: "O lugar ideal para encontrar a sua scooter.",
-};
+  title: 'Ideal Canyon',
+  description: 'O lugar ideal para encontrar a sua scooter.',
+}
 
 export default function RootLayout({
   children,
@@ -14,12 +11,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br">
+    <html lang="en">
       <body>
-          <Layout>
-            {children}
-            <Footer />
-          </Layout>
+        <Layout>
+          {children}
+        </Layout>
       </body>
     </html>
   );
