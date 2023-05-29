@@ -1,21 +1,15 @@
 "use client"
 
 import { FunctionComponent } from "react";
-import {
-    InputText,
-    InputDate,
-    InputEmail,
-    InputPassword,
-} from "../Utils/Inputs";
+import { InputText, InputDate, InputEmail, InputPassword, } from "../Utils/Inputs";
 
 import style from "./Register.module.scss";
 import { ButtonSubmit } from "../Utils/Buttons";
-import { error } from "console";
 
-interface RegisterProps {}
+interface RegisterProps { }
 
 const handleSubmit = async (e: any) => {
-    event.preventDefault();
+    e.preventDefault();
 
     // turn form data into json
     const formData = new FormData(e.target);
