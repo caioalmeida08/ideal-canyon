@@ -51,7 +51,7 @@ const Faq = () => {
                         </li>
                     </ul>
                     <ul className="gap-h-32">
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
+                        <li className="text-demi faq-dynamic" tabIndex={0} data-active="false">
                             <h3>
                                 Posso devolver meu scooter se não estiver
                                 satisfeito?
@@ -60,7 +60,7 @@ const Faq = () => {
                                 Sim, oferecemos uma política de devolução de 30 dias para nossos clientes que não estiverem satisfeitos com o seu scooter.
                             </p>
                         </li>
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
+                        <li className="text-demi faq-dynamic" tabIndex={0} data-active="false">
                             <h3>
                                 Como faço para manter meu scooter da Ideal
                                 Canyon?
@@ -69,7 +69,7 @@ const Faq = () => {
                                 Para manter o seu scooter em boas condições, recomendamos a realização de manutenções regulares e seguir as instruções de cuidado e uso contidas no manual do proprietário.
                             </p>
                         </li>
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
+                        <li className="text-demi faq-dynamic" tabIndex={0} data-active="false">
                             <h3>
                                 Qual é a diferença entre os modelos de scooters
                                 da Ideal Canyon?
