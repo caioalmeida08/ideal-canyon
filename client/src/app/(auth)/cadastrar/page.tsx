@@ -10,6 +10,10 @@ const Cadastrar: FunctionComponent<CadastrarProps> = () => {
     <>
       <Navbar />
       <Register />
+<<<<<<< HEAD
+=======
+      <Footer />
+>>>>>>> e612efe (fix: removed Layout component)
     </>
   );
 };
