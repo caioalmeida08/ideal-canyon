@@ -1,8 +1,17 @@
 import style from "./Footer.module.scss";
 import LogoAndText from "../Utils/LogoAndText";
+<<<<<<< HEAD
 
 const Footer = () => {
   return ( 
+=======
+import { FunctionComponent } from "react";
+
+interface FooterProps {}
+
+const Footer: FunctionComponent<FooterProps> = () => {
+  return (
+>>>>>>> e4902be (fix: converted to .tsx)
     <>
       <footer
         className={`${style.footer} section-dark section-margin-top`}
@@ -56,7 +65,14 @@ const Footer = () => {
         </div>
       </footer>
     </>
+<<<<<<< HEAD
    );
 }
  
 export default Footer;
+=======
+  );
+};
+
+export default Footer;
+>>>>>>> e4902be (fix: converted to .tsx)
