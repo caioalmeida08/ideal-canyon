@@ -1,49 +1,65 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+
 import style from "./DoubtsForm.module.scss";
 import { ButtonSubmit } from "../Utils/Buttons";
 import {
-    InputCheckbox,
-    InputEmail,
-    InputText,
-    InputTextArea,
+  InputCheckbox,
+  InputEmail,
+  InputText,
+  InputTextArea,
 } from "../Utils/Inputs";
+import { useState } from "react";
+ 
+const DoubtsForm = () => {
+  // stores the data of the doubts form
+  let [formDataObj, setFormDataObj] = useState(null);
+  let [isQueryEnabled, setIsQueryEnabled] = useState(false);
 
-const handleSubmit = async (e: any) => {
+  // send form to back-end
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: [formDataObj],
+    queryFn: async () => {
+      const data = await axios.get(`/api/contact`);
+      return data;
+    },
+    enabled: isQueryEnabled
+  });
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-
+  
     // turn form data into json
     const formData = new FormData(e.target);
-    const formDataObj = Object.fromEntries(formData.entries());
+    formDataObj = Object.fromEntries(formData.entries());
+    setIsQueryEnabled(true);
 
-    // send form data to server
-    try {
-        const response = await fetch("/api/contato", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formDataObj),
-        });
-        const data = await response.json();
-
-        // throw error if response is not ok
-        if (!response.ok) {
-            throw new Error(data);
-        }
-
-        const errorDisplay = document.getElementById("error_display");
-        errorDisplay.innerHTML = "Mensagem enviada com sucesso!";
-        errorDisplay.style.color = "green";
-        errorDisplay.style.display = "block";
-    } catch (error) {
-        // display error message
-        const errorDisplay = document.getElementById("error_display");
-        errorDisplay.innerHTML = error.message;
-        errorDisplay.style.color = "#cc0000";
-        errorDisplay.style.display = "block";
+    if (!isLoading){
     }
-};
 
-const DoubtsForm = () => {
+    if(isError){
+      console.error(error)
+    }
+  
+    // // send form data to server
+    // try {
+      
+    //   console.log(data, error)
+  
+    //   const errorDisplay = document.getElementById("error_display");
+    //   errorDisplay.innerHTML = "Mensagem enviada com sucesso!";
+    //   errorDisplay.style.color = "green";
+    //   errorDisplay.style.display = "block";
+    // } catch (error) {
+    //   console.log(error)
+    //   // display error message
+    //   const errorDisplay = document.getElementById("error_display");
+    //   errorDisplay.innerHTML = error.message;
+    //   errorDisplay.style.color = "#cc0000";
+    //   errorDisplay.style.display = "block";
+    // }
+  };
+
   return (
     <>
       <section
@@ -57,9 +73,7 @@ const DoubtsForm = () => {
         <form
           action="/contato"
           method="POST"
-          onSubmit={(e) => {
-            handleSubmit(e);
-          }}
+          onSubmit={handleSubmit}
           id="doubts_form"
         >
           <InputText
@@ -105,6 +119,6 @@ const DoubtsForm = () => {
       </section>
     </>
   );
-};
-
+}
+ 
 export default DoubtsForm;
