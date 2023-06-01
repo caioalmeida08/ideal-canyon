@@ -4,35 +4,14 @@ import ScooterDetails from "./ScooterDetails";
 
 import style from "./Product.module.scss";
 import { IconNextPrev } from "../Utils/Icons";
-
-type ScooterData = {
-    scooter_model: string;
-    scooter_model_short: string;
-    scooter_max_speed: number;
-    scooter_battery_range: number;
-    scooter_charging_time: number;
-    scooter_description: string;
-    scooter_price: number;
-    other_scooter_models: string[];
-    other_scooter_models_short: string[];
-    scooter_imgs: string[];
-};
-
-type ProductProps = {
-    scooterData: ScooterData;
-    handleSideImage: (e: any) => void;
-    handleSlider: any;
-    handleOtherProducts: (e: any) => void;
-};
+import IScooter from "types/IScooter";
 
 enum Direction {
     NEXT,
     PREV
 }
 
-const ProductDumb = (props: ProductProps) => {
-    const { scooterData, handleSideImage, handleSlider, handleOtherProducts } =
-        { ...props };
+const ProductDumb = ({scooterData} : {scooterData: IScooter}) => {
 
     return (
         <>
@@ -44,7 +23,7 @@ const ProductDumb = (props: ProductProps) => {
                     className={`${style.product_images} max-width-500 max-width-desktop-unset`}
                     id="product_images"
                     data-model={scooterData.scooter_model_short}
-                    {...handleSlider}
+                    // {...handleSlider}
                 >
                     <Image
                         width={500}
@@ -62,8 +41,8 @@ const ProductDumb = (props: ProductProps) => {
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
-                                    onMouseEnter={handleSideImage}
-                                    onFocus={handleSideImage}
+                                    // onMouseEnter={handleSideImage}
+                                    // onFocus={handleSideImage}
                                     tabIndex={0}
                                 />
                             );
@@ -78,8 +57,8 @@ const ProductDumb = (props: ProductProps) => {
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${scooterData.scooter_model_short}`}
-                                    onMouseEnter={handleSideImage}
-                                    onFocus={handleSideImage}
+                                    // onMouseEnter={handleSideImage}
+                                    // onFocus={handleSideImage}
                                     tabIndex={0}
                                 />
                             );
@@ -188,8 +167,8 @@ const ProductDumb = (props: ProductProps) => {
 
                 <div
                     className={style.other_product}
-                    onClick={handleOtherProducts}
-                    onKeyDown={handleOtherProducts}
+                    // onClick={handleOtherProducts}
+                    // onKeyDown={handleOtherProducts}
                     data-model={scooterData.other_scooter_models_short[0]}
                     tabIndex={0}
                 >
@@ -212,8 +191,8 @@ const ProductDumb = (props: ProductProps) => {
                 </div>
                 <div
                     className={style.other_product}
-                    onClick={handleOtherProducts}
-                    onKeyDown={handleOtherProducts}
+                    // onClick={handleOtherProducts}
+                    // onKeyDown={handleOtherProducts}
                     data-model={scooterData.other_scooter_models_short[1]}
                     tabIndex={0}
                 >
