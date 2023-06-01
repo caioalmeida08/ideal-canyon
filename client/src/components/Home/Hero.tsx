@@ -9,7 +9,7 @@ const Hero = () => {
             <section
                 className={`${style.hero} grid-col-6 side-bleed section-margin-top max-width-tablet-800 max-width-desktop-unset`}
             >
-                <div className="gap-h-32">
+                <div className="gap-h-32 bg-slate-900">
                     <h1 className="text-h1 text-center text-tablet-left">
                         Nós temos a <span className="text-main">scooter</span>{" "}
                         que você{" "}

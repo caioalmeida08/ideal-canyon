@@ -1,3 +1,5 @@
+import "../styles/utils.scss"
+
 import Footer from "../components/Footer/Footer";
 import Layout from "../components/Layout/Layout";
 
