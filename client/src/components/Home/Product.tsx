@@ -7,12 +7,12 @@ import ProductDumb from "./ProductDumb";
 
 const Product = ({modelShortProp}: {modelShortProp: string}) => {
     const [modelShort, setModelShort] = useState(modelShortProp)
-    
+
     const {isLoading, data, error} = useQuery({
         queryKey: [modelShort],
         queryFn: async () => {
             try {
-                const {data} = await axios.get(`/api/scooter/${modelShortProp}`)
+                const {data} = await axios.get(`/api/scooter/${modelShort}`)
                 return (data as IScooter)
             } catch (error: any) {
                 let errorMessage = error.response.data.message as string
