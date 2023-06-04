@@ -3,7 +3,10 @@
     "baseUrl": "./src",
     "paths": {
       "@/styles/*": ["styles/*"],
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/types/*": ["lib/types/*"],
+      "@/handlers/*": ["lib/handlers/*"],
     },
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,

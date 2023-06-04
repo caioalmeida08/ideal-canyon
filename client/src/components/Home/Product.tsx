@@ -1,15 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
-import axios, { AxiosError } from "axios";
-import { useSwipeable } from "react-swipeable";
+import axios from "axios";
 
+import IScooter from "@/lib/types/IScooter";
+import { useState } from "react";
 import ProductDumb from "./ProductDumb";
 
-import style from "./Product.module.scss";
-import IScooter from "types/IScooter";
-
 const Product = ({modelShortProp}: {modelShortProp: string}) => {
+    const [modelShort, setModelShort] = useState(modelShortProp)
+    
     const {isLoading, data, error} = useQuery({
-        queryKey: [modelShortProp],
+        queryKey: [modelShort],
         queryFn: async () => {
             try {
                 const {data} = await axios.get(`/api/scooter/${modelShortProp}`)
@@ -33,7 +33,7 @@ const Product = ({modelShortProp}: {modelShortProp: string}) => {
 
     return (
     <>
-        <ProductDumb scooterData={data as IScooter} />
+        <ProductDumb data={data as IScooter} setModelShort={setModelShort}  />
     </>)
 }
  
