@@ -3,9 +3,9 @@ import IScooter from "@/lib/types/IScooter";
 import { FunctionComponent } from "react";
 
 import style from "./Product.module.scss"
-import { ButtonPrimary, ButtonSecondary } from "../Utils/Buttons";
+import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
+import { IconNextPrev } from "@/components/Utils/Icons";
 import ScooterDetails from "./ScooterDetails";
-import { IconNextPrev } from "../Utils/Icons";
 
 interface ProductDumbProps {
     data: IScooter,
