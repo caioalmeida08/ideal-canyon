@@ -6,7 +6,7 @@ import style from "./Product.module.scss"
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconNextPrev } from "@/components/Utils/Icons";
 import ScooterDetails from "./ScooterDetails";
-import { handleSideImage, handleSwipeLeft, handleSwipeRight } from "./Product.handlers";
+import { handleOtherProducts, handleSideImage, handleSwipeLeft, handleSwipeRight } from "./Product.handlers";
 import { useSwipeable } from "react-swipeable";
 
 interface ProductDumbProps {
@@ -20,6 +20,8 @@ enum Direction {
 }
  
 const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort}) => {
+    console.log(data)
+
     const mainImageElement = useRef<HTMLImageElement>();
     const sideImageElements: NodeListOf<Element> | undefined = document.querySelectorAll("[data-side-image]")
     const sliderElement: HTMLElement | undefined = document.querySelector("#image_slider")
@@ -36,8 +38,8 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
         onSwipedRight: () => {
             handleSwipeRight(data, sliderElement, mainImageElement)
         }
-    })    
-
+    })   
+    
     return ( 
         <>
             <section
@@ -191,9 +193,12 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
 
                 <div
                     className={style.other_product}
-                    // onClick={handleOtherProducts}
-                    // onKeyDown={handleOtherProducts}
-                    data-model={data.other_scooter_models_short[0]}
+                    onClick={(e: any) => {
+                        handleOtherProducts(e,  data.other_scooter_models_short[0], setModelShort)
+                    }}
+                    onKeyDown={(e: any) => {
+                        handleOtherProducts(e,  data.other_scooter_models_short[0], setModelShort)
+                    }}
                     tabIndex={0}
                 >
                     <Image
@@ -215,9 +220,12 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                 </div>
                 <div
                     className={style.other_product}
-                    // onClick={handleOtherProducts}
-                    // onKeyDown={handleOtherProducts}
-                    data-model={data.other_scooter_models_short[1]}
+                    onClick={(e: any) => {
+                        handleOtherProducts(e, data.other_scooter_models_short[1], setModelShort)
+                    }}
+                    onKeyDown={(e: any) => {
+                        handleOtherProducts(e, data.other_scooter_models_short[1], setModelShort)
+                    }}
                     tabIndex={0}
                 >
                     <Image

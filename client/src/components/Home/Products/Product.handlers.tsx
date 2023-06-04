@@ -127,4 +127,29 @@ const handleSwipeRight = (data: IScooter, sliderElement: HTMLElement, mainImage:
     }
 }
 
-export {handleSideImage, handleSwipeLeft, handleSwipeRight}
+// Controls the change of scooter model
+const handleOtherProducts = (e: any, modelShort: string, setModelShort: any) => {
+    // Check if the event was not triggered by unwanted keypress
+    if (e.type == "keydown") {
+        if (e.key != "Enter" && e.key != " ") {
+            return;
+        }
+    }
+
+    setModelShort(modelShort);
+
+    // reset the slider children dataset
+    const sliderChildren = document.querySelectorAll(
+        `.${style.slider}`
+    ) as NodeListOf<HTMLElement>;
+
+    sliderChildren.forEach((child) => {
+        child.setAttribute("data-active", "false");
+    });
+
+    // Set the first slider to active
+    sliderChildren[0].setAttribute("data-active", "true");
+};
+
+
+export {handleSideImage, handleSwipeLeft, handleSwipeRight, handleOtherProducts}
