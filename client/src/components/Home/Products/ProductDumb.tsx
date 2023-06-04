@@ -1,12 +1,13 @@
 import Image from "next/image";
 import IScooter from "@/lib/types/IScooter";
-import { FunctionComponent, MutableRefObject, useRef } from "react";
+import { FunctionComponent, useRef } from "react";
 
 import style from "./Product.module.scss"
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconNextPrev } from "@/components/Utils/Icons";
 import ScooterDetails from "./ScooterDetails";
-import { handleSideImage } from "./Product.handlers";
+import { handleSideImage, handleSwipeLeft, handleSwipeRight } from "./Product.handlers";
+import { useSwipeable } from "react-swipeable";
 
 interface ProductDumbProps {
     data: IScooter,
@@ -21,13 +22,22 @@ enum Direction {
 const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort}) => {
     const mainImageElement = useRef<HTMLImageElement>();
     const sideImageElements: NodeListOf<Element> | undefined = document.querySelectorAll("[data-side-image]")
-    const sliderElement= useRef<HTMLImageElement>();
+    const sliderElement: HTMLElement | undefined = document.querySelector("#image_slider")
 
     sideImageElements.forEach((sideImage)=>{
         sideImage.addEventListener("mouseenter", (e)=>{handleSideImage(e, mainImageElement)})
         sideImage.addEventListener("focus", (e)=>{handleSideImage(e, mainImageElement)})
     })
-    
+
+    const handleSlider = useSwipeable({
+        onSwipedLeft: () => {
+            handleSwipeLeft(data, sliderElement, mainImageElement)
+        },
+        onSwipedRight: () => {
+            handleSwipeRight(data, sliderElement, mainImageElement)
+        }
+    })    
+
     return ( 
         <>
             <section
@@ -38,6 +48,7 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                     className={`${style.product_images} max-width-500 max-width-desktop-unset`}
                     id="product_images"
                     data-model={data.scooter_model_short}
+                    {...handleSlider}
                 >
                     <Image
                         width={500}
@@ -77,7 +88,7 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                             );
                         })}
                     </div>
-                    <div className={style.image_slider} id="image_slider" ref={sliderElement}>
+                    <div className={style.image_slider} id="image_slider">
                         {data.scooter_imgs.map((img, index) => {
                             if (index == 0) {
                                 return (
