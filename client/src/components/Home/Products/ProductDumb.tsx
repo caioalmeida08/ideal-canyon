@@ -1,11 +1,12 @@
 import Image from "next/image";
 import IScooter from "@/lib/types/IScooter";
-import { FunctionComponent } from "react";
+import { FunctionComponent, MutableRefObject, useRef } from "react";
 
 import style from "./Product.module.scss"
 import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
 import { IconNextPrev } from "@/components/Utils/Icons";
 import ScooterDetails from "./ScooterDetails";
+import { handleSideImage } from "./Product.handlers";
 
 interface ProductDumbProps {
     data: IScooter,
@@ -18,6 +19,15 @@ enum Direction {
 }
  
 const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort}) => {
+    const mainImageElement = useRef<HTMLImageElement>();
+    const sideImageElements: NodeListOf<Element> | undefined = document.querySelectorAll("[data-side-image]")
+    const sliderElement= useRef<HTMLImageElement>();
+
+    sideImageElements.forEach((sideImage)=>{
+        sideImage.addEventListener("mouseenter", (e)=>{handleSideImage(e, mainImageElement)})
+        sideImage.addEventListener("focus", (e)=>{handleSideImage(e, mainImageElement)})
+    })
+    
     return ( 
         <>
             <section
@@ -35,6 +45,7 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                         src={`/api/img/scooters/${data.scooter_model_short}1.png`}
                         alt={`Imagem da ${data.scooter_model_short} em fundo transparente`}
                         className={`${style.main_image}`}
+                        ref={mainImageElement}
                     />
                     <div className={style.left_images}>
                         {data.scooter_imgs.slice(0, 3).map((img, index) => {
@@ -45,9 +56,8 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${data.scooter_model_short}`}
-                                    // onMouseEnter={handleSideImage}
-                                    // onFocus={handleSideImage}
                                     tabIndex={0}
+                                    data-side-image
                                 />
                             );
                         })}
@@ -61,14 +71,13 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
                                     alt={`Imagem da ${data.scooter_model_short}`}
-                                    // onMouseEnter={handleSideImage}
-                                    // onFocus={handleSideImage}
                                     tabIndex={0}
+                                    data-side-image
                                 />
                             );
                         })}
                     </div>
-                    <div className={style.image_slider} id="image_slider">
+                    <div className={style.image_slider} id="image_slider" ref={sliderElement}>
                         {data.scooter_imgs.map((img, index) => {
                             if (index == 0) {
                                 return (
