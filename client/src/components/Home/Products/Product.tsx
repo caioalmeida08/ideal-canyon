@@ -4,6 +4,7 @@ import axios from "axios";
 import IScooter from "@/lib/types/IScooter";
 import { useState } from "react";
 import ProductDumb from "./ProductDumb";
+import ProductDumbSkeleton from "./ProductDumbSkeleton";
 
 const Product = ({modelShortProp}: {modelShortProp: string}) => {
     const [modelShort, setModelShort] = useState(modelShortProp)
@@ -22,9 +23,7 @@ const Product = ({modelShortProp}: {modelShortProp: string}) => {
     })
 
     if (isLoading){
-        return (<>
-        esqueleto
-        </>)
+        return (<ProductDumbSkeleton/>)
     }
 
     if (error){
