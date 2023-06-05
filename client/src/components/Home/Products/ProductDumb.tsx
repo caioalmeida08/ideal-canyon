@@ -215,7 +215,7 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                         tabIndex={-1}
                         aria-label={`Ver informações da ${data.other_scooter_models[0]} Scooter`}
                     >
-                    <IconNextPrev dir={Direction.NEXT}/>
+                    <IconNextPrev dir={Direction.PREV}/>
                     </button>
                 </div>
                 <div
@@ -242,7 +242,7 @@ const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort})
                         tabIndex={-1}
                         aria-label={`Ver informações da ${data.other_scooter_models[1]} Scooter`}
                     >
-                        <IconNextPrev />
+                        <IconNextPrev dir={Direction.NEXT}/>
                     </button>
                 </div>
             </section>
