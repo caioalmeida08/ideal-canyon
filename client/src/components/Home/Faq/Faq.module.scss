@@ -1,0 +1,35 @@
+// FAQ
+.faq {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: var(--spacing-24);
+
+    margin-top: var(--spacing-48);
+    margin-left: var(--spacing-16);
+
+    // main doubts (static)
+    ul:first-of-type {
+        list-style-type: disc;
+        grid-column: span 7;
+    }
+
+    // right side doubts (dynamic dropdown)
+    ul:last-of-type {
+        grid-column: 9 / span 4;
+    }
+}
+
+@media (width<1024px) {
+    .faq {
+        display: block;
+        padding-inline: var(--spacing-16);
+
+        ul:last-of-type {
+            grid-column: 1;
+            grid-row: 2;
+
+            margin-top: var(--spacing-48);
+            margin-left: var(--spacing-8);
+        }
+    }
+}
