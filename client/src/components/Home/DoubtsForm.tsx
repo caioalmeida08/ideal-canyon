@@ -10,7 +10,7 @@ import {
   InputTextArea,
 } from "../Utils/Inputs";
 import { useState } from "react";
- 
+
 const DoubtsForm = () => {
   // stores the data of the doubts form
   let [formDataObj, setFormDataObj] = useState(null);
@@ -20,44 +20,48 @@ const DoubtsForm = () => {
   const { data, isLoading, isError, error } = useQuery({
     queryKey: [formDataObj],
     queryFn: async () => {
-      const data = await axios.get(`/api/contact`);
+      try {
+        const data = await axios.post(`/api/contact`, formDataObj, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        console.log(data)
+      } catch (error: any) {
+        let errorMessage = error.response.data.message as string;
+        throw errorMessage.toString();
+      }
+
       return data;
     },
-    enabled: isQueryEnabled
+    enabled: isQueryEnabled,
   });
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-  
-    // turn form data into json
-    const formData = new FormData(e.target);
-    formDataObj = Object.fromEntries(formData.entries());
+
+    const form = e.target;
+    const formElements: HTMLInputElement[] = Array.from(form.elements);
+    let formData: Object = {};
+
+    // parse form data to object
+    formElements.map((input) => {
+      // filter out the submit button
+      if (input.name) {
+        formData[input.name] = input.value;
+      }
+    });
+
+    setFormDataObj(formData);
     setIsQueryEnabled(true);
 
-    if (!isLoading){
+    if (!isLoading) {
     }
 
-    if(isError){
-      console.error(error)
+    if (isError) {
+      console.error(error);
     }
-  
-    // // send form data to server
-    // try {
-      
-    //   console.log(data, error)
-  
-    //   const errorDisplay = document.getElementById("error_display");
-    //   errorDisplay.innerHTML = "Mensagem enviada com sucesso!";
-    //   errorDisplay.style.color = "green";
-    //   errorDisplay.style.display = "block";
-    // } catch (error) {
-    //   console.log(error)
-    //   // display error message
-    //   const errorDisplay = document.getElementById("error_display");
-    //   errorDisplay.innerHTML = error.message;
-    //   errorDisplay.style.color = "#cc0000";
-    //   errorDisplay.style.display = "block";
-    // }
   };
 
   return (
@@ -71,7 +75,6 @@ const DoubtsForm = () => {
           Entre em contato
         </h2>
         <form
-          action="/contato"
           method="POST"
           onSubmit={handleSubmit}
           id="doubts_form"
@@ -119,6 +122,6 @@ const DoubtsForm = () => {
       </section>
     </>
   );
-}
- 
+};
+
 export default DoubtsForm;
