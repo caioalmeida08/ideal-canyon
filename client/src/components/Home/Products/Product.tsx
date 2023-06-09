@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { isError, useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 import IScooter from "@/lib/types/IScooter";
@@ -9,7 +9,7 @@ import ProductDumbSkeleton from "./ProductDumbSkeleton";
 const Product = ({modelShortProp}: {modelShortProp: string}) => {
     const [modelShort, setModelShort] = useState(modelShortProp)
 
-    const {isLoading, data, error} = useQuery({
+    const {isLoading, data, error, isError} = useQuery({
         queryKey: [modelShort],
         queryFn: async () => {
             try {
@@ -17,7 +17,7 @@ const Product = ({modelShortProp}: {modelShortProp: string}) => {
                 return (data as IScooter)
             } catch (error: any) {
                 let errorMessage = error.response.data.message as string
-                return errorMessage.toString()
+                throw errorMessage.toString()
             }   
         }
     })
@@ -26,8 +26,8 @@ const Product = ({modelShortProp}: {modelShortProp: string}) => {
         return (<ProductDumbSkeleton/>)
     }
 
-    if (error){
-        return (<>erro {JSON.stringify(error)}</>)
+    if (isError){
+        return (<>{JSON.stringify(error)}</>)
     }
 
     return (
