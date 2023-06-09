@@ -22,11 +22,10 @@ const InputTextArea = ({ label, name, placeholder, width = "max", ...rest }) => 
             <label className="text-demi" htmlFor={`input_${name}`}>{label}</label>
             <textarea
                 className={style.text_area}
-                type="text"
                 id={`input_${name}`}
                 name={name}
                 placeholder={placeholder}
-                rows="5"
+                rows={5}
                 {...rest}
             />
         </div>
