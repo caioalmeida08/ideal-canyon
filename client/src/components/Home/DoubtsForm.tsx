@@ -10,6 +10,7 @@ import {
   InputTextArea,
 } from "../Utils/Inputs";
 import { useState } from "react";
+import { CircularProgress } from "@mui/material";
 
 const DoubtsForm = () => {
   // stores the data of the doubts form
@@ -26,8 +27,6 @@ const DoubtsForm = () => {
             "Content-Type": "application/json",
           },
         });
-
-        console.log(data)
       } catch (error: any) {
         let errorMessage = error.response.data.message as string;
         throw errorMessage.toString();
@@ -62,6 +61,7 @@ const DoubtsForm = () => {
     if (isError) {
       console.error(error);
     }
+
   };
 
   return (
@@ -117,7 +117,9 @@ const DoubtsForm = () => {
             required
           />
           <ButtonSubmit text="Enviar mensagem" />
-          <span className={style.error_display} id="error_display"></span>
+          <span className={style.error_display} id="error_display">
+            {isLoading && <CircularProgress />}
+          </span>
         </form>
       </section>
     </>
