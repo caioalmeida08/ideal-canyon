@@ -28,12 +28,12 @@ const DoubtsForm = () => {
             "Content-Type": "application/json",
           },
           validateStatus(status) {
-              return status == 201
+            return status == 201;
           },
         });
-        return data
+        return data;
       } catch (error: any) {
-        handleReactQueryError(error)
+        handleReactQueryError(error);
       }
     },
     enabled: isQueryEnabled,
@@ -68,11 +68,7 @@ const DoubtsForm = () => {
           <br />
           Entre em contato
         </h2>
-        <form
-          method="POST"
-          onSubmit={handleSubmit}
-          id="doubts_form"
-        >
+        <form method="POST" onSubmit={handleSubmit} id="doubts_form">
           <InputText
             label="Nome completo"
             name="contact_name"
@@ -113,10 +109,16 @@ const DoubtsForm = () => {
           <ButtonSubmit text="Enviar mensagem" />
           {isQueryEnabled && (
             <span id="error_display" className={style.error_display}>
-            {(isLoading && isQueryEnabled) && <CircularProgress/>}
-            {isError && <span className="text-red-800">{JSON.stringify(error)}</span>}
-            {!(isLoading || isError) && <span className="text-green-600 font-semibold line-height-15">{data.data.message}</span>}
-          </span>
+              {isLoading && <CircularProgress />}
+              {isError && (
+                <span className="text-red-800">{JSON.stringify(error)}</span>
+              )}
+              {!isError && (
+                <span className="text-green-600 font-semibold line-height-15">
+                  {data.data.message}
+                </span>
+              )}
+            </span>
           )}
         </form>
       </section>
