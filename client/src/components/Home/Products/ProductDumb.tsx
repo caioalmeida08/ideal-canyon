@@ -1,40 +1,44 @@
 import Image from "next/image";
-import { ButtonPrimary, ButtonSecondary } from "../Utils/Buttons";
+import IScooter from "@/lib/types/IScooter";
+import { FunctionComponent, useRef } from "react";
+
+import style from "./Product.module.scss"
+import { ButtonPrimary, ButtonSecondary } from "@/components/Utils/Buttons";
+import { IconNextPrev } from "@/components/Utils/Icons";
 import ScooterDetails from "./ScooterDetails";
+import { handleOtherProducts, handleSideImage, handleSwipeLeft, handleSwipeRight } from "./Product.handlers";
+import { useSwipeable } from "react-swipeable";
 
-import style from "./Product.module.scss";
-import { IconNextPrev } from "../Utils/Icons";
-
-type ScooterData = {
-    scooter_model: string;
-    scooter_model_short: string;
-    scooter_max_speed: number;
-    scooter_battery_range: number;
-    scooter_charging_time: number;
-    scooter_description: string;
-    scooter_price: number;
-    other_scooter_models: string[];
-    other_scooter_models_short: string[];
-    scooter_imgs: string[];
-};
-
-type ProductProps = {
-    scooterData: ScooterData;
-    handleSideImage: (e: any) => void;
-    handleSlider: any;
-    handleOtherProducts: (e: any) => void;
-};
+interface ProductDumbProps {
+    data: IScooter,
+    setModelShort: any   
+}
 
 enum Direction {
     NEXT,
     PREV
 }
+ 
+const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort}) => {
+    const mainImageElement = useRef<HTMLImageElement>();
+    const sideImageElements: NodeListOf<Element> | undefined = document.querySelectorAll("[data-side-image]")
+    const sliderElement: HTMLElement | undefined = document.querySelector("#image_slider")
 
-const ProductDumb = (props: ProductProps) => {
-    const { scooterData, handleSideImage, handleSlider, handleOtherProducts } =
-        { ...props };
+    sideImageElements.forEach((sideImage)=>{
+        sideImage.addEventListener("mouseenter", (e)=>{handleSideImage(e, mainImageElement)})
+        sideImage.addEventListener("focus", (e)=>{handleSideImage(e, mainImageElement)})
+    })
 
-    return (
+    const handleSlider = useSwipeable({
+        onSwipedLeft: () => {
+            handleSwipeLeft(data, sliderElement, mainImageElement)
+        },
+        onSwipedRight: () => {
+            handleSwipeRight(data, sliderElement, mainImageElement)
+        }
+    })   
+    
+    return ( 
         <>
             <section
                 className={`${style.products} side-bleed section-margin-top max-width-tablet-500 max-width-desktop-unset`}
@@ -43,50 +47,49 @@ const ProductDumb = (props: ProductProps) => {
                 <div
                     className={`${style.product_images} max-width-500 max-width-desktop-unset`}
                     id="product_images"
-                    data-model={scooterData.scooter_model_short}
+                    data-model={data.scooter_model_short}
                     {...handleSlider}
                 >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.scooter_model_short}1.png`}
-                        alt={`Imagem da ${scooterData.scooter_model_short} em fundo transparente`}
+                        src={`/api/img/scooters/${data.scooter_model_short}1.png`}
+                        alt={`Imagem da ${data.scooter_model_short} em fundo transparente`}
                         className={`${style.main_image}`}
+                        ref={mainImageElement}
                     />
                     <div className={style.left_images}>
-                        {scooterData.scooter_imgs.slice(0, 3).map((img, index) => {
+                        {data.scooter_imgs.slice(0, 3).map((img, index) => {
                             return (
                                 <Image
                                     key={index}
                                     width={500}
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
-                                    alt={`Imagem da ${scooterData.scooter_model_short}`}
-                                    onMouseEnter={handleSideImage}
-                                    onFocus={handleSideImage}
+                                    alt={`Imagem da ${data.scooter_model_short}`}
                                     tabIndex={0}
+                                    data-side-image
                                 />
                             );
                         })}
                     </div>
                     <div className={style.right_images}>
-                        {scooterData.scooter_imgs.slice(3, 6).map((img, index) => {
+                        {data.scooter_imgs.slice(3, 6).map((img, index) => {
                             return (
                                 <Image
                                     key={index}
                                     width={500}
                                     height={500}
                                     src={`/api/img/scooters/${img}`}
-                                    alt={`Imagem da ${scooterData.scooter_model_short}`}
-                                    onMouseEnter={handleSideImage}
-                                    onFocus={handleSideImage}
+                                    alt={`Imagem da ${data.scooter_model_short}`}
                                     tabIndex={0}
+                                    data-side-image
                                 />
                             );
                         })}
                     </div>
                     <div className={style.image_slider} id="image_slider">
-                        {scooterData.scooter_imgs.map((img, index) => {
+                        {data.scooter_imgs.map((img, index) => {
                             if (index == 0) {
                                 return (
                                     <div
@@ -114,26 +117,26 @@ const ProductDumb = (props: ProductProps) => {
                     <h2
                         className={`${style.product_name} text-h2 text-center text-capitalize`}
                     >
-                        {scooterData.scooter_model}
+                        {data.scooter_model}
                     </h2>
                     <div className={style.product_highlights}>
                         <div className={style.product_highlight}>
                             <h3 className="text-bold text-h1">
-                                {scooterData.scooter_max_speed}
+                                {data.scooter_max_speed}
                             </h3>
                             <span>km/h</span>
                             <p>velocidade máxima</p>
                         </div>
                         <div className={style.product_highlight}>
                             <h3 className="text-bold text-h1">
-                                {scooterData.scooter_battery_range}
+                                {data.scooter_battery_range}
                             </h3>
                             <span>quilômetros</span>
                             <p>autonomia</p>
                         </div>
                         <div className={style.product_highlight}>
                             <h3 className="text-bold text-h1">
-                                {scooterData.scooter_charging_time}
+                                {data.scooter_charging_time}
                             </h3>
                             <span>min</span>
                             <p>recarga completa</p>
@@ -143,19 +146,19 @@ const ProductDumb = (props: ProductProps) => {
                 <div
                     className={`${style.product_description} max-width-500 max-width-desktop-unset`}
                 >
-                    {scooterData.scooter_description}
+                    {data.scooter_description}
                 </div>
                 <div className={style.price_cta_wrapper}>
                     <div className={style.product_price}>
                         <h3>
-                            {scooterData.scooter_price.toLocaleString("pt-BR", {
+                            {data.scooter_price.toLocaleString("pt-BR", {
                                 style: "currency",
                                 currency: "BRL",
                             })}
                         </h3>
                         <p>
                             até 24x de{" "}
-                            {(scooterData.scooter_price / 24).toLocaleString(
+                            {(data.scooter_price / 24).toLocaleString(
                                 "pt-BR",
                                 {
                                     style: "currency",
@@ -168,7 +171,7 @@ const ProductDumb = (props: ProductProps) => {
                     <div
                         className={`${style.product_cta} max-width-500 max-width-desktop-unset`}
                     >
-                        <ScooterDetails {...scooterData} />
+                        <ScooterDetails {...data} />
                         <ButtonPrimary href="/comprar" text="Comprar agora" />
                         <ButtonSecondary
                             href="#product_details"
@@ -176,67 +179,73 @@ const ProductDumb = (props: ProductProps) => {
                             onClick={(e: Event) => {
                                 e.preventDefault();
                                 const modal = document.querySelector(
-                                    `#${scooterData.scooter_model_short}`
+                                    `#${data.scooter_model_short}`
                                 ) as HTMLDialogElement;
 
                                 modal?.showModal();
                             }}
                         />
-                        <ScooterDetails {...scooterData} />
+                        <ScooterDetails {...data} />
                     </div>
                 </div>
 
                 <div
                     className={style.other_product}
-                    onClick={handleOtherProducts}
-                    onKeyDown={handleOtherProducts}
-                    data-model={scooterData.other_scooter_models_short[0]}
+                    onClick={(e: any) => {
+                        handleOtherProducts(e,  data.other_scooter_models_short[0], setModelShort)
+                    }}
+                    onKeyDown={(e: any) => {
+                        handleOtherProducts(e,  data.other_scooter_models_short[0], setModelShort)
+                    }}
                     tabIndex={0}
                 >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.other_scooter_models_short[0]}1.png`}
+                        src={`/api/img/scooters/${data.other_scooter_models_short[0]}1.png`}
                         aria-hidden="true"
                         alt=""
                     />
                     <h2 className="text-capitalize">
-                        {scooterData.other_scooter_models[0]}
+                        {data.other_scooter_models[0]}
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label={`Ver informações da ${scooterData.other_scooter_models[0]} Scooter`}
+                        aria-label={`Ver informações da ${data.other_scooter_models[0]} Scooter`}
                     >
-                    <IconNextPrev dir={Direction.NEXT}/>
+                    <IconNextPrev dir={Direction.PREV}/>
                     </button>
                 </div>
                 <div
                     className={style.other_product}
-                    onClick={handleOtherProducts}
-                    onKeyDown={handleOtherProducts}
-                    data-model={scooterData.other_scooter_models_short[1]}
+                    onClick={(e: any) => {
+                        handleOtherProducts(e, data.other_scooter_models_short[1], setModelShort)
+                    }}
+                    onKeyDown={(e: any) => {
+                        handleOtherProducts(e, data.other_scooter_models_short[1], setModelShort)
+                    }}
                     tabIndex={0}
                 >
                     <Image
                         width={500}
                         height={500}
-                        src={`/api/img/scooters/${scooterData.other_scooter_models_short[1]}1.png`}
+                        src={`/api/img/scooters/${data.other_scooter_models_short[1]}1.png`}
                         aria-hidden="true"
                         alt=""
                     />
                     <h2 className="text-capitalize">
-                        {scooterData.other_scooter_models[1]}
+                        {data.other_scooter_models[1]}
                     </h2>
                     <button
                         tabIndex={-1}
-                        aria-label={`Ver informações da ${scooterData.other_scooter_models[1]} Scooter`}
+                        aria-label={`Ver informações da ${data.other_scooter_models[1]} Scooter`}
                     >
-                        <IconNextPrev />
+                        <IconNextPrev dir={Direction.NEXT}/>
                     </button>
                 </div>
             </section>
         </>
-    );
-};
-
+     );
+}
+ 
 export default ProductDumb;

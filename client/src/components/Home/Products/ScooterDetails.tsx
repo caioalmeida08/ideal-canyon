@@ -1,4 +1,4 @@
-import { IconClose } from '../Utils/Icons';
+import { IconClose } from '@/components/Utils/Icons';
 
 import style from "./ScooterDetails.module.scss"
 

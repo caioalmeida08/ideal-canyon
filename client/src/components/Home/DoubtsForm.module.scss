@@ -17,8 +17,10 @@
     }
 }
 
-.error_display {
-    display: none;
+.error_display{
+    width: fit-content;
+    margin-inline: auto;
+    grid-column: 1 / span 2;
 }
 
 @media (width>=768px) {
@@ -39,9 +41,5 @@
             margin-right: 0;
             width: fit-content;
         }
-    }
-
-    .error_display {
-        grid-column: span 2;
     }
 }

@@ -65,7 +65,7 @@ class ContactController {
             // create the contact
             await Contact.create(req.body);
 
-            res.status(201).json({message: "Contact created"});
+            res.status(201).json({message: "Obrigado por entrar em contato! Recebemos a sua mensagem. Aguarde a resposta via e-mail."});
         } catch (error: any) {
             handleValidationError(error, res)
         }

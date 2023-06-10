@@ -1,4 +1,5 @@
 import style from "./Faq.module.scss";
+import FaqDropdown from "./FaqDropdown";
 
 const Faq = () => {
     return (
@@ -51,33 +52,23 @@ const Faq = () => {
                         </li>
                     </ul>
                     <ul className="gap-h-32">
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
-                            <h3>
-                                Posso devolver meu scooter se não estiver
-                                satisfeito?
-                            </h3>
-                            <p className="text-p line-height-125 text-justify">
-                                Sim, oferecemos uma política de devolução de 30 dias para nossos clientes que não estiverem satisfeitos com o seu scooter.
-                            </p>
-                        </li>
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
-                            <h3>
-                                Como faço para manter meu scooter da Ideal
-                                Canyon?
-                            </h3>
-                            <p className="text-p line-height-125 text-justify">
-                                Para manter o seu scooter em boas condições, recomendamos a realização de manutenções regulares e seguir as instruções de cuidado e uso contidas no manual do proprietário.
-                            </p>
-                        </li>
-                        <li className="text-demi faq-dynamic" tabIndex="0" data-active="false">
-                            <h3>
-                                Qual é a diferença entre os modelos de scooters
-                                da Ideal Canyon?
-                            </h3>
-                            <p className="text-p line-height-125 text-justify">
-                                Nossos modelos de scooters diferem principalmente em termos de potência, alcance, capacidade de carga e recursos adicionais, como suspensão e luzes LED. Nós temos uma variedade de modelos disponíveis para atender às diferentes necessidades dos nossos clientes.
-                            </p>
-                        </li>
+                        <FaqDropdown 
+                        heading="Posso devolver meu scooter se não estiver satisfeito?"
+                        text="Sim, oferecemos uma política de devolução de 30 dias para nossos clientes que não estiverem satisfeitos com o seu scooter. "
+                        />
+                        <FaqDropdown 
+                        heading="Como faço para manter meu scooter da Ideal Canyon?"
+                        text="Para manter o seu scooter em boas condições, recomendamos a realização de manutenções regulares e seguir as instruções de cuidado e uso contidas no manual do proprietário."
+                        />
+                        <FaqDropdown 
+                        heading="Como faço para manter meu scooter da Ideal Canyon?"
+                        text="Para manter o seu scooter em boas condições, recomendamos a realização de manutenções regulares e seguir as instruções de cuidado e uso contidas no manual do proprietário."
+                        />
+                        <FaqDropdown 
+                        heading="Qual é a diferença entre os modelos de scooters da Ideal Canyon?"
+                        text="
+                        Nossos modelos de scooters diferem principalmente em termos de potência, alcance, capacidade de carga e recursos adicionais, como suspensão e luzes LED. Nós temos uma variedade de modelos disponíveis para atender às diferentes necessidades dos nossos clientes."
+                        />
                     </ul>
                 </div>
             </section>
