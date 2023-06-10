@@ -9,13 +9,14 @@ import {
   InputText,
   InputTextArea,
 } from "../Utils/Inputs";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CircularProgress } from "@mui/material";
+import handleReactQueryError from "@/lib/errors/handleReactQueryError";
 
 const DoubtsForm = () => {
   // stores the data of the doubts form
-  let [formDataObj, setFormDataObj] = useState(null);
-  let [isQueryEnabled, setIsQueryEnabled] = useState(false);
+  const [formDataObj, setFormDataObj] = useState(null);
+  const [isQueryEnabled, setIsQueryEnabled] = useState(false);
 
   // send form to back-end
   const { data, isLoading, isError, error } = useQuery({
@@ -26,13 +27,14 @@ const DoubtsForm = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          validateStatus(status) {
+              return status == 201
+          },
         });
+        return data
       } catch (error: any) {
-        let errorMessage = error.response.data.message as string;
-        throw errorMessage.toString();
+        handleReactQueryError(error)
       }
-
-      return data;
     },
     enabled: isQueryEnabled,
   });
@@ -42,7 +44,7 @@ const DoubtsForm = () => {
 
     const form = e.target;
     const formElements: HTMLInputElement[] = Array.from(form.elements);
-    let formData: Object = {};
+    let formData: Object | HTMLSpanElement = {};
 
     // parse form data to object
     formElements.map((input) => {
@@ -54,14 +56,6 @@ const DoubtsForm = () => {
 
     setFormDataObj(formData);
     setIsQueryEnabled(true);
-
-    if (!isLoading) {
-    }
-
-    if (isError) {
-      console.error(error);
-    }
-
   };
 
   return (
@@ -117,9 +111,13 @@ const DoubtsForm = () => {
             required
           />
           <ButtonSubmit text="Enviar mensagem" />
-          <span className={style.error_display} id="error_display">
-            {isLoading && <CircularProgress />}
+          {isQueryEnabled && (
+            <span id="error_display" className={style.error_display}>
+            {(isLoading && isQueryEnabled) && <CircularProgress/>}
+            {isError && <span className="text-red-800">{JSON.stringify(error)}</span>}
+            {!(isLoading || isError) && <span className="text-green-600 font-semibold line-height-15">{data.data.message}</span>}
           </span>
+          )}
         </form>
       </section>
     </>

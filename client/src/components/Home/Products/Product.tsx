@@ -5,6 +5,7 @@ import IScooter from "@/lib/types/IScooter";
 import { useState } from "react";
 import ProductDumb from "./ProductDumb";
 import ProductDumbSkeleton from "./ProductDumbSkeleton";
+import handleReactQueryError from "@/lib/errors/handleReactQueryError";
 
 const Product = ({modelShortProp}: {modelShortProp: string}) => {
     const [modelShort, setModelShort] = useState(modelShortProp)
@@ -16,8 +17,7 @@ const Product = ({modelShortProp}: {modelShortProp: string}) => {
                 const {data} = await axios.get(`/api/scooter/${modelShort}`)
                 return (data as IScooter)
             } catch (error: any) {
-                let errorMessage = error.response.data.message as string
-                throw errorMessage.toString()
+                handleReactQueryError(error)
             }   
         }
     })

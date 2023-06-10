@@ -20,8 +20,6 @@ enum Direction {
 }
  
 const ProductDumb: FunctionComponent<ProductDumbProps> = ({data, setModelShort}) => {
-    console.log(data)
-
     const mainImageElement = useRef<HTMLImageElement>();
     const sideImageElements: NodeListOf<Element> | undefined = document.querySelectorAll("[data-side-image]")
     const sliderElement: HTMLElement | undefined = document.querySelector("#image_slider")
